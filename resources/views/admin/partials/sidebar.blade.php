@@ -326,10 +326,17 @@
 
                 <li class="sidebar-title">Pages</li>
 
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-table"></i>
                         <span>Data</span>
+                    </a>
+                </li> --}}
+
+                <li class="sidebar-item">
+                    <a href="{{ url('admin/profile') }}" class='sidebar-link'>
+                        <i class="bi bi-person-fill"></i>
+                        <span>Profile</span>
                     </a>
                 </li>
 
