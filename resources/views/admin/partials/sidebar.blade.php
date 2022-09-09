@@ -46,7 +46,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
+                <li class="sidebar-item {{ request()->is('home') ? 'active' : '' }}">
                     <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -333,7 +333,7 @@
                     </a>
                 </li> --}}
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{ request()->is('admin/profile') ? 'active' : '' }}">
                     <a href="{{ url('admin/profile') }}" class='sidebar-link'>
                         <i class="bi bi-person-fill"></i>
                         <span>Profile</span>

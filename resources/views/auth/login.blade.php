@@ -26,7 +26,7 @@
                         </a>
                     </div>
                     <h1 class="auth-title">Log in</h1>
-                    <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+                    <p class="auth-subtitle mb-5">Login dengan data yang Anda masukkan saat pendaftaran.</p>
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -55,19 +55,18 @@
                             <input class="form-check-input me-2" type="checkbox" id="remember"
                                 {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                                Remember Me
+                                Ingat Saya
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">Don't have an account? <a href="{{ route('register') }}"
-                                class="font-bold">Sign
-                                up</a>.</p>
+                        <p class="text-gray-600">Belum Punya Akun? <a href="{{ route('register') }}"
+                                class="font-bold">Daftar Sekarang</a>.</p>
                         <p>
                             @if (Route::has('password.request'))
                                 <a class="font-bold" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ __('Lupa Password Anda?') }}
                                 </a>
                             @endif
                         </p>

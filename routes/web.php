@@ -18,15 +18,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {
     Route::get('profile', function () {
-        return view('profile');
+        return view('admin.pages.profile');
     });
 });
 
 Route::get('/errors', function () {
-    return view('403');
+    return view('errors.403');
 });
