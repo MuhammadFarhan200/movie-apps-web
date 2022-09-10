@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -129,4 +129,100 @@
             </div>
         </div>
     </body>
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg" type="image/x-icon') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png" type="image/png') }}">
+
+    <style type="text/css">
+        .top .btn {
+            display: none
+        }
+
+        .row .col-md-6 img {
+            width: 70%
+        }
+
+        .none {
+            display: block
+        }
+
+        @media (min-width:576px) {
+            .top .btn {
+                display: block
+            }
+
+            .none {
+                display: none
+            }
+        }
+
+        @media (max-width: 576px) {
+            .row .col-md-6 img {
+                width: 90%
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-body">
+
+    <header class="pt-4 pb-2 px-5 ">
+        <div class="d-flex justify-content-between align-items-center">
+            <img src="{{ asset('assets/images/logo/logo.svg') }}" alt="Logo" style="width: 100px">
+            <div class="d-flex align-items-center top">
+                <a href="{{ route('login') }}" class="btn btn-outline-primary mt-3 px-4 font-bold">Log In</a>
+                <a href="{{ route('register') }}" class="btn btn-outline-primary mt-3 ms-3 px-4 font-bold">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid d-flex justify-content-center flex-column align-items-center pt-4 "
+        style="height: 100vh">
+        <div class="container row">
+            <div class="col-md-6 text-center mt-lg-5">
+                <h1 style="font-size: 60px" class="font-bold">Welcome to My Website</h1>
+                <p class="text-black fs-4">Website ini dibuat dengan Framework <b>Laravel</b> dan
+                    Template Admin dari <b>Mazer</b>
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{{ asset('assets/images/usher.png') }}" alt="">
+            </div>
+        </div>
+        <div class="none mt-4">
+            <p class="fs-5 text-center text-black">Silahkan <b>Log In</b> atau <b>Register</b> Terlebih Dahulu!</p>
+            <div class="d-grid col-12">
+                <a href="{{ route('login') }}" class="btn btn-lg btn-primary mt-4 mx-4 px-4 shadow font-bold">Log
+                    In</a>
+            </div>
+            <div class="d-grid col-12">
+                <a href="{{ route('register') }}"
+                    class="btn btn-lg btn-primary mt-4 mx-4 px-4 shadowfont-bold">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="pt-5">
+        <div class="footer clearfix mb-0 text-muted">
+            <div class="text-center">
+                <p>2021 &copy; Mazer, Improve 2022 by Hanztt</p>
+                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                        href="https://saugi.me">Saugi</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
 </html>

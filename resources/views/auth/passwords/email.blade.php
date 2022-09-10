@@ -56,8 +56,8 @@
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
-
+                <div id="auth-right" class="d-flex justify-content-center align-items-center">
+                    <img src="{{ asset('assets/images/team.png') }}" alt="" width="400px">
                 </div>
             </div>
         </div>

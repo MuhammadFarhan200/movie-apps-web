@@ -63,19 +63,19 @@
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">Belum Punya Akun? <a href="{{ route('register') }}"
                                 class="font-bold">Daftar Sekarang</a>.</p>
-                        <p>
+                        {{-- <p>
                             @if (Route::has('password.request'))
                                 <a class="font-bold" href="{{ route('password.request') }}">
                                     {{ __('Lupa Password Anda?') }}
                                 </a>
                             @endif
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
-
+                <div id="auth-right" class="d-flex justify-content-center align-items-center">
+                    <img src="{{ asset('assets/images/team.png') }}" alt="" width="400px">
                 </div>
             </div>
         </div>
