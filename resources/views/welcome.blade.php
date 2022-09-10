@@ -220,8 +220,7 @@
                     <div class="none-top">
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ route('home') }}"
-                                    class="btn btn-outline-primary mt-2 px-4 font-bold">Dashboard</a>
+                                <a href="{{ route('home') }}" class="btn btn-outline-primary mt-2 px-4 font-bold">Home</a>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-outline-primary mt-2 px-4 font-bold">Log
                                     In</a>
@@ -252,21 +251,26 @@
             <div class="container none mt-4">
                 @if (Route::has('login'))
                     @auth
-                        <p class="fs-5 text-center">Silahkan Kunjungi Dashboard Anda.</p>
+                        <p class="fs-5 text-center">Silahkan Kunjungi Halaman <b>Dashboard</b> Anda.</p>
                         <div class="d-grid col-md-12">
                             <a href="{{ route('home') }}"
-                                class="btn btn-lg btn-primary mt-4 mx-3 px-4 shadow font-bold">Dashboard</a>
+                                class="btn btn-lg btn-primary mx-3 px-4 shadow font-bold">Home</a>
                         </div>
                     @else
-                        <p class="fs-5 text-center">Silahkan <b>Log In</b> atau <b>Register</b> Terlebih Dahulu!</p>
+                        <p class="fs-5 text-center">Silahkan <b>Log In</b> atau <b>Register</b> dengan Akunmu Terlebih
+                            Dahulu!</p>
                         <div class="d-grid col-md-12">
-                            <a href="{{ route('login') }}"
-                                class="btn btn-lg btn-primary mt-4 mx-3 px-4 shadow font-bold">Log
+                            <a href="{{ route('login') }}" class="btn btn-lg btn-primary mx-3 px-4 shadow font-bold">Log
                                 In</a>
+                        </div>
+                        <div class="divider w-75 mx-auto">
+                            <div class="divider-text fs-5 font-bold bg-transparent">
+                                Atau
+                            </div>
                         </div>
                         <div class="d-grid col-md-12">
                             <a href="{{ route('register') }}"
-                                class="btn btn-lg btn-primary mt-4 mx-3 px-4 shadowfont-bold">Register</a>
+                                class="btn btn-lg btn-primary mx-3 px-4 shadow font-bold">Register</a>
                         </div>
                     @endauth
                 @endif
