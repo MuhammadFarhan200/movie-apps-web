@@ -409,9 +409,7 @@
                 <li class="sidebar-title">Logout</li>
 
                 <li class="sidebar-item">
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                        class='sidebar-link'>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();logout()" class='sidebar-link'>
                         <i class="bi bi-arrow-return-left fw-bold"></i>
                         <span>Logout</span>
                     </a>
@@ -419,8 +417,43 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                </li>
 
+                    <script>
+                        function logout() {
+                            const swalWithBootstrapButtons = Swal.mixin({
+                                customClass: {
+                                    confirmButton: 'btn btn-success',
+                                    cancelButton: 'btn btn-danger'
+                                },
+                                buttonsStyling: true
+                            })
+
+                            swalWithBootstrapButtons.fire({
+                                title: 'Anda Yakin Akan Logout?',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                // allowOutsideClick: false,
+                                confirmButtonText: 'Logout',
+                                cancelButtonText: 'Batal',
+                                reverseButtons: true
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById('logout-form').submit();
+                                }
+                                // else if (
+                                //     /* Read more about handling dismissals below */
+                                //     result.dismiss === Swal.DismissReason.cancel
+                                // ) {
+                                //     swalWithBootstrapButtons.fire(
+                                //         'Dibatalkan',
+                                //         'Anda Gagal Logout!',
+                                //         'error'
+                                //     )
+                                // }
+                            })
+                        }
+                    </script>
+                </li>
             </ul>
         </div>
     </div>
