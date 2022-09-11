@@ -236,9 +236,9 @@
             </div>
         </header>
 
-        <div class="container mt-5">
+        <div class="container my-5">
             <div class="row">
-                <div class="col-md-6 text-center mt-lg-5">
+                <div class="col-md-6 text-center mt-lg-5 pt-lg-5">
                     <h1 style="font-size: 60px" class="font-bold">Welcome to My Website</h1>
                     <p class="fs-4 mt-4">Website ini dibuat dengan Framework <b>Laravel</b> dan
                         Template Admin <b>Mazer</b>
@@ -277,7 +277,7 @@
             </div>
         </div>
 
-        <footer class="pt-5">
+        <footer>
             <div class="footer clearfix mb-0 text-muted">
                 <div class="text-center">
                     <p>2021 &copy; Mazer, Improve 2022 by Hanztt</p>
