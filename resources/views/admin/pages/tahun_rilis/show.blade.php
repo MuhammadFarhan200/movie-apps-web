@@ -24,7 +24,7 @@
                         </thead>
                     </table>
                     <div class="d-grid">
-                        <a href="{{ route('tahun.index') }}" class="btn btn-primary mt-4 ms-auto text-end shadow">Kembali</a>
+                        <a href="{{ route('tahun-rilis.index') }}" class="btn btn-primary mt-4 ms-auto text-end">Kembali</a>
                     </div>
                 </div>
             </div>

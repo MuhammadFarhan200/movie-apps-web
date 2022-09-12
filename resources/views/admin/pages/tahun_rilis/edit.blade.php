@@ -14,7 +14,7 @@
                     <h3>Edit Tahun Rilis</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('tahun.update', $tahun_rilis->id) }}" method="POST">
+                    <form action="{{ route('tahun-rilis.update', $tahun_rilis->id) }}" method="POST">
                         @csrf
                         @method('put')
                         <div class="d-grid">
@@ -22,8 +22,8 @@
                             <input type="number" class="form-control form-control-lg" name="tahun" id="tahun"
                                 value="{{ $tahun_rilis->tahun }}" placeholder="Masukkan Tahun Rilis">
                             <div class="d-flex justify-content-end align-items-center mt-4">
-                                <a href="{{ route('tahun.index') }}" class="btn btn-danger m-3 text-end shadow">Batal</a>
-                                <button class="btn btn-primary shadow my-0" type="submit">Edit</button>
+                                <a href="{{ route('tahun-rilis.index') }}" class="btn btn-danger m-3 text-end">Batal</a>
+                                <button class="btn btn-primary my-0" type="submit">Edit</button>
                             </div>
                         </div>
                     </form>

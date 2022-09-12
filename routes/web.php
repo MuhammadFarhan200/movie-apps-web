@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DurasiFilmController;
 use App\Http\Controllers\TahunRilisController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
     Route::get('profile', function () {
         return view('admin.pages.profile');
     });
-    Route::resource('tahun', TahunRilisController::class);
+    Route::resource('tahun-rilis', TahunRilisController::class);
+    Route::resource('durasi-film', DurasiFilmController::class);
 });
 
 Route::get('/errors', function () {

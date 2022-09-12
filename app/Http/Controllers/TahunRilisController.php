@@ -54,7 +54,7 @@ class TahunRilisController extends Controller
             'tahun' => 'required|max:255|unique:tahun_rilis',
         ]);
         TahunRilis::create($validated);
-        return redirect()->route('tahun.index')->with('success', 'Data Tahun Rilis baru berhasil disimpan!');
+        return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis baru berhasil disimpan!');
     }
 
     /**
@@ -110,7 +110,7 @@ class TahunRilisController extends Controller
         $tahun_rilis = TahunRilis::findOrFail($id);
         $tahun_rilis->tahun = $request->tahun;
         $tahun_rilis->save();
-        return redirect()->route('tahun.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
+        return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
     }
 
     /**
@@ -124,6 +124,6 @@ class TahunRilisController extends Controller
         $tahun_rilis = TahunRilis::findOrFail($id);
 
         $tahun_rilis->delete();
-        return redirect()->route('tahun.index')->with('success', 'Data Berhasil Dihapus!');
+        return redirect()->route('tahun-rilis.index')->with('success', 'Data Berhasil Dihapus!');
     }
 }

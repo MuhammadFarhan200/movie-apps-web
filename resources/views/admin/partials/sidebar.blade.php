@@ -60,10 +60,21 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ request()->is('admin/tahun/*') ? 'active' : '' }}">
-                    <a href="{{ route('tahun.index') }}" class='sidebar-link'>
-                        <i class="bi bi-table"></i>
-                        <span>Data Tahun Rilis</span>
+                <li class="sidebar-title">Data</li>
+
+                <li
+                    class="sidebar-item {{ request()->is('admin/tahun-rilis') || request()->is('admin/tahun-rilis/*') ? 'active' : '' }}">
+                    <a href="{{ route('tahun-rilis.index') }}" class='sidebar-link'>
+                        <i class="bi bi-calendar-check-fill"></i>
+                        <span>Tahun Rilis</span>
+                    </a>
+                </li>
+
+                <li
+                    class="sidebar-item {{ request()->is('admin/durasi-film') || request()->is('admin/durasi-film/*') ? 'active' : '' }}">
+                    <a href="{{ route('durasi-film.index') }}" class='sidebar-link'>
+                        <i class="bi bi-clock-fill"></i>
+                        <span>Durasi Film</span>
                     </a>
                 </li>
 
@@ -447,16 +458,6 @@
                                 if (result.isConfirmed) {
                                     document.getElementById('logout-form').submit();
                                 }
-                                // else if (
-                                //     /* Read more about handling dismissals below */
-                                //     result.dismiss === Swal.DismissReason.cancel
-                                // ) {
-                                //     swalWithBootstrapButtons.fire(
-                                //         'Dibatalkan',
-                                //         'Anda Gagal Logout!',
-                                //         'error'
-                                //     )
-                                // }
                             })
                         }
                     </script>

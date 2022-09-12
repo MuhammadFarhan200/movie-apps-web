@@ -9,12 +9,12 @@
 @section('page-content')
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card shadow">
+            <div class="card shadow mb-5">
                 <div class="card-header">
                     <h3>Tambah Data</h3>
                 </div>
                 <div class="card-body px-4">
-                    <form action="{{ route('tahun.store') }}" method="POST">
+                    <form action="{{ route('tahun-rilis.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="tahun" class="form-label font-bold fs-5">Tahun Rilis</label>
@@ -28,8 +28,8 @@
                             @enderror
                         </div>
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('tahun.index') }}" class="btn btn-danger shadow me-3">Batal</a>
-                            <button class="btn btn-primary shadow" type="submit">Tambah</button>
+                            <a href="{{ route('tahun-rilis.index') }}" class="btn btn-danger me-3">Batal</a>
+                            <button class="btn btn-primary" type="submit">Tambah</button>
                         </div>
                     </form>
                 </div>
