@@ -18,7 +18,9 @@
 </div>
 
 <div class="page-heading d-flex justify-content-between align-items-center">
-    <h1>@yield('page-heading', 'heading')</h1>
+    <div class="top-text">
+        <div>@yield('page-heading')</div>
+    </div>
     <div class="card d-xl-block d-none">
         <div class="card-body py-3 px-4">
             <div class="d-flex align-items-center ms-auto">

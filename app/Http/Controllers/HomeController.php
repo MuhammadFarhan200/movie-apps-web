@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\TahunRilis;
 
 class HomeController extends Controller
 {
@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $jumlahTahunRilis = TahunRilis::all()->count();
+        return view('admin.home', compact('jumlahTahunRilis'));
     }
 }

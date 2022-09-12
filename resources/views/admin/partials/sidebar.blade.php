@@ -60,6 +60,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ request()->is('admin/tahun/*') ? 'active' : '' }}">
+                    <a href="{{ route('tahun.index') }}" class='sidebar-link'>
+                        <i class="bi bi-table"></i>
+                        <span>Data Tahun Rilis</span>
+                    </a>
+                </li>
+
                 {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
