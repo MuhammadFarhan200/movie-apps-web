@@ -17,7 +17,7 @@
             <div class="card shadow">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="font-bold text-center m-0">Data Durasi Film</h3>
-                    <a href="#" class="btn btn-primary">
+                    <a href="{{ route('durasi-film.create') }}" class="btn btn-primary">
                         <i class="bi bi-plus-circle me-1"></i>
                         Tambah
                     </a>

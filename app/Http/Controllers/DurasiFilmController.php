@@ -32,7 +32,12 @@ class DurasiFilmController extends Controller
      */
     public function create()
     {
-        //
+        if (!$this->isAdmin()) {
+            return redirect('/login');
+        }
+
+        return view('admin.pages.durasi_film.create');
+
     }
 
     /**
