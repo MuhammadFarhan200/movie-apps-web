@@ -104,7 +104,7 @@ class GenreFilmController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'kategori' => 'required',
+            'kategori' => 'required|unique:genre_films',
         ]);
         $genre_film = GenreFilm::findOrFail($id);
         $genre_film->kategori = $request->kategori;
