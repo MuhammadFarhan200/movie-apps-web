@@ -9,7 +9,7 @@
 @section('page-content')
     <div class="row">
         <div class="col">
-            @include('admin.partials.flash')
+            {{-- @include('admin.partials.flash') --}}
         </div>
     </div>
     <div class="row">

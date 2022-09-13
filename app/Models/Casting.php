@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Casting extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+    protected $fillable = [
+        'nama_pemain',
+        'foto',
+        'jenis_kelamin',
+        'tanggal_lahir',
+    ];
 }

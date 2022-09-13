@@ -10,4 +10,9 @@ class TahunRilis extends Model
     protected $fillable = [
         'tahun',
     ];
+
+    public function movie()
+    {
+        return $this->hasMany(Movie::class, 'id_tahun_rilis');
+    }
 }

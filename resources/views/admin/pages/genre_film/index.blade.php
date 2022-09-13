@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
-@section('title-page', 'Data Durasi Film')
+@section('title-page', 'Data Genre Film')
 
 @section('page-heading')
-    <h2>Durasi Film</h2>
+    <h2>Genre Film</h2>
     <p>Lihat data <b>{{ $data_title }}</b> pada table dibawah</p>
 @endsection
 
@@ -16,8 +16,8 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="font-bold text-center m-0">Data Durasi Film</h3>
-                    <a href="{{ route('durasi-film.create') }}" class="btn btn-primary">
+                    <h3 class="font-bold text-center m-0">Data Genre Film</h3>
+                    <a href="#" class="btn btn-primary">
                         <i class="bi bi-plus-circle me-1"></i>
                         Tambah
                     </a>
@@ -28,25 +28,25 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No</th>
-                                    <th class="text-center">Durasi Film</th>
+                                    <th class="text-center">Genre Film</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($durasi_film as $index => $durasi)
+                                @foreach ($genre_film as $index => $genre)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $durasi->durasi }} Menit</td>
-                                        <td class="text-nowrap">
-                                            <a href="{{ route('durasi-film.edit', $durasi->id) }}"
+                                        <td>{{ $genre->kategori }}</td>
+                                        <td class="text-nowrap"> --
+                                            {{-- <a href="{{ route('genre-film.edit', $genre->id) }}"
                                                 class="btn btn-sm btn-success">
                                                 <i class="bi bi-pencil-square"></i>
-                                            </a>
-                                            <a href="{{ route('durasi-film.show', $durasi->id) }}"
+                                            </a> --}}
+                                            {{-- <a href="{{ route('genre-film.show', $genre->id) }}"
                                                 class="btn btn-sm btn-warning mx-1">
                                                 <i class="bi bi-eye-fill"></i>
-                                            </a>
-                                            <form action="{{ route('durasi-film.destroy', $durasi->id) }}" method="post"
+                                            </a> --}}
+                                            {{-- <form action="{{ route('genre-film.destroy', $genre->id) }}" method="post"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
@@ -54,7 +54,7 @@
                                                     onclick="return confirm('Apakah anda yakin?')">
                                                     <i class="bi bi-trash-fill"></i>
                                                 </button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endforeach

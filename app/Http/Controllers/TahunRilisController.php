@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TahunRilis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TahunRilisController extends Controller
 {
@@ -54,7 +55,9 @@ class TahunRilisController extends Controller
             'tahun' => 'required|max:255|unique:tahun_rilis',
         ]);
         TahunRilis::create($validated);
-        return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis baru berhasil disimpan!');
+        Alert::success('Done', 'Data Berhasil Dibuat');
+        return redirect()->route('tahun-rilis.index');
+        // return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis baru berhasil disimpan!');
     }
 
     /**
@@ -110,7 +113,9 @@ class TahunRilisController extends Controller
         $tahun_rilis = TahunRilis::findOrFail($id);
         $tahun_rilis->tahun = $request->tahun;
         $tahun_rilis->save();
-        return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
+        Alert::success('Done', 'Data Berhasil Diedit');
+        return redirect()->route('tahun-rilis.index');
+        // return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
     }
 
     /**
@@ -124,6 +129,8 @@ class TahunRilisController extends Controller
         $tahun_rilis = TahunRilis::findOrFail($id);
 
         $tahun_rilis->delete();
-        return redirect()->route('tahun-rilis.index')->with('success', 'Data Berhasil Dihapus!');
+        Alert::success('Deleted', 'Data Berhasil Dihapus');
+        return redirect()->route('tahun-rilis.index');
+        // return redirect()->route('tahun-rilis.index')->with('success', 'Data Berhasil Dihapus!');
     }
 }

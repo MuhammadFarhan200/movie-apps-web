@@ -78,6 +78,14 @@
                     </a>
                 </li>
 
+                <li
+                    class="sidebar-item {{ request()->is('admin/genre-film') || request()->is('admin/genre-film/*') ? 'active' : '' }}">
+                    <a href="{{ route('genre-film.index') }}" class='sidebar-link'>
+                        <i class="bi bi-camera-video-fill"></i>
+                        <span>Genre Film</span>
+                    </a>
+                </li>
+
                 {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>

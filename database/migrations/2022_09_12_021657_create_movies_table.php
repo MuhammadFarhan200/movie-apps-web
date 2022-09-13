@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('judul_film');
             $table->string('background');
             $table->string('cover');
-            $table->unsignedBigInteger('tahun_rilis');
-            $table->unsignedBigInteger('durasi_film');
+            $table->unsignedBigInteger('id_tahun_rilis');
+            $table->unsignedBigInteger('id_durasi_film');
             $table->timestamps();
-            $table->foreign('tahun_rilis')->references('id')->on('tahun_rilis');
-            $table->foreign('durasi_film')->references('id')->on('durasi_films');
+            $table->foreign('id_tahun_rilis')->references('id')->on('tahun_rilis')->onDelete('cascade');
+            $table->foreign('id_durasi_film')->references('id')->on('durasi_films')->onDelete('cascade');
         });
     }
 

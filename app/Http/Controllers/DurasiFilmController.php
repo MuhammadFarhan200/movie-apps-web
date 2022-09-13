@@ -48,7 +48,15 @@ class DurasiFilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!$this->isAdmin()) {
+            return;
+        }
+        $validated = $request->validate([
+            'durasi' => 'required|max:255|unique:durasi_films',
+        ]);
+        DurasiFilm::create($validated);
+        return redirect()->route('durasi-film.index')->with('success', 'Data Durasi Film baru berhasil disimpan!');
+
     }
 
     /**
@@ -59,7 +67,14 @@ class DurasiFilmController extends Controller
      */
     public function show($id)
     {
-        //
+        if (!$this->isAdmin()) {
+            return redirect('/login');
+        }
+
+        $durasi_film = DurasiFilm::findOrFail($id);
+
+        return view('admin.pages.durasi_film.show', compact('durasi_film'));
+
     }
 
     /**
@@ -70,7 +85,13 @@ class DurasiFilmController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$this->isAdmin()) {
+            return redirect('/login');
+        }
+
+        $durasi_film = DurasiFilm::findOrFail($id);
+        return view('admin.pages.durasi_film.edit', compact('durasi_film'));
+
     }
 
     /**
@@ -82,7 +103,19 @@ class DurasiFilmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!$this->isAdmin()) {
+            return;
+        }
+
+        $validated = $request->validate([
+            'durasi' => 'required|max:255|unique:durasi_films',
+        ]);
+
+        $durasi_film = DurasiFilm::findOrFail($id);
+        $durasi_film->durasi = $request->durasi;
+        $durasi_film->save();
+        return redirect()->route('durasi-film.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
+
     }
 
     /**
@@ -93,6 +126,10 @@ class DurasiFilmController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $durasi_film = DurasiFilm::findOrFail($id);
+
+        $durasi_film->delete();
+        return redirect()->route('durasi-film.index')->with('success', 'Data Berhasil Dihapus!');
+
     }
 }

@@ -38,8 +38,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h5 class="text-muted font-semibold">Durasi Movie</h5>
-                                    <h6 class="font-extrabold mb-0">--</h6>
+                                    <h5 class="text-muted font-semibold">Durasi Film</h5>
+                                    <h6 class="font-extrabold mb-0">{{ $jumlahDurasiFilm }} Data</h6>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h5 class="text-muted font-semibold">Genre Movie</h5>
-                                    <h6 class="font-extrabold mb-0">--</h6>
+                                    <h5 class="text-muted font-semibold">Genre Film</h5>
+                                    <h6 class="font-extrabold mb-0">{{ $jumlahGenreFilm }} Data</h6>
                                 </div>
                             </div>
                         </div>
