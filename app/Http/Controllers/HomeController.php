@@ -28,6 +28,7 @@ class HomeController extends Controller
         $jumlahTahunRilis = TahunRilis::all()->count();
         $jumlahDurasiFilm = DurasiFilm::all()->count();
         $jumlahGenreFilm = GenreFilm::all()->count();
+        alert('Hallo!', 'Selamat Datang Kembali!')->autoClose(3000);
         return view('admin.home', compact('jumlahTahunRilis', 'jumlahDurasiFilm', 'jumlahGenreFilm'));
     }
 }

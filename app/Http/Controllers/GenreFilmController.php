@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\GenreFilm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,13 +48,13 @@ class GenreFilmController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validated([
+        $validated = $request->validate([
             'kategori' => 'required|unique:genre_films',
         ]);
         $genre_film = new GenreFilm();
         $genre_film->kategori = $request->kategori;
         $genre_film->save();
-        Alert::succes('Done', 'Data Berhasil Di Buat');
+        Alert::success('Done', 'Data Berhasil Di Buat')->autoClose(3000);
         return redirect()->route('genre-film.index');
 
     }
@@ -66,7 +67,14 @@ class GenreFilmController extends Controller
      */
     public function show($id)
     {
-        //
+        if (!$this->isAdmin()) {
+            return redirect('/login');
+        }
+
+        $genre_film = GenreFilm::findOrFail($id);
+
+        return view('admin.pages.genre_film.show', compact('genre_film'));
+
     }
 
     /**
@@ -77,7 +85,13 @@ class GenreFilmController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$this->isAdmin()) {
+            return redirect('/login');
+        }
+
+        $durasi_film = DurasiFilm::findOrFail($id);
+        return view('admin.pages.durasi_film.edit', compact('durasi_film'));
+
     }
 
     /**
@@ -89,13 +103,13 @@ class GenreFilmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validated([
+        $validated = $request->validate([
             'kategori' => 'required',
         ]);
         $genre_film = GenreFilm::findOrFail($id);
         $genre_film->kategori = $request->kategori;
         $genre_film->save();
-        Alert::succes('Done', 'Data Berhasil Di Edit');
+        Alert::success('Done', 'Data Berhasil Di Edit');
         return redirect()->route('genre-film.index');
     }
 
@@ -109,7 +123,7 @@ class GenreFilmController extends Controller
     {
         $genre_film = GenreFilm::findOrFail($id);
         $genre_film->delete();
-        Alert::succes('Done', 'Data Berhasil Dihapus!');
+        Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);
         return redirect()->route('genre-film.index');
 
     }
