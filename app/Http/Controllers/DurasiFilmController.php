@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\DurasiFilm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ class DurasiFilmController extends Controller
     public function index()
     {
         $data_title = 'Durasi Film';
-        $durasi_film = DurasiFilm::all();
+        $durasi_film = DurasiFilm::orderBy('id', 'desc')->get();
         return view('admin.pages.durasi_film.index', compact('durasi_film', 'data_title'));
 
     }
@@ -33,10 +34,10 @@ class DurasiFilmController extends Controller
     public function create()
     {
         if (!$this->isAdmin()) {
-            return redirect('/login');
+            return redirect('/403');
         }
 
-        return view('admin.pages.durasi_film.create');
+        // return view('admin.pages.durasi_film.create');
 
     }
 
@@ -55,7 +56,8 @@ class DurasiFilmController extends Controller
             'durasi' => 'required|max:255|unique:durasi_films',
         ]);
         DurasiFilm::create($validated);
-        return redirect()->route('durasi-film.index')->with('success', 'Data Durasi Film baru berhasil disimpan!');
+        Alert::success('Done', 'Data Berhasil Dibuat');
+        return redirect()->route('durasi-film.index');
 
     }
 
@@ -68,7 +70,7 @@ class DurasiFilmController extends Controller
     public function show($id)
     {
         if (!$this->isAdmin()) {
-            return redirect('/login');
+            return redirect('/403');
         }
 
         $durasi_film = DurasiFilm::findOrFail($id);
@@ -86,7 +88,7 @@ class DurasiFilmController extends Controller
     public function edit($id)
     {
         if (!$this->isAdmin()) {
-            return redirect('/login');
+            return redirect('/403');
         }
 
         $durasi_film = DurasiFilm::findOrFail($id);
@@ -114,7 +116,8 @@ class DurasiFilmController extends Controller
         $durasi_film = DurasiFilm::findOrFail($id);
         $durasi_film->durasi = $request->durasi;
         $durasi_film->save();
-        return redirect()->route('durasi-film.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
+        Alert::success('Done', 'Data Durasi Film Berhasil Diperbarui');
+        return redirect()->route('durasi-film.index');
 
     }
 
@@ -129,7 +132,8 @@ class DurasiFilmController extends Controller
         $durasi_film = DurasiFilm::findOrFail($id);
 
         $durasi_film->delete();
-        return redirect()->route('durasi-film.index')->with('success', 'Data Berhasil Dihapus!');
+        Alert::success('Deleted', 'Data Berhasil Dihapus');
+        return redirect()->route('durasi-film.index');
 
     }
 }

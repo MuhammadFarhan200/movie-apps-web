@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+{{-- @extends('admin.layouts.main')
 
 @section('title-page', 'Edit Data')
 @section('page-heading')
@@ -31,4 +31,31 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
+
+<div class="modal fade" id="editTahunRilis-{{ $tahun->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{{ route('tahun-rilis.update', $tahun->id) }}" method="post">
+            @csrf
+            @method('put')
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Tahun Rilis</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Tahun Rilis</label>
+                        <input type="number" class="form-control" name="tahun" id="tahun"
+                            value="{{ $tahun->tahun }}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

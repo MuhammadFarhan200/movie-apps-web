@@ -17,10 +17,11 @@
             <div class="card shadow">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="font-bold text-center m-0">Data Tahun Rilis</h3>
-                    <a href="{{ route('tahun-rilis.create') }}" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTahunRilis">
                         <i class="bi bi-plus-circle me-1"></i>
                         Tambah
-                    </a>
+                    </button>
+                    @include('admin.pages.tahun_rilis.create')
                 </div>
                 <div class="card-body m-0">
                     <div class="table-responsive p-2">
@@ -38,18 +39,20 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $tahun->tahun }}</td>
                                         <td class="text-nowrap">
-                                            <a href="{{ route('tahun-rilis.edit', $tahun->id) }}"
-                                                class="btn btn-sm btn-success">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </a>
-                                            <a href="{{ route('tahun-rilis.show', $tahun->id) }}"
-                                                class="btn btn-sm btn-warning mx-1">
-                                                <i class="bi bi-eye-fill"></i>
-                                            </a>
                                             <form action="{{ route('tahun-rilis.destroy', $tahun->id) }}" method="post"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
+                                                <button type="button" class="btn btn-sm btn-success mx-1"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#editTahunRilis-{{ $tahun->id }}">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-warning mx-1"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showTahunRilis-{{ $tahun->id }}">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
                                                 <button class="btn btn-danger btn-sm" type="submit"
                                                     onclick="return confirm('Apakah anda yakin?')">
                                                     <i class="bi bi-trash-fill"></i>
@@ -57,6 +60,8 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    @include('admin.pages.tahun_rilis.edit')
+                                    @include('admin.pages.tahun_rilis.show')
                                 @endforeach
                             </tbody>
                         </table>

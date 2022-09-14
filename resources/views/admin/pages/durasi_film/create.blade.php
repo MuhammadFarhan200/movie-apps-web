@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+{{-- @extends('admin.layouts.main')
 @section('title-page', 'Data Durasi Film')
 
 @section('page-heading')
@@ -36,4 +36,38 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
+
+
+<div class="modal fade" id="addDurasiFilm" tabindex="-1" aria-label="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{{ route('durasi-film.store') }}" method="POST">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Tambah Durasi Film
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Durasi</label>
+                        <input type="number" name="durasi" id="durasi"
+                            class="form-control @error('durasi') is-invalid @enderror" value="{{ old('durasi') }}"
+                            required>
+                        @error('durasi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

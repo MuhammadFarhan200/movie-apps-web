@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+{{-- @extends('admin.layouts.main')
 
 @section('title-page', 'Edit Data')
 @section('page-heading')
@@ -31,4 +31,31 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
+
+<div class="modal fade" id="editDurasiFilm-{{ $durasi->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{{ route('durasi-film.update', $durasi->id) }}" method="post">
+            @csrf
+            @method('put')
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Genre Film</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Durasi</label>
+                        <input type="number" class="form-control" name="durasi" id="durasi"
+                            value="{{ $durasi->durasi }}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

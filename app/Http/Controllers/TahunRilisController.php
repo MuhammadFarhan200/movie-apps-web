@@ -22,7 +22,8 @@ class TahunRilisController extends Controller
     public function index()
     {
         $data_title = 'Tahun Rilis';
-        $tahun_rilis = TahunRilis::all();
+        $tahun_rilis = TahunRilis::orderBy('id', 'desc')->get();
+
         return view('admin.pages.tahun_rilis.index', compact('tahun_rilis', 'data_title'));
     }
 
@@ -37,7 +38,7 @@ class TahunRilisController extends Controller
             return redirect('/login');
         }
 
-        return view('admin.pages.tahun_rilis.create');
+        // return view('admin.pages.tahun_rilis.create');
     }
 
     /**
@@ -55,7 +56,7 @@ class TahunRilisController extends Controller
             'tahun' => 'required|max:255|unique:tahun_rilis',
         ]);
         TahunRilis::create($validated);
-        Alert::success('Done', 'Data Berhasil Dibuat');
+        Alert::success('Done', 'Data Tahun Rilis Berhasil Dibuat');
         return redirect()->route('tahun-rilis.index');
         // return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis baru berhasil disimpan!');
     }
@@ -74,7 +75,7 @@ class TahunRilisController extends Controller
 
         $tahun_rilis = TahunRilis::findOrFail($id);
 
-        return view('admin.pages.tahun_rilis.show', compact('tahun_rilis'));
+        // return view('admin.pages.tahun_rilis.show', compact('tahun_rilis'));
     }
 
     /**
@@ -90,7 +91,7 @@ class TahunRilisController extends Controller
         }
 
         $tahun_rilis = TahunRilis::findOrFail($id);
-        return view('admin.pages.tahun_rilis.edit', compact('tahun_rilis'));
+        // return view('admin.pages.tahun_rilis.edit', compact('tahun_rilis'));
     }
 
     /**
@@ -113,7 +114,7 @@ class TahunRilisController extends Controller
         $tahun_rilis = TahunRilis::findOrFail($id);
         $tahun_rilis->tahun = $request->tahun;
         $tahun_rilis->save();
-        Alert::success('Done', 'Data Berhasil Diedit');
+        Alert::success('Done', 'Data Tahun Rilis Berhasil Diedit');
         return redirect()->route('tahun-rilis.index');
         // return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
     }
