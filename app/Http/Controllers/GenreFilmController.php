@@ -6,6 +6,7 @@ use Alert;
 use App\Models\GenreFilm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class GenreFilmController extends Controller
 {
@@ -32,12 +33,7 @@ class GenreFilmController extends Controller
      */
     public function create()
     {
-        if (!$this->isAdmin()) {
-            return redirect('/login');
-        }
-
-        return view('admin.pages.genre_film.create');
-
+        // return view('admin.pages.genre_film.create');
     }
 
     /**
@@ -48,9 +44,27 @@ class GenreFilmController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        // $validated = $request->validate([
+        //     'kategori' => 'required|unique:genre_films',
+        // ]);
+
+        $rules = [
             'kategori' => 'required|unique:genre_films',
-        ]);
+        ];
+
+        $messages = [
+            'kategori.required' => 'Kategori harus di isi!',
+            'kategori.unique' => 'Kategori tidak boleh sama!',
+        ];
+
+        // validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            return back()->withErrors($validation)->withInput();
+        }
+
         $genre_film = new GenreFilm();
         $genre_film->kategori = $request->kategori;
         $genre_film->save();
@@ -67,13 +81,9 @@ class GenreFilmController extends Controller
      */
     public function show($id)
     {
-        if (!$this->isAdmin()) {
-            return redirect('/login');
-        }
 
         $genre_film = GenreFilm::findOrFail($id);
-
-        return view('admin.pages.genre_film.show', compact('genre_film'));
+        // return view('admin.pages.genre_film.show', compact('genre_film'));
 
     }
 
@@ -85,12 +95,9 @@ class GenreFilmController extends Controller
      */
     public function edit($id)
     {
-        if (!$this->isAdmin()) {
-            return redirect('/login');
-        }
 
         $durasi_film = DurasiFilm::findOrFail($id);
-        return view('admin.pages.durasi_film.edit', compact('durasi_film'));
+        // return view('admin.pages.durasi_film.edit', compact('durasi_film'));
 
     }
 

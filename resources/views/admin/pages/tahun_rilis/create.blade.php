@@ -39,10 +39,10 @@
 @endsection --}}
 
 <div class="modal fade" id="addTahunRilis" tabindex="-1" aria-label="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="{{ route('tahun-rilis.store') }}" method="POST">
-            @csrf
-            <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="{{ route('tahun-rilis.store') }}" method="POST">
+                @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
                         Tambah Tahun Rilis
@@ -54,7 +54,7 @@
                         <label for="">Tahun Rilis</label>
                         <input type="number" name="tahun" id="tahun"
                             class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}"
-                            required>
+                            required autofocus>
                         @error('tahun')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
                     <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

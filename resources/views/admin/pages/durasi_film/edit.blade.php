@@ -47,8 +47,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Durasi</label>
-                        <input type="number" class="form-control" name="durasi" id="durasi"
-                            value="{{ $durasi->durasi }}" required>
+                        <input type="number" class="form-control @error('durasi') is-invalid @enderror" name="durasi"
+                            id="durasi" value="{{ $durasi->durasi }}" required autofocus>
+                        @error('durasi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">

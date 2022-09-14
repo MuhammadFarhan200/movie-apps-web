@@ -70,6 +70,10 @@
         $(document).ready(function() {
             $('#dataTable').DataTable();
         });
+
+        $(document).on('shown.bs.modal', function(e) {
+            $('[autofocus]', e.target).focus();
+        });
     </script>
 
     @include('sweetalert::alert')

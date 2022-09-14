@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <label for="">Kategori</label>
                         <input type="text" class="form-control" name="kategori" id="kategori"
-                            value="{{ $genre->kategori }}" required>
+                            value="{{ $genre->kategori }}" required autofocus>
                     </div>
                 </div>
                 <div class="modal-footer">

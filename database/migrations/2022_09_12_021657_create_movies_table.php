@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('judul_film');
+            $table->string('sinopsis');
             $table->string('background');
             $table->string('cover');
             $table->unsignedBigInteger('id_tahun_rilis');

@@ -6,6 +6,7 @@ use App\Models\TahunRilis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Validator;
 
 class TahunRilisController extends Controller
 {
@@ -34,11 +35,8 @@ class TahunRilisController extends Controller
      */
     public function create()
     {
-        if (!$this->isAdmin()) {
-            return redirect('/login');
-        }
 
-        // return view('admin.pages.tahun_rilis.create');
+        //
     }
 
     /**
@@ -49,16 +47,32 @@ class TahunRilisController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$this->isAdmin()) {
-            return;
+        // $validated = $request->validate([
+        //     'tahun' => 'required|max:255|unique:tahun_rilis',
+        // ]);
+
+        $rules = [
+            'tahun' => 'required|unique:tahun_rilis',
+        ];
+
+        $messages = [
+            'tahun.required' => 'Tahun harus di isi!',
+            'tahun.unique' => 'Tahun tidak boleh sama!',
+        ];
+
+        // validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            return back()->withErrors($validation)->withInput();
         }
-        $validated = $request->validate([
-            'tahun' => 'required|max:255|unique:tahun_rilis',
-        ]);
-        TahunRilis::create($validated);
+
+        $tahun_rilis = new TahunRilis();
+        $tahun_rilis->tahun = $request->tahun;
+        $tahun_rilis->save();
         Alert::success('Done', 'Data Tahun Rilis Berhasil Dibuat');
         return redirect()->route('tahun-rilis.index');
-        // return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis baru berhasil disimpan!');
     }
 
     /**
@@ -69,13 +83,7 @@ class TahunRilisController extends Controller
      */
     public function show($id)
     {
-        if (!$this->isAdmin()) {
-            return redirect('/login');
-        }
-
         $tahun_rilis = TahunRilis::findOrFail($id);
-
-        // return view('admin.pages.tahun_rilis.show', compact('tahun_rilis'));
     }
 
     /**
@@ -86,12 +94,7 @@ class TahunRilisController extends Controller
      */
     public function edit($id)
     {
-        if (!$this->isAdmin()) {
-            return redirect('/login');
-        }
-
         $tahun_rilis = TahunRilis::findOrFail($id);
-        // return view('admin.pages.tahun_rilis.edit', compact('tahun_rilis'));
     }
 
     /**
@@ -103,10 +106,6 @@ class TahunRilisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (!$this->isAdmin()) {
-            return;
-        }
-
         $validated = $request->validate([
             'tahun' => 'required|max:255|unique:tahun_rilis',
         ]);
@@ -116,7 +115,6 @@ class TahunRilisController extends Controller
         $tahun_rilis->save();
         Alert::success('Done', 'Data Tahun Rilis Berhasil Diedit');
         return redirect()->route('tahun-rilis.index');
-        // return redirect()->route('tahun-rilis.index')->with('success', 'Data Tahun Rilis berhasil diperbarui');
     }
 
     /**

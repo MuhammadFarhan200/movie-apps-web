@@ -6,6 +6,7 @@ use Alert;
 use App\Models\DurasiFilm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class DurasiFilmController extends Controller
 {
@@ -33,12 +34,7 @@ class DurasiFilmController extends Controller
      */
     public function create()
     {
-        if (!$this->isAdmin()) {
-            return redirect('/403');
-        }
-
-        // return view('admin.pages.durasi_film.create');
-
+        //
     }
 
     /**
@@ -49,13 +45,31 @@ class DurasiFilmController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$this->isAdmin()) {
-            return;
+        // $validated = $request->validate([
+        //     'durasi' => 'required|max:255|unique:durasi_films',
+        // ]);
+
+        $rules = [
+            'durasi' => 'required|unique:durasi_films',
+        ];
+
+        $messages = [
+            'durasi.required' => 'Durasi harus di isi!',
+            'durasi.unique' => 'Durasi tidak boleh sama!',
+        ];
+
+        // validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            return back()->withErrors($validation)->withInput();
         }
-        $validated = $request->validate([
-            'durasi' => 'required|max:255|unique:durasi_films',
-        ]);
-        DurasiFilm::create($validated);
+
+        $durasi_film = new DurasiFilm();
+        $durasi_film->durasi = $request->durasi;
+        $durasi_film->save();
+
         Alert::success('Done', 'Data Berhasil Dibuat');
         return redirect()->route('durasi-film.index');
 
@@ -69,14 +83,7 @@ class DurasiFilmController extends Controller
      */
     public function show($id)
     {
-        if (!$this->isAdmin()) {
-            return redirect('/403');
-        }
-
         $durasi_film = DurasiFilm::findOrFail($id);
-
-        return view('admin.pages.durasi_film.show', compact('durasi_film'));
-
     }
 
     /**
@@ -87,13 +94,7 @@ class DurasiFilmController extends Controller
      */
     public function edit($id)
     {
-        if (!$this->isAdmin()) {
-            return redirect('/403');
-        }
-
         $durasi_film = DurasiFilm::findOrFail($id);
-        return view('admin.pages.durasi_film.edit', compact('durasi_film'));
-
     }
 
     /**
@@ -105,10 +106,6 @@ class DurasiFilmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (!$this->isAdmin()) {
-            return;
-        }
-
         $validated = $request->validate([
             'durasi' => 'required|max:255|unique:durasi_films',
         ]);
