@@ -9,7 +9,7 @@
 @section('page-content')
     <h3 class="text-center">Selamat Datang Di Halaman Profile!</h3>
     <div class="row">
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-8 mx-auto">
             <div class="card shadow mt-4">
                 <div class="card-body">
                     <h4 class="mt-3">Tentang Anda:</h4>

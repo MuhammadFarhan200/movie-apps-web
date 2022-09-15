@@ -78,6 +78,14 @@
                     </a>
                 </li>
 
+                <li
+                    class="sidebar-item {{ request()->is('admin/casting') || request()->is('admin/casting/*') ? 'active' : '' }}">
+                    <a href="{{ route('casting.index') }}" class='sidebar-link'>
+                        <i class="bi bi-person-video2"></i>
+                        <span>Casting Film</span>
+                    </a>
+                </li>
+
                 {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>

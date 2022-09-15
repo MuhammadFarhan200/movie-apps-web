@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GenreFilm;
+use App\Models\Casting;
 use App\Models\TahunRilis;
 
 class HomeController extends Controller
@@ -26,7 +27,8 @@ class HomeController extends Controller
     {
         $jumlahTahunRilis = TahunRilis::all()->count();
         $jumlahGenreFilm = GenreFilm::all()->count();
-        alert('Hallo!', 'Selamat Datang Kembali!')->autoClose(3000);
-        return view('admin.home', compact('jumlahTahunRilis', 'jumlahGenreFilm'));
+        $jumlahCasting = Casting::all()->count();
+        alert('Hallo!', 'Selamat Datang Kembali!')->autoClose();
+        return view('admin.home', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting'));
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DurasiFilmController;
 use App\Http\Controllers\GenreFilmController;
+use App\Http\Controllers\CastingController;
 use App\Http\Controllers\TahunRilisController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
         return view('admin.pages.profile');
     });
     Route::resource('tahun-rilis', TahunRilisController::class);
-    Route::resource('durasi-film', DurasiFilmController::class);
     Route::resource('genre-film', GenreFilmController::class);
+    Route::resource('casting', CastingController::class);
 });
 
 Route::get('/errors', function () {

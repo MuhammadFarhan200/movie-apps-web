@@ -1,5 +1,5 @@
 <div class="modal fade" id="addGenreFilm" tabindex="-1" aria-label="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <form action="{{ route('genre-film.store') }}" method="POST">
                 @csrf
