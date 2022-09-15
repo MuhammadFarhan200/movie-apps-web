@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DurasiFilm;
 use App\Models\GenreFilm;
 use App\Models\TahunRilis;
 
@@ -26,9 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $jumlahTahunRilis = TahunRilis::all()->count();
-        $jumlahDurasiFilm = DurasiFilm::all()->count();
         $jumlahGenreFilm = GenreFilm::all()->count();
         alert('Hallo!', 'Selamat Datang Kembali!')->autoClose(3000);
-        return view('admin.home', compact('jumlahTahunRilis', 'jumlahDurasiFilm', 'jumlahGenreFilm'));
+        return view('admin.home', compact('jumlahTahunRilis', 'jumlahGenreFilm'));
     }
 }

@@ -30,14 +30,19 @@
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Tahun Rilis</th>
+                                    <th class="text-center">Jumlah Film</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($tahun_rilis as $index => $tahun)
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($tahun_rilis as $tahun)
                                     <tr>
-                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $no++ }}</td>
                                         <td>{{ $tahun->tahun }}</td>
+                                        <td>{{ $tahun->movie->count() }}</td>
                                         <td class="text-nowrap">
                                             <form action="{{ route('tahun-rilis.destroy', $tahun->id) }}" method="post"
                                                 class="d-inline">

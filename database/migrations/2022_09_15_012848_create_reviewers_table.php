@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('castings', function (Blueprint $table) {
+        Schema::create('reviewers', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pemain');
+            $table->string('nama');
             $table->string('foto');
-            $table->boolean('jenis_kelamin');
-            $table->date('tanggal_lahir');
+            $table->text('komentar');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('castings');
+        Schema::dropIfExists('reviewers');
     }
 };

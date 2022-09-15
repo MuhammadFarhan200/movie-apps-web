@@ -30,6 +30,7 @@
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Genre Film</th>
+                                    <th class="text-center">Jumlah Film</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $genre->kategori }}</td>
+                                        <td>{{ $genre->movie->count() }}</td>
                                         <td class="text-nowrap">
                                             <form action="{{ route('genre-film.destroy', $genre->id) }}" method="post"
                                                 class="d-inline">

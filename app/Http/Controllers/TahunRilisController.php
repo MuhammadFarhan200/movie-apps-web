@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\TahunRilis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use RealRashid\SweetAlert\Facades\Alert;
 use Validator;
 
 class TahunRilisController extends Controller
 {
-
     private function isAdmin()
     {
         return (Auth::user() && (Auth::user()->role === 'admin'));
@@ -23,8 +22,7 @@ class TahunRilisController extends Controller
     public function index()
     {
         $data_title = 'Tahun Rilis';
-        $tahun_rilis = TahunRilis::orderBy('id', 'desc')->get();
-
+        $tahun_rilis = TahunRilis::latest()->get();
         return view('admin.pages.tahun_rilis.index', compact('tahun_rilis', 'data_title'));
     }
 
@@ -35,7 +33,6 @@ class TahunRilisController extends Controller
      */
     public function create()
     {
-
         //
     }
 
@@ -48,9 +45,70 @@ class TahunRilisController extends Controller
     public function store(Request $request)
     {
         // $validated = $request->validate([
-        //     'tahun' => 'required|max:255|unique:tahun_rilis',
+        //     'kategori' => 'required|unique:genre_films',
         // ]);
 
+        $rules = [
+            'tahun' => 'required|unique:tahun_rilis|numeric',
+        ];
+
+        $messages = [
+            'tahun.required' => 'Tahun harus di isi!',
+            'tahun.unique' => 'Tahun tidak boleh sama!',
+            'tahun.numeric' => 'Tahun harus berjenis angka!',
+        ];
+
+        // validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            return back()->withErrors($validation)->withInput();
+        }
+
+        $tahun_rilis = new TahunRilis();
+        $tahun_rilis->tahun = $request->tahun;
+        $tahun_rilis->save();
+        Alert::success('Done', 'Data Berhasil Di Buat')->autoClose(3000);
+        return redirect()->route('tahun-rilis.index');
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+
+        $tahun_rilis = TahunRilis::findOrFail($id);
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+
+        $tahun_rilis = TahunRilis::findOrFail($id);
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
         $rules = [
             'tahun' => 'required|unique:tahun_rilis',
         ];
@@ -68,52 +126,10 @@ class TahunRilisController extends Controller
             return back()->withErrors($validation)->withInput();
         }
 
-        $tahun_rilis = new TahunRilis();
-        $tahun_rilis->tahun = $request->tahun;
-        $tahun_rilis->save();
-        Alert::success('Done', 'Data Tahun Rilis Berhasil Dibuat');
-        return redirect()->route('tahun-rilis.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $tahun_rilis = TahunRilis::findOrFail($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $tahun_rilis = TahunRilis::findOrFail($id);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'tahun' => 'required|max:255|unique:tahun_rilis',
-        ]);
-
         $tahun_rilis = TahunRilis::findOrFail($id);
         $tahun_rilis->tahun = $request->tahun;
         $tahun_rilis->save();
-        Alert::success('Done', 'Data Tahun Rilis Berhasil Diedit');
+        Alert::success('Done', 'Data Berhasil Di Edit');
         return redirect()->route('tahun-rilis.index');
     }
 
@@ -126,10 +142,9 @@ class TahunRilisController extends Controller
     public function destroy($id)
     {
         $tahun_rilis = TahunRilis::findOrFail($id);
-
         $tahun_rilis->delete();
-        Alert::success('Deleted', 'Data Berhasil Dihapus');
+        Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);
         return redirect()->route('tahun-rilis.index');
-        // return redirect()->route('tahun-rilis.index')->with('success', 'Data Berhasil Dihapus!');
+
     }
 }

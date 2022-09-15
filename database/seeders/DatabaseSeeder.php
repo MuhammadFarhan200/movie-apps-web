@@ -18,10 +18,7 @@ class DatabaseSeeder extends Seeder
             [
                 UserSeeder::class,
                 TahunSeeder::class,
-                DurasiFilmSeeder::class,
                 GenreFilmSeeder::class,
-                ReviewerSeeder::class,
-                MovieSeeder::class,
             ]
         );
 

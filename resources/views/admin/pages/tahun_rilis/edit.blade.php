@@ -47,8 +47,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Tahun Rilis</label>
-                        <input type="number" class="form-control" name="tahun" id="tahun"
-                            value="{{ $tahun->tahun }}" required autofocus>
+                        <input type="number" class="form-control @error('tahun') is-invalid @enderror" name="tahun"
+                            id="tahun" value="{{ $tahun->tahun }}" required autofocus>
+                        @error('tahun')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">

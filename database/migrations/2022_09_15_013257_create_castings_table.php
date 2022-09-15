@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('durasi_films', function (Blueprint $table) {
+        Schema::create('castings', function (Blueprint $table) {
             $table->id();
-            $table->integer('durasi');
+            $table->string('nama');
+            $table->string('foto');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->date('tanggal_lahir');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('durasi_films');
+        Schema::dropIfExists('castings');
     }
 };

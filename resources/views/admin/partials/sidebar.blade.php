@@ -46,7 +46,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item {{ request()->is('admin') ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->is('admin') || request()->is('home') ? 'active' : '' }}">
                     <a href="{{ route('admin') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -67,14 +67,6 @@
                     <a href="{{ route('tahun-rilis.index') }}" class='sidebar-link'>
                         <i class="bi bi-calendar-check-fill"></i>
                         <span>Tahun Rilis</span>
-                    </a>
-                </li>
-
-                <li
-                    class="sidebar-item {{ request()->is('admin/durasi-film') || request()->is('admin/durasi-film/*') ? 'active' : '' }}">
-                    <a href="{{ route('durasi-film.index') }}" class='sidebar-link'>
-                        <i class="bi bi-clock-fill"></i>
-                        <span>Durasi Film</span>
                     </a>
                 </li>
 
