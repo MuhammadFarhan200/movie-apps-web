@@ -11,13 +11,15 @@ class Reviewer extends Model
 
     public $fillable = [
         'nama',
+        'email',
         'foto',
         'komentar',
+        'id_movie',
     ];
 
     public function movie()
     {
-        return $this->hasMany(Movie::class, 'id_reviewer');
+        return $this->belongsTo(Movie::class, 'id_movie');
     }
 
 }

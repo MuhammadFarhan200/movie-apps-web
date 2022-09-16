@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
                 TahunSeeder::class,
                 GenreFilmSeeder::class,
                 CastingSeeder::class,
+                // MovieSeeder::class,
             ]
         );
 

@@ -12,6 +12,11 @@
                     <input type="text" class="form-control" name="kategori" value="{{ $genre->kategori }}"
                         id="" readonly>
                 </div>
+                <div class="form-group">
+                    <label for="">Jumlah Film</label>
+                    <input type="number" class="form-control" name="kategori" value="{{ $genre->movie->count() }}"
+                        id="" readonly>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

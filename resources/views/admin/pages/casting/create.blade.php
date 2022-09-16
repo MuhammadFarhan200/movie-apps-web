@@ -3,7 +3,7 @@
 @section('title-page', 'Show Data')
 @section('page-heading')
     <h2>Casting Film</h2>
-    <p>Berikut salah satu data <b>casting film</b></p>
+    <p>Buat data <b>casting film</b> baru dengan mengisi forum di bawah</p>
 @endsection
 
 @section('page-content')
@@ -18,8 +18,8 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nama</label>
-                            <input type="text" name="nama"
-                                class="form-control @error('nama') is-invalid @enderror" id="" placeholder="Masukkan Nama Casting">
+                            <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
+                                id="" placeholder="Masukkan Nama Cast">
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -28,8 +28,8 @@
                         </div>
                         <div class="form-group">
                             <label for="">Foto</label>
-                            <input type="file" name="foto"
-                                class="form-control @error('foto') is-invalid @enderror" id="">
+                            <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror"
+                                id="">
                             @error('foto')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
                             <input type="radio" name="jenis_kelamin" value="Laki-laki"
                                 class="me-2 @error('jenis_kelamin') is-invalid @enderror" id="">Laki-laki
                             <input type="radio" name="jenis_kelamin" value="Perempuan"
-                                class="me-2 @error('jenis_kelamin') is-invalid @enderror" id="">Perempuan
+                                class="mx-2 @error('jenis_kelamin') is-invalid @enderror" id="">Perempuan
                             @error('jenis_kelamin')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -59,12 +59,12 @@
                                 </span>
                             @enderror
                         </div>
-                    <div class="d-flex justify-content-end align-items-center mt-4">
-                        <a href="{{ route('casting.index') }}" class="btn btn-secondary me-3">Batal</a>
-                        <button type="submit" class="btn btn-primary">
-                            Tambah
-                        </button>
-                    </div>
+                        <div class="d-flex justify-content-end align-items-center mt-4">
+                            <a href="{{ route('casting.index') }}" class="btn btn-secondary me-3">Batal</a>
+                            <button type="submit" class="btn btn-primary">
+                                Tambah
+                            </button>
+                        </div>
                 </div>
             </div>
         </div>

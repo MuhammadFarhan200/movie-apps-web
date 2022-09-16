@@ -32,7 +32,7 @@ class CastingController extends Controller
 
         $messages = [
             'nama.required' => 'Nama harus di isi!',
-            'foto.required' => 'foto harus di isi!',
+            'foto.required' => 'Foto harus di isi!',
             'foto.image' => 'Foto harus berjenis jpg & png!',
             'foto.image' => 'Foto harus dibawah kapasitas 1024kb!',
             'jenis_kelamin.required' => 'Jenis Kelamin harus di isi!',

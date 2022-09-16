@@ -26,7 +26,7 @@
                                 <td class="px-3">:</td>
                                 <td>
                                     <img src="{{ asset('images/casting/' . $casting->foto) }}"
-                                    class="img-rounded rounded-3 img-responsive" style="width: 175px;" alt="{{ $casting->nama }}">
+                                    class="img-rounded rounded-3 img-responsive" style="width: 250px;" alt="{{ $casting->nama }}">
                                 </td>
                             </tr>
                             <tr>
@@ -37,7 +37,10 @@
                             <tr>
                                 <th>Tanggal Lahir</th>
                                 <td class="px-3">:</td>
-                                <td>{{ $casting->tanggal_lahir }}</td>
+                                <td>
+                                    {{-- {{ date('d, M Y', strtotime($casting->tanggal_lahir)) }} --}}
+                                    {{ \Carbon\Carbon::parse($casting->tanggal_lahir)->format('d, M Y')}}
+                                </td>
                             </tr>
                         </tbody>
                     </table>

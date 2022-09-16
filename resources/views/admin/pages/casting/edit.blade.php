@@ -3,7 +3,7 @@
 @section('title-page', 'Show Data')
 @section('page-heading')
     <h2>Casting Film</h2>
-    <p>Berikut salah satu data <b>casting film</b></p>
+    <p>Edit data <b>casting film</b> dengan mengubah data pada forum dibawah</p>
 @endsection
 
 @section('page-content')
@@ -32,7 +32,7 @@
                             @if (isset($casting) && $casting->foto)
                             <p>
                                 <img src="{{ asset('images/casting/' . $casting->foto) }}"
-                                    class="img-rounded rounded-3 img-responsive" style="width: 175px;"
+                                    class="img-rounded rounded-3 img-responsive" style="width: 200px;"
                                     alt="{{ $casting->nama }}">
                             </p>
                         @endif
@@ -51,7 +51,7 @@
                                     class="me-2 @error('jenis_kelamin') is-invalid @enderror"
                                     {{ $casting->jenis_kelamin == 'Laki-laki' ? 'checked' : '' }}>Laki-laki
                             <input type="radio" name="jenis_kelamin" value="Perempuan"
-                                class="me-2 @error('jenis_kelamin') is-invalid @enderror"
+                                class="mx-2 @error('jenis_kelamin') is-invalid @enderror"
                                 {{ $casting->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>Perempuan
                             @error('jenis_kelamin')
                                 <span class="invalid-feedback" role="alert">

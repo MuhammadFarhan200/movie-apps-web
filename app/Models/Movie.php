@@ -17,7 +17,6 @@ class Movie extends Model
         'durasi',
         'id_tahun_rilis',
         'id_genre',
-        'id_reviewer',
     ];
 
     public function tahunRilis()
@@ -30,7 +29,7 @@ class Movie extends Model
         // Modelk Casting bisa memiliki banyak data (n to n)
         // dari model Movie melalui table pivot(bantuan)
         // yang bernama 'casting_movies' dengan masing-masing fk id_movie dan id_casting
-        return $this->belongsToMany(Casting::class, 'casting_movies', 'id_casting', 'id_movie');
+        return $this->belongsToMany(Casting::class, 'casting_movies', 'id_movie', 'id_casting');
     }
 
     public function genreFilm()
@@ -40,7 +39,43 @@ class Movie extends Model
 
     public function reviewer()
     {
-        return $this->belongsTo(Reviewer::class, 'id_reviewer');
+        return $this->hasMany(Reviewer::class, 'id_movie');
+    }
+
+    public function image()
+    {
+        if ($this->cover && file_exists(public_path('images/movies/'
+            . $this->cover))) {
+            return asset('images/movies/' . $this->cover);
+        } else {
+            return asset('images/no_image.jpg');
+        }
+    }
+    // mengahupus image(cover) di storage(penyimpanan) public
+    public function deleteImage()
+    {
+        if ($this->cover && file_exists(public_path('images/movies/'
+            . $this->cover))) {
+            return unlink(public_path('images/movies/' . $this->cover));
+        }
+    }
+
+    public function background()
+    {
+        if ($this->background && file_exists(public_path('images/movies/'
+            . $this->background))) {
+            return asset('images/movies/' . $this->background);
+        } else {
+            return asset('images/no_image.jpg');
+        }
+    }
+    // mengahupus image(background) di storage(penyimpanan) public
+    public function deleteBackground()
+    {
+        if ($this->background && file_exists(public_path('images/movies/'
+            . $this->background))) {
+            return unlink(public_path('images/movies/' . $this->background));
+        }
     }
 
 }

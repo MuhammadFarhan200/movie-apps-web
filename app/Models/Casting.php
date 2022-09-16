@@ -20,7 +20,7 @@ class Casting extends Model
         // Modelk Casting bisa memiliki banyak data (n to n)
         // dari model Movie melalui table pivot(bantuan)
         // yang bernama 'casting_movies' dengan masing-masing fk id_movie dan id_casting
-        return $this->belongsToMany(Movie::class, 'casting_movies', 'id_movie', 'id_casting');
+        return $this->belongsToMany(Movie::class, 'casting_movies', 'id_casting', 'id_movie');
     }
 
     public function image()

@@ -4,6 +4,7 @@ use App\Http\Controllers\DurasiFilmController;
 use App\Http\Controllers\GenreFilmController;
 use App\Http\Controllers\CastingController;
 use App\Http\Controllers\TahunRilisController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
     Route::resource('tahun-rilis', TahunRilisController::class);
     Route::resource('genre-film', GenreFilmController::class);
     Route::resource('casting', CastingController::class);
+    Route::resource('movie', MovieController::class);
 });
 
 Route::get('/errors', function () {
