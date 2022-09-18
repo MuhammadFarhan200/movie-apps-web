@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title-page', 'Create Data')
+@section('title-page', 'Create Movie')
 @section('page-heading')
     <h2>Movie</h2>
     <p>Buat Data <b>Movie</b> dengan mengisi forum dibawah!</p>
@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-header">
                         <h3>Tambah Data</h3>
                     </div>
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="">Sinopsis</label>
                                 <textarea type="text" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" id=""
-                                    placeholder="Tuliskan Sinopsis Film" rows="3"></textarea>
+                                    placeholder="Tuliskan Sinopsis Film" rows="5"></textarea>
                                 @error('sinopsis')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Genre</label>
-                                <select name="id_genre" class="form-control @error('background') is-invalid @enderror"
+                                <select name="id_genre" class="form-control @error('id_genre') is-invalid @enderror"
                                     id="">
                                     <option>-- Pilih Genre --</option>
                                     @foreach ($genre as $data)
@@ -90,7 +90,8 @@
                             <div class="form-group">
                                 <label for="" class="d-block">Casting</label>
                                 @foreach ($casting as $data)
-                                    <input type="checkbox" name="casting[]" class="form-check-input"
+                                    <input type="checkbox" name="casting[]"
+                                        class="form-check-input @error('casting') is-invalid @enderror"
                                         value="{{ $data->id }}">
                                     <label for="" class="form-check-label me-2">{{ $data->nama }}</label>
                                 @endforeach
@@ -112,7 +113,8 @@
                                 <label for="">Durasi Film</label>
                                 <div class="input-group mb-3">
                                     <input type="number" min="0" name="durasi"
-                                        class="form-control @error('durasi') is-invalid @enderror" id="">
+                                        class="form-control @error('durasi') is-invalid @enderror" id=""
+                                        placeholder="Masukkan Durasi Film">
                                     <span class="input-group-text">Menit</span>
                                     @error('durasi')
                                         <span class="invalid-feedback" role="alert">

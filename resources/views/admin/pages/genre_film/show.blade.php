@@ -13,7 +13,7 @@
                         id="" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="">Jumlah Film</label>
+                    <label for="">Jumlah Film dengan genre <b>{{ $genre->kategori }}</b></label>
                     <input type="number" class="form-control" name="kategori" value="{{ $genre->movie->count() }}"
                         id="" readonly>
                 </div>

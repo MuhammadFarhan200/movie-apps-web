@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title-page', 'Show Data')
+@section('title-page', 'Edit Casting')
 @section('page-heading')
     <h2>Casting Film</h2>
     <p>Edit data <b>casting film</b> dengan mengubah data pada forum dibawah</p>
@@ -19,8 +19,8 @@
                         @method('put')
                         <div class="form-group">
                             <label for="">Nama</label>
-                            <input type="text" name="nama"
-                                class="form-control @error('nama') is-invalid @enderror" id="" placeholder="Masukkan Nama Casting" value="{{ $casting->nama }}">
+                            <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
+                                id="" placeholder="Masukkan Nama Casting" value="{{ $casting->nama }}">
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -30,26 +30,26 @@
                         <div class="form-group">
                             <label for="">Foto</label>
                             @if (isset($casting) && $casting->foto)
-                            <p>
-                                <img src="{{ asset('images/casting/' . $casting->foto) }}"
-                                    class="img-rounded rounded-3 img-responsive" style="width: 200px;"
-                                    alt="{{ $casting->nama }}">
-                            </p>
-                        @endif
-                        <input type="file" name="foto"
-                            class="form-control @error('foto') is-invalid @enderror" value="{{ $casting->foto }}">
-                        @error('foto')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                                <p>
+                                    <img src="{{ asset('images/casting/' . $casting->foto) }}"
+                                        class="img-rounded rounded-3 img-responsive" style="width: 200px;"
+                                        alt="{{ $casting->nama }}">
+                                </p>
+                            @endif
+                            <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror"
+                                value="{{ $casting->foto }}">
+                            @error('foto')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="">Jenis Kelamin</label>
                             <br>
                             <input type="radio" name="jenis_kelamin" value="Laki-laki"
-                                    class="me-2 @error('jenis_kelamin') is-invalid @enderror"
-                                    {{ $casting->jenis_kelamin == 'Laki-laki' ? 'checked' : '' }}>Laki-laki
+                                class="me-2 @error('jenis_kelamin') is-invalid @enderror"
+                                {{ $casting->jenis_kelamin == 'Laki-laki' ? 'checked' : '' }}>Laki-laki
                             <input type="radio" name="jenis_kelamin" value="Perempuan"
                                 class="mx-2 @error('jenis_kelamin') is-invalid @enderror"
                                 {{ $casting->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>Perempuan
@@ -62,19 +62,20 @@
                         <div class="form-group">
                             <label for="">Tanggal Lahir</label>
                             <input type="date" name="tanggal_lahir"
-                                class="form-control @error('tanggal_lahir') is-invalid @enderror" id="" value="{{ $casting->tanggal_lahir }}">
+                                class="form-control @error('tanggal_lahir') is-invalid @enderror" id=""
+                                value="{{ $casting->tanggal_lahir }}">
                             @error('tanggal_lahir')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                    <div class="d-flex justify-content-end align-items-center mt-4">
-                        <a href="{{ route('casting.index') }}" class="btn btn-secondary px-3 me-3">Batal</a>
-                        <button type="submit" class="btn btn-primary px-3">
-                            Edit
-                        </button>
-                    </div>
+                        <div class="d-flex justify-content-end align-items-center mt-4">
+                            <a href="{{ route('casting.index') }}" class="btn btn-secondary px-3 me-3">Batal</a>
+                            <button type="submit" class="btn btn-primary px-3">
+                                Edit
+                            </button>
+                        </div>
                 </div>
             </div>
         </div>

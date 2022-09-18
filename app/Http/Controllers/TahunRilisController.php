@@ -143,7 +143,7 @@ class TahunRilisController extends Controller
     public function destroy($id)
     {
         if (Movie::where('id_tahun_rilis', $id)->count() > 0) {
-            Alert::error('Fail', 'Gagal Menghapus Tahun Rilis, Masih ada movie dengan Tahun Rilis ini!');
+            Alert::error('Fail!', 'Gagal Menghapus Tahun Rilis, Masih ada movie dengan Tahun Rilis ini!');
             return redirect()->route('tahun-rilis.index');
         }
 

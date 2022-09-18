@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title-page', 'Data Movie')
+@section('title-page', 'Show Movie')
 @section('page-heading')
     <h3>Movie</h3>
     <p>Berikut salah satu data <b>Movie</b></p>
@@ -8,10 +8,15 @@
 
 @section('page-content')
     <div class="row">
-        <div class="col-md-10 mx-auto">
+        <div class="col-md-12 mx-auto">
             <div class="card shadow">
                 <div class="card-header">
-                    <h3>Data Movie</h3>
+                    <a href="{{ route('movie.index') }}" class="fs-4">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                    <h3 class="mt-4">
+                        Detail Movie
+                    </h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -59,7 +64,7 @@
                                     <td class="d-flex align-items-stretch">
                                         <p>
                                             <img src="{{ asset('images/movies/' . $movie->background) }}"
-                                                class="img-rounded rounded-3 img-responsive" style="width: 300px;"
+                                                class="img-rounded rounded-3 img-responsive" style="width: 350px;"
                                                 alt="">
                                         </p>
                                     </td>
@@ -68,18 +73,18 @@
                                     <th>Cast Film</th>
                                     <td>:</td>
                                     <td>
-                                        <ol style="margin: 0;">
+                                        <ul style="margin: 0;">
                                             @foreach ($movie->casting as $item)
                                                 <li> {{ $item->nama }}</li>
                                             @endforeach
-                                        </ol>
+                                        </ul>
                                     </td>
                                 </tr>
                             </thead>
                         </table>
-                        <div class="d-flex justify-content-end align-items-center mt-4">
-                            <a href="{{ route('movie.index') }}" class="btn btn-primary px-3 m-2">Kembali</a>
-                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center mt-4">
+                        <a href="{{ route('movie.index') }}" class="btn btn-primary px-3 m-2">Kembali</a>
                     </div>
                 </div>
             </div>

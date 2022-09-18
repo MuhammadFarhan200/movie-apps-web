@@ -58,7 +58,7 @@
                                                     data-bs-target="#showGenreFilm-{{ $genre->id }}">
                                                     <i class="bi bi-eye-fill"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-sm" type="submit"
+                                                <button class="btn btn-danger btn-sm mx-1" type="submit"
                                                     onclick="return confirm('Apakah anda yakin?')">
                                                     <i class="bi bi-trash-fill"></i>
                                                 </button>

@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
-@section('title-page', 'Data Tahun Rilis')
+@section('title-page', 'Data Casting Film')
 
 @section('page-heading')
-    <h2>Casting Films</h2>
+    <h2>Casting Film</h2>
     <p>Lihat data <b>{{ $data_title }}</b> pada table dibawah</p>
 @endsection
 
@@ -43,17 +43,19 @@
                                         <td>{{ $casting->nama }}</td>
                                         <td>{{ $casting->jenis_kelamin }}</td>
                                         <td class="text-nowrap">
+                                            <a href="{{ route('casting.edit', $casting->id) }}"
+                                                class="btn btn-success btn-sm mx-1">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a href="{{ route('casting.show', $casting->id) }}"
+                                                class="btn btn-warning btn-sm mx-1">
+                                                <i class="bi bi-eye-fill"></i>
+                                            </a>
                                             <form action="{{ route('casting.destroy', $casting->id) }}" method="post"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('casting.edit', $casting->id) }}" class="btn btn-success btn-sm">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </a>
-                                                <a href="{{ route('casting.show', $casting->id) }}" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-eye-fill"></i>
-                                                </a>
-                                                <button class="btn btn-danger btn-sm" type="submit"
+                                                <button class="btn btn-danger btn-sm mx-1" type="submit"
                                                     onclick="return confirm('Apakah anda yakin?')">
                                                     <i class="bi bi-trash-fill"></i>
                                                 </button>

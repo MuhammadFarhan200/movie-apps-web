@@ -44,21 +44,19 @@
                                         <td>{{ $tahun->tahun }}</td>
                                         <td>{{ $tahun->movie->count() }}</td>
                                         <td class="text-nowrap">
-                                            <form action="{{ route('tahun-rilis.destroy', $tahun->id) }}" method="post"
-                                                class="d-inline">
+                                            <button type="button" class="btn btn-sm btn-success mx-1"
+                                                data-bs-toggle="modal" data-bs-target="#editTahunRilis-{{ $tahun->id }}">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-warning mx-1"
+                                                data-bs-toggle="modal" data-bs-target="#showTahunRilis-{{ $tahun->id }}">
+                                                <i class="bi bi-eye-fill"></i>
+                                            </button>
+                                            <form id="delete-form" action="{{ route('tahun-rilis.destroy', $tahun->id) }}"
+                                                method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-sm btn-success mx-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#editTahunRilis-{{ $tahun->id }}">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-sm btn-warning mx-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showTahunRilis-{{ $tahun->id }}">
-                                                    <i class="bi bi-eye-fill"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-sm" type="submit"
+                                                <button class="btn btn-danger btn-sm mx-1" type="submit"
                                                     onclick="return confirm('Apakah anda yakin?')">
                                                     <i class="bi bi-trash-fill"></i>
                                                 </button>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title-page', 'Show Data')
+@section('title-page', 'Create Casting')
 @section('page-heading')
     <h2>Casting Film</h2>
     <p>Buat data <b>casting film</b> baru dengan mengisi forum di bawah</p>

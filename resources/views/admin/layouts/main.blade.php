@@ -54,6 +54,10 @@
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
+    {{-- Form Editor --}}
+    {{-- <script src="{{ asset('assets/extensions/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/tinymce.js') }}"></script> --}}
+
     <!-- Need: Apexcharts -->
     <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>

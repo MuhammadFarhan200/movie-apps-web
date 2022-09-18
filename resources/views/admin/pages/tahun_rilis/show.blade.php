@@ -45,7 +45,7 @@
                     <label for="">Kategori</label>
                     <input type="text" class="form-control mb-3" name="kategori" value="{{ $tahun->tahun }}"
                         id="" readonly>
-                    <label for="">Jumlah Film ditahun {{ $tahun->tahun }}</label>
+                    <label for="">Jumlah Film ditahun <b>{{ $tahun->tahun }}</b></label>
                     <input type="number" class="form-control" name="kategori" value="{{ $tahun->movie->count() }}"
                         id="" readonly>
                 </div>

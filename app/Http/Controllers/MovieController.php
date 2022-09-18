@@ -43,22 +43,22 @@ class MovieController extends Controller
         $messages = [
             'judul.required' => 'Nama harus di isi!',
             'judul.unique' => 'Judul tidak boleh sama!',
-            'cover.required' => 'cover harus di isi!',
-            'cover.image' => 'cover harus berjenis jpg & png!',
-            'cover.max' => 'cover harus dibawah kapasitas 1024kb!',
-            'background.required' => 'background harus di isi!',
-            'background.image' => 'background harus berjenis jpg & png!',
-            'background.max' => 'background harus dibawah kapasitas 1024kb!',
-            'sinopsis.required' => 'sinopsis harus di isi!',
-            'durasi.required' => 'Nama harus di isi!',
+            'cover.required' => 'Cover harus di isi!',
+            'cover.image' => 'Cover harus berjenis jpg & png!',
+            'cover.max' => 'Cover harus dibawah kapasitas 1024kb!',
+            'background.required' => 'Background harus di isi!',
+            'background.image' => 'Background harus berjenis jpg & png!',
+            'background.max' => 'Background harus dibawah kapasitas 1024kb!',
+            'sinopsis.required' => 'Sinopsis harus di isi!',
+            'durasi.required' => 'Durasi harus di isi!',
             'id_genre.required' => 'Genre harus di isi!',
             'id_tahun_rilis.required' => 'Tahun Rilis harus di isi!',
-            'casting.required' => 'Casting harus di isi!',
+            'casting.required' => 'Casting harus di pilih!',
         ];
 
         $validation = Validator::make($request->all(), $rules, $messages);
         if ($validation->fails()) {
-            Alert::error('data yang anda input ada kesalahan', 'Oops!')->persistent("Ok");
+            Alert::error('Oops!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
             return back()->withErrors($validation)->withInput();
         }
 

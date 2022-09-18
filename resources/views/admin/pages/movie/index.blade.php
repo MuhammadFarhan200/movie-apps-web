@@ -9,8 +9,8 @@
 @section('page-content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
-                <div class="card">
+            <div class="col-md-12">
+                <div class="card shadow">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h3 class="font-bold text-center m-0">Data Movie</h3>
                         <a href="{{ route('movie.create') }}" class="btn btn-primary" style="float:right">
@@ -37,19 +37,20 @@
                                             <td>{{ $movie->judul }}</td>
                                             <td>{{ $movie->genreFilm->kategori }}</td>
                                             <td>{{ $movie->tahunRilis->tahun }}</td>
-                                            <td>
-                                                <form action="{{ route('movie.destroy', $movie->id) }}" method="post">
+                                            <td class="text-nowrap">
+                                                <a href="{{ route('movie.edit', $movie->id) }}"
+                                                    class="btn btn-sm mx-1 btn-success">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                                <a href="{{ route('movie.show', $movie->id) }}"
+                                                    class="btn btn-sm mx-1 btn-warning">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </a>
+                                                <form action="{{ route('movie.destroy', $movie->id) }}" method="post"
+                                                    class="d-inline">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('movie.edit', $movie->id) }}"
-                                                        class="btn btn-sm btn-success">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
-                                                    <a href="{{ route('movie.show', $movie->id) }}"
-                                                        class="btn btn-sm btn-warning">
-                                                        <i class="bi bi-eye-fill"></i>
-                                                    </a>
-                                                    <button type="submit" class="btn btn-sm btn-danger"
+                                                    <button type="submit" class="btn btn-sm mx-1 btn-danger"
                                                         onclick="return confirm('apakah anda yakin?')">
                                                         <i class="bi bi-trash-fill"></i>
                                                     </button>

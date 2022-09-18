@@ -53,46 +53,49 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ request()->is('admin/profile') ? 'active' : '' }}">
-                    <a href="{{ url('admin/profile') }}" class='sidebar-link'>
-                        <i class="bi bi-person-fill"></i>
-                        <span>Profile</span>
-                    </a>
-                </li>
+                @if (Auth::user()->role === 'admin')
+                    <li class="sidebar-item {{ request()->is('admin/profile') ? 'active' : '' }}">
+                        <a href="{{ url('admin/profile') }}" class='sidebar-link'>
+                            <i class="bi bi-person-fill"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
 
-                <li class="sidebar-title">Table</li>
+                    <li class="sidebar-title">Table</li>
 
-                <li
-                    class="sidebar-item {{ request()->is('admin/tahun-rilis') || request()->is('admin/tahun-rilis/*') ? 'active' : '' }}">
-                    <a href="{{ route('tahun-rilis.index') }}" class='sidebar-link'>
-                        <i class="bi bi-calendar-check-fill"></i>
-                        <span>Tahun Rilis</span>
-                    </a>
-                </li>
+                    <li
+                        class="sidebar-item {{ request()->is('admin/tahun-rilis') || request()->is('admin/tahun-rilis/*') ? 'active' : '' }}">
+                        <a href="{{ route('tahun-rilis.index') }}" class='sidebar-link'>
+                            <i class="bi bi-calendar-check-fill"></i>
+                            <span>Tahun Rilis</span>
+                        </a>
+                    </li>
 
-                <li
-                    class="sidebar-item {{ request()->is('admin/genre-film') || request()->is('admin/genre-film/*') ? 'active' : '' }}">
-                    <a href="{{ route('genre-film.index') }}" class='sidebar-link'>
-                        <i class="bi bi-camera-video-fill"></i>
-                        <span>Genre Film</span>
-                    </a>
-                </li>
+                    <li
+                        class="sidebar-item {{ request()->is('admin/genre-film') || request()->is('admin/genre-film/*') ? 'active' : '' }}">
+                        <a href="{{ route('genre-film.index') }}" class='sidebar-link'>
+                            <i class="bi bi-camera-video-fill"></i>
+                            <span>Genre Film</span>
+                        </a>
+                    </li>
 
-                <li
-                    class="sidebar-item {{ request()->is('admin/casting') || request()->is('admin/casting/*') ? 'active' : '' }}">
-                    <a href="{{ route('casting.index') }}" class='sidebar-link'>
-                        <i class="bi bi-person-video2"></i>
-                        <span>Casting Film</span>
-                    </a>
-                </li>
+                    <li
+                        class="sidebar-item {{ request()->is('admin/casting') || request()->is('admin/casting/*') ? 'active' : '' }}">
+                        <a href="{{ route('casting.index') }}" class='sidebar-link'>
+                            <i class="bi bi-person-video2"></i>
+                            <span>Casting Film</span>
+                        </a>
+                    </li>
 
-                <li
-                    class="sidebar-item {{ request()->is('admin/movie') || request()->is('admin/movie/*') ? 'active' : '' }}">
-                    <a href="{{ route('movie.index') }}" class='sidebar-link'>
-                        <i class="bi bi-film"></i>
-                        <span>Movie</span>
-                    </a>
-                </li>
+                    <li
+                        class="sidebar-item {{ request()->is('admin/movie') || request()->is('admin/movie/*') ? 'active' : '' }}">
+                        <a href="{{ route('movie.index') }}" class='sidebar-link'>
+                            <i class="bi bi-film"></i>
+                            <span>Movie</span>
+                        </a>
+                    </li>
+                @else
+                @endif
 
                 {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
