@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Casting;
 
 class MovieSeeder extends Seeder
 {
@@ -23,7 +21,7 @@ class MovieSeeder extends Seeder
         // $movies->durasi = 150;
         // $movies->id_genre = 'Action';
         // $movies->id_tahun_rilis = 2022;
-        // $movies->casting->nama = 'Tom Holland';
+        // $movies->casting = $castings->nama;
         // $movies->save();
     }
 }

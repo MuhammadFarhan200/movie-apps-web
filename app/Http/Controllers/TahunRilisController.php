@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use App\Models\Movie;
 use App\Models\TahunRilis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -142,14 +141,13 @@ class TahunRilisController extends Controller
      */
     public function destroy($id)
     {
-        if (Movie::where('id_tahun_rilis', $id)->count() > 0) {
-            Alert::error('Fail!', 'Gagal Menghapus Tahun Rilis, Masih ada movie dengan Tahun Rilis ini!');
-            return redirect()->route('tahun-rilis.index');
-        }
+        // if (Movie::where('id_tahun_rilis', $id)->count() > 0) {
+        //     Alert::error('Fail!', 'Gagal Menghapus Tahun Rilis, Masih ada movie dengan Tahun Rilis ini!');
+        //     return redirect()->route('tahun-rilis.index');
+        // }
 
         $tahun_rilis = TahunRilis::findOrFail($id);
         $tahun_rilis->delete();
-        Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);
         return redirect()->route('tahun-rilis.index');
 
     }

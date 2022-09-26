@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Alert;
 use Illuminate\Database\Eloquent\Model;
 
 class Casting extends Model
@@ -23,6 +24,21 @@ class Casting extends Model
         return $this->belongsToMany(Movie::class, 'casting_movies', 'id_casting', 'id_movie');
     }
 
+    public static function boot()
+    {
+        parent::boot();
+
+        self::deleting(function ($casting) {
+            // Mengecek Apakah Casting Memiliki Movie
+            if ($casting->movie->count() > 0) {
+                Alert::error('Gagal Mengapus!', 'Tidak dapat menghapus cast ' . $casting->nama . ', masih ada movie dengan cast ini.');
+                return false;
+            }
+            Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);
+
+        });
+    }
+
     public function image()
     {
         if ($this->foto && file_exists(public_path('images/casting/' . $this->foto))) {
@@ -31,7 +47,7 @@ class Casting extends Model
             return asset('images/casting/no_image.png');
         }
     }
-    // mengahupus image(foto) di storage(penyimpanan) public
+    // menghapus image(foto) di storage(penyimpanan) public
     public function deleteImage()
     {
         if ($this->foto && file_exists(public_path('images/casting/' . $this->foto))) {

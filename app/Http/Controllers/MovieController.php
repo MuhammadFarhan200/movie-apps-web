@@ -21,9 +21,9 @@ class MovieController extends Controller
 
     public function create()
     {
-        $genre = GenreFilm::all();
-        $tahun = TahunRilis::all();
-        $casting = Casting::all();
+        $genre = GenreFilm::all()->sortBy('kategori');
+        $tahun = TahunRilis::all()->sortBy('tahun');
+        $casting = Casting::all()->sortBy('nama');
         return view('admin.pages.movie.create', compact('casting', 'genre', 'tahun'));
     }
 
@@ -31,8 +31,8 @@ class MovieController extends Controller
     {
         $rules = [
             'judul' => 'required|unique:movies',
-            'background' => 'required|image|max:1024',
-            'cover' => 'required|image|max:1024',
+            'background' => 'required|image|max:2048',
+            'cover' => 'required|image|max:2048',
             'sinopsis' => 'required',
             'durasi' => 'required',
             'id_genre' => 'required',
@@ -45,10 +45,10 @@ class MovieController extends Controller
             'judul.unique' => 'Judul tidak boleh sama!',
             'cover.required' => 'Cover harus di isi!',
             'cover.image' => 'Cover harus berjenis jpg & png!',
-            'cover.max' => 'Cover harus dibawah kapasitas 1024kb!',
+            'cover.max' => 'Cover harus dibawah kapasitas 2048kb!',
             'background.required' => 'Background harus di isi!',
             'background.image' => 'Background harus berjenis jpg & png!',
-            'background.max' => 'Background harus dibawah kapasitas 1024kb!',
+            'background.max' => 'Background harus dibawah kapasitas 2048kb!',
             'sinopsis.required' => 'Sinopsis harus di isi!',
             'durasi.required' => 'Durasi harus di isi!',
             'id_genre.required' => 'Genre harus di isi!',
@@ -96,9 +96,9 @@ class MovieController extends Controller
     public function edit($id)
     {
         $movie = Movie::findOrFail($id);
-        $genre = GenreFilm::all();
-        $tahun = TahunRilis::all();
-        $casting = Casting::all();
+        $genre = GenreFilm::all()->sortBy('kategori');
+        $tahun = TahunRilis::all()->sortBy('tahun');
+        $casting = Casting::all()->sortBy('nama');
         $selectCast = Casting::with('movie')->pluck('id')->toArray();
         // dd($selectCast);
         return view('admin.pages.movie.edit', compact('selectCast', 'movie', 'casting', 'genre', 'tahun'));
@@ -109,8 +109,8 @@ class MovieController extends Controller
     {
         $rules = [
             'judul' => 'required',
-            'background' => 'required|image|max:1024',
-            'cover' => 'required|image|max:1024',
+            'background' => 'nullable|image|max:2048',
+            'cover' => 'nullable|image|max:2048',
             'sinopsis' => 'required',
             'id_genre' => 'required',
             'id_tahun_rilis' => 'required',
@@ -119,12 +119,10 @@ class MovieController extends Controller
 
         $messages = [
             'judul.required' => 'Nama harus di isi!',
-            'cover.required' => 'cover harus di isi!',
             'cover.image' => 'cover harus berjenis jpg & png!',
-            'cover.max' => 'cover harus dibawah kapasitas 1024kb!',
-            'background.required' => 'background harus di isi!',
+            'cover.max' => 'cover harus dibawah kapasitas 2048kb!', #
             'background.image' => 'background harus berjenis jpg & png!',
-            'background.max' => 'background harus dibawah kapasitas 1024kb!',
+            'background.max' => 'background harus dibawah kapasitas 2048kb!',
             'sinopsis.required' => 'sinopsis harus di isi!',
             'id_genre.required' => 'Genre harus di isi!',
             'id_tahun_rilis.required' => 'Tahun Rilis harus di isi!',
@@ -166,6 +164,7 @@ class MovieController extends Controller
 
     public function destroy($id)
     {
+
         $movies = Movie::findOrFail($id);
         $movies->deleteImage();
         $movies->deleteBackground();

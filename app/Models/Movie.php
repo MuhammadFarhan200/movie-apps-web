@@ -51,7 +51,7 @@ class Movie extends Model
             return asset('images/no_image.jpg');
         }
     }
-    // mengahupus image(cover) di storage(penyimpanan) public
+    // menghapus image(cover) di storage(penyimpanan) public
     public function deleteImage()
     {
         if ($this->cover && file_exists(public_path('images/movies/'
@@ -69,7 +69,7 @@ class Movie extends Model
             return asset('images/no_image.jpg');
         }
     }
-    // mengahupus image(background) di storage(penyimpanan) public
+    // menghapus image(background) di storage(penyimpanan) public
     public function deleteBackground()
     {
         if ($this->background && file_exists(public_path('images/movies/'

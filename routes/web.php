@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\DurasiFilmController;
-use App\Http\Controllers\GenreFilmController;
 use App\Http\Controllers\CastingController;
-use App\Http\Controllers\TahunRilisController;
+use App\Http\Controllers\GenreFilmController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TahunRilisController;
 use Illuminate\Support\Facades\Route;
 
 /*

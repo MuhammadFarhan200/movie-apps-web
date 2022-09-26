@@ -93,7 +93,7 @@
                                     <input type="checkbox" name="casting[]"
                                         class="form-check-input @error('casting') is-invalid @enderror"
                                         value="{{ $data->id }}">
-                                    <label for="" class="form-check-label me-2">{{ $data->nama }}</label>
+                                    <label for="" class="form-check-label me-3">{{ $data->nama }}</label>
                                 @endforeach
 
                                 {{-- <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Alert;
 use App\Models\GenreFilm;
-use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -129,14 +128,12 @@ class GenreFilmController extends Controller
      */
     public function destroy($id)
     {
-        if (Movie::where('id_genre', $id)->count() > 0) {
-            Alert::error('Fail', 'Gagal Menghapus Genre, Masih ada movie dengan genre ini!');
-            return redirect()->route('genre-film.index');
-        }
+        // $genre_film = GenreFilm::findOrFail($id);
+        // $genre_film->delete();
 
-        $genre_film = GenreFilm::findOrFail($id);
-        $genre_film->delete();
-        Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);
+        if (!GenreFilm::destroy($id)) {
+            return redirect()->back();
+        }
         return redirect()->route('genre-film.index');
 
     }

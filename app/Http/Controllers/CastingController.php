@@ -25,7 +25,7 @@ class CastingController extends Controller
     {
         $rules = [
             'nama' => 'required',
-            'foto' => 'required|image|max:1024',
+            'foto' => 'required|image|max:2048',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
         ];
@@ -78,14 +78,13 @@ class CastingController extends Controller
     {
         $rules = [
             'nama' => 'required',
-            'foto' => 'required|image|max:1024',
+            'foto' => 'nullable|image|max:2048',
             'jenis_kelamin' => 'required',
             'tanggal_lahir' => 'required',
         ];
 
         $messages = [
             'nama.required' => 'Nama harus di isi!',
-            'foto.required' => 'foto harus di isi!',
             'foto.image' => 'Foto harus berjenis jpg & png!',
             'foto.image' => 'Foto harus dibawah kapasitas 1024kb!',
             'jenis_kelamin.required' => 'Jenis Kelamin harus di isi!',
@@ -94,7 +93,7 @@ class CastingController extends Controller
 
         $validation = Validator::make($request->all(), $rules, $messages);
         if ($validation->fails()) {
-            Alert::error('data yang anda input ada kesalahan', 'Oops!')->persistent("Ok");
+            Alert::error('Oops!', 'Data yang anda input ada kesalahan')->persistent("Ok");
             return back()->withErrors($validation)->withInput();
         }
 
@@ -107,7 +106,7 @@ class CastingController extends Controller
             $casting->deleteImage();
             $image = $request->file('foto');
             $name = rand(1000, 9999) . $image->getClientOriginalName();
-            $image->move('assets/images/castings/', $name);
+            $image->move('images/casting/', $name);
             $casting->foto = $name;
         }
         $casting->save();

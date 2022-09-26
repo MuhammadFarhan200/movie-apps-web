@@ -35,6 +35,11 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Jumlah Film dengan Cast ({{ $casting->nama }})</th>
+                                <td class="px-3">:</td>
+                                <td>{{ $casting->movie->count() }} Film</td>
+                            </tr>
+                            <tr>
                                 <th>Foto</th>
                                 <td></td>
                                 <td></td>

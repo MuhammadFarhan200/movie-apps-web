@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CastingSeeder extends Seeder
@@ -14,39 +13,33 @@ class CastingSeeder extends Seeder
      */
     public function run()
     {
-        $castings = new \App\Models\Casting();
-        $castings->nama = 'Tom Holland';
-        $castings->foto = 'tom_holland.jpg';
-        $castings->jenis_kelamin = 'Laki-laki';
-        $castings->tanggal_lahir = '1996-06-01';
-        $castings->save();
+        $tom_holland = new \App\Models\Casting();
+        $tom_holland->nama = 'Tom Holland';
+        $tom_holland->foto = 'tom_holland.jpg';
+        $tom_holland->jenis_kelamin = 'Laki-laki';
+        $tom_holland->tanggal_lahir = '1996-06-01';
+        $tom_holland->save();
 
-        // $casting = new \App\Models\Casting();
-        // $casting->nama = 'Fantasy';
-        // $casting->foto = 'Fantasy';
-        // $casting->jenis_kelamin = 'Fantasy';
-        // $casting->tanggal_lahir = 'Fantasy';
-        // $casting->save();
+        $iqbaal = new \App\Models\Casting();
+        $iqbaal->nama = 'Iqbaal Ramadhan';
+        $iqbaal->foto = 'iqbaal_ramadhan.jpg';
+        $iqbaal->jenis_kelamin = 'Laki-laki';
+        $iqbaal->tanggal_lahir = '1999-12-28';
+        $iqbaal->save();
 
-        // $casting = new \App\Models\Casting();
-        // $casting->nama = 'Comedy';
-        // $casting->foto = 'Comedy';
-        // $casting->jenis_kelamin = 'Comedy';
-        // $casting->tanggal_lahir = 'Comedy';
-        // $casting->save();
+        $zendaya = new \App\Models\Casting();
+        $zendaya->nama = 'Zandaya';
+        $zendaya->foto = 'zandaya.jpg';
+        $zendaya->jenis_kelamin = 'Perempuan';
+        $zendaya->tanggal_lahir = '1996-09-01';
+        $zendaya->save();
 
-        // $casting = new \App\Models\Casting();
-        // $casting->nama = 'Sci-fi';
-        // $casting->foto = 'Sci-fi';
-        // $casting->jenis_kelamin = 'Sci-fi';
-        // $casting->tanggal_lahir = 'Sci-fi';
-        // $casting->save();
+        $joe_taslim = new \App\Models\Casting();
+        $joe_taslim->nama = 'Joe Taslim';
+        $joe_taslim->foto = 'joe_taslim.jpg';
+        $joe_taslim->jenis_kelamin = 'Laki-laki';
+        $joe_taslim->tanggal_lahir = '1981-06-23';
+        $joe_taslim->save();
 
-        // $casting = new \App\Models\Casting();
-        // $casting->nama = 'Romance';
-        // $casting->foto = 'Romance';
-        // $casting->jenis_kelamin = 'Romance';
-        // $casting->tanggal_lahir = 'Romance';
-        // $casting->save();
     }
 }

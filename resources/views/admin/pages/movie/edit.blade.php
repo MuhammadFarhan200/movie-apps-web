@@ -105,15 +105,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="d-block">Casting</label>
-                                @foreach ($casting as $dataCasting)
+                                {{-- @foreach ($casting as $dataCasting)
                                     <input type="checkbox" name="casting[]"
                                         class="form-check-input @error('casting') is-invalid @enderror"
                                         value="{{ $dataCasting->id }}"
                                         {{ in_array($dataCasting->id, $selectCast) ? 'checked' : '' }}>
                                     <label for="" class="form-check-label me-2">{{ $dataCasting->nama }}</label>
-                                @endforeach
+                                @endforeach --}}
 
-                                {{-- <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
+                                <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
                                     id="" multiple>
                                     <option>Pilih</option>
                                     @foreach ($casting as $data)
@@ -121,7 +121,7 @@
                                             {{ in_array($data->id, $selectCast) ? 'selected' : '' }}>
                                             {{ $data->nama }}</option>
                                     @endforeach
-                                </select> --}}
+                                </select>
                                 @error('casting')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
