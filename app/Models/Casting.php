@@ -31,7 +31,7 @@ class Casting extends Model
         self::deleting(function ($casting) {
             // Mengecek Apakah Casting Memiliki Movie
             if ($casting->movie->count() > 0) {
-                Alert::error('Gagal Mengapus!', 'Tidak dapat menghapus cast ' . $casting->nama . ', masih ada movie dengan cast ini.');
+                Alert::html('Gagal Mengapus!', 'Tidak dapat menghapus cast <b>' . $casting->nama . '</b>, masih ada movie dengan cast ini.', 'error');
                 return false;
             }
             Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);

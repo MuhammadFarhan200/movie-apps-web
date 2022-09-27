@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Alert;
 use App\Models\GenreFilm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use Validator;
 
 class GenreFilmController extends Controller
@@ -61,7 +61,7 @@ class GenreFilmController extends Controller
         $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
-            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!');
             return back()->withErrors($validation)->withInput();
         }
 
@@ -81,8 +81,6 @@ class GenreFilmController extends Controller
      */
     public function show($id)
     {
-
-        $genre_film = GenreFilm::findOrFail($id);
         // return view('admin.pages.genre_film.show', compact('genre_film'));
 
     }
@@ -95,10 +93,7 @@ class GenreFilmController extends Controller
      */
     public function edit($id)
     {
-
-        $durasi_film = DurasiFilm::findOrFail($id);
         // return view('admin.pages.durasi_film.edit', compact('durasi_film'));
-
     }
 
     /**

@@ -114,12 +114,12 @@
                                 @endforeach --}}
 
                                 <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
-                                    id="" multiple>
+                                    id="" multiple="multiple">
                                     <option>Pilih</option>
-                                    @foreach ($casting as $data)
-                                        <option value="{{ $data->id }}"
-                                            {{ in_array($data->id, $selectCast) ? 'selected' : '' }}>
-                                            {{ $data->nama }}</option>
+                                    @foreach ($casting as $casting)
+                                        <option value="{{ $casting->id }}"
+                                            {{ in_array($casting->id, $selectCast) ? 'selected' : '' }}>
+                                            {{ $casting->nama }}</option>
                                     @endforeach
                                 </select>
                                 @error('casting')

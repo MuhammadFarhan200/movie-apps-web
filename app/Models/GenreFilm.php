@@ -27,7 +27,7 @@ class GenreFilm extends Model
         self::deleting(function ($genre) {
             // Mengecek Apakah Genre Memiliki Movie
             if ($genre->movie->count() > 0) {
-                Alert::html('Gagal Mengapus!', 'Tidak dapat menghapus genre <b>' . $genre->kategori . '</b>, masih ada movie dengan genre ini.', 'error');
+                Alert::html('Gagal Mengapus!', 'Tidak dapat menghapus genre <b>' . $genre->kategori . '</b>, masih ada movie dengan genre ini.', 'error')->autoClose(false);
                 return false;
             }
             Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);

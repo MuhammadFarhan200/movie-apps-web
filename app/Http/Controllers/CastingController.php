@@ -93,7 +93,7 @@ class CastingController extends Controller
 
         $validation = Validator::make($request->all(), $rules, $messages);
         if ($validation->fails()) {
-            Alert::error('Oops!', 'Data yang anda input ada kesalahan')->persistent("Ok");
+            Alert::error('Oops!', 'Data yang anda input ada kesalahan!');
             return back()->withErrors($validation)->withInput();
         }
 

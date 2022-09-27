@@ -164,7 +164,6 @@ class MovieController extends Controller
 
     public function destroy($id)
     {
-
         $movies = Movie::findOrFail($id);
         $movies->deleteImage();
         $movies->deleteBackground();

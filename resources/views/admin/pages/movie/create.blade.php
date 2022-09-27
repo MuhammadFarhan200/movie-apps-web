@@ -89,12 +89,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="d-block">Casting</label>
-                                @foreach ($casting as $data)
-                                    <input type="checkbox" name="casting[]"
-                                        class="form-check-input @error('casting') is-invalid @enderror"
-                                        value="{{ $data->id }}">
-                                    <label for="" class="form-check-label me-3">{{ $data->nama }}</label>
-                                @endforeach
+                                <div class="d-flex flex-wrap justify-content-start align-items-center">
+                                    @foreach ($casting as $data)
+                                        <div class="border border-dark rounded-2 shadow-sm p-3 mx-1 mb-2">
+                                            <input type="checkbox" name="casting[]"
+                                                class="form-check-input @error('casting') is-invalid @enderror"
+                                                value="{{ $data->id }}">
+                                            <label for="" class="form-check-label me-3">{{ $data->nama }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
+
 
                                 {{-- <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
                                     id="" multiple>

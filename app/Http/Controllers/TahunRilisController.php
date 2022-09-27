@@ -62,7 +62,7 @@ class TahunRilisController extends Controller
         $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
-            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!');
             return back()->withErrors($validation)->withInput();
         }
 
