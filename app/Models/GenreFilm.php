@@ -30,7 +30,7 @@ class GenreFilm extends Model
                 Alert::html('Gagal Mengapus!', 'Tidak dapat menghapus genre <b>' . $genre->kategori . '</b>, masih ada movie dengan genre ini.', 'error')->autoClose(false);
                 return false;
             }
-            Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);
+            Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose();
         });
     }
 }

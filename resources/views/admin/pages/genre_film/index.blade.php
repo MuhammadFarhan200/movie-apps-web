@@ -9,7 +9,7 @@
 @section('page-content')
     <div class="row">
         <div class="col">
-            @include('admin.partials.flash')
+            {{-- @include('admin.layouts.partials.flash') --}}
         </div>
     </div>
     <div class="row">
@@ -44,28 +44,30 @@
                                         <td>{{ $genre->kategori }}</td>
                                         <td>{{ $genre->movie->count() }}</td>
                                         <td class="text-nowrap">
-                                            <form action="{{ route('genre-film.destroy', $genre->id) }}" method="post"
+                                            <button type="button" class="btn btn-sm btn-success mx-1"
+                                                data-bs-toggle="modal" data-bs-target="#editGenreFilm-{{ $genre->id }}">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-warning mx-1"
+                                                data-bs-toggle="modal" data-bs-target="#showGenreFilm-{{ $genre->id }}">
+                                                <i class="bi bi-eye-fill"></i>
+                                            </button>
+                                            <form id="data-{{ $genre->id }}"
+                                                action="{{ route('genre-film.destroy', $genre->id) }}" method="post"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-sm btn-success mx-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#editGenreFilm-{{ $genre->id }}">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-sm btn-warning mx-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showGenreFilm-{{ $genre->id }}">
-                                                    <i class="bi bi-eye-fill"></i>
-                                                </button>
-                                                <button class="btn btn-danger btn-sm mx-1" type="submit"
+                                                {{-- <button class="btn btn-danger btn-sm mx-1" type="submit"
                                                     onclick="return confirm('Apakah anda yakin?')">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </button> --}}
+                                                <button class="btn btn-danger btn-sm mx-1" type="submit"
+                                                    onclick="event.preventDefault(); confirmDelete({{ $genre->id }})">
                                                     <i class="bi bi-trash-fill"></i>
                                                 </button>
                                             </form>
                                         </td>
                                     </tr>
-
                                     @include('admin.pages.genre_film.edit')
                                     @include('admin.pages.genre_film.show')
                                 @endforeach
@@ -76,4 +78,32 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('myScript')
+    <script>
+        function confirmDelete(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Anda Yakin Akan Menghapus Data Ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                allowOutsideClick: false,
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal',
+                reverseButtons: true
+            }).then((wilDelete) => {
+                if (wilDelete.isConfirmed) {
+                    $('#data-' + id).submit();
+                }
+            })
+        }
+    </script>
 @endsection

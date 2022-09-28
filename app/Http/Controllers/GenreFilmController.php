@@ -61,14 +61,14 @@ class GenreFilmController extends Controller
         $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
-            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!');
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->autoClose(false);
             return back()->withErrors($validation)->withInput();
         }
 
         $genre_film = new GenreFilm();
         $genre_film->kategori = $request->kategori;
         $genre_film->save();
-        Alert::success('Done', 'Data Berhasil Di Buat')->autoClose(3000);
+        Alert::success('Done', 'Data Berhasil Di Buat')->autoClose();
         return redirect()->route('genre-film.index');
 
     }
@@ -105,13 +105,27 @@ class GenreFilmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $rules = [
             'kategori' => 'required|unique:genre_films',
-        ]);
+        ];
+
+        $messages = [
+            'kategori.required' => 'Kategori harus di isi!',
+            'kategori.unique' => 'Kategori tidak boleh sama!',
+        ];
+
+        // validasi
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->autoClose(false);
+            return back()->withErrors($validation)->withInput();
+        }
+
         $genre_film = GenreFilm::findOrFail($id);
         $genre_film->kategori = $request->kategori;
         $genre_film->save();
-        Alert::success('Done', 'Data Berhasil Di Edit');
+        Alert::success('Done', 'Data Berhasil Di Edit')->autoClose();
         return redirect()->route('genre-film.index');
     }
 
@@ -123,13 +137,9 @@ class GenreFilmController extends Controller
      */
     public function destroy($id)
     {
-        // $genre_film = GenreFilm::findOrFail($id);
-        // $genre_film->delete();
-
         if (!GenreFilm::destroy($id)) {
             return redirect()->back();
         }
         return redirect()->route('genre-film.index');
-
     }
 }

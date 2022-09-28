@@ -137,7 +137,7 @@ return [
     |
      */
 
-    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', false),
+    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', true),
 
     /*
     |--------------------------------------------------------------------------

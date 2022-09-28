@@ -30,7 +30,7 @@ class HomeController extends Controller
         $jumlahGenreFilm = GenreFilm::all()->count();
         $jumlahCasting = Casting::all()->count();
         $jumlahMovie = Movie::all()->count();
-        alert('Hallo!', 'Selamat Datang Kembali!')->autoClose(3000);
+        toast('Selamat Datang Kembali!', 'success')->autoClose()->width('380px');
         return view('admin.home', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting', 'jumlahMovie'));
     }
 }

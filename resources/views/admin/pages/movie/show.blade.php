@@ -125,20 +125,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row g-3 gallery mb-3" data-bs-toggle="modal" data-bs-target="#imageModal">
                         <div class="col-md-4">
                             <label for="" class="fw-bold">Cover</label>
-                            <p>
+                            <a href="#" class="image-modal d-block">
                                 <img src="{{ asset('images/movies/' . $movie->cover) }}" alt="Cover {{ $movie->judul }}"
-                                    class="img-responsive rounded-3 cover-background">
-                            </p>
+                                    class="img-responsive rounded-3 cover-background" data-bs-target="#MovieCarousel"
+                                    data-bs-slide-to="0">
+                            </a>
                         </div>
                         <div class="col-md-8">
                             <label for="" class="fw-bold">Background</label>
-                            <p>
+                            <a href="#" class="image-modal d-block">
                                 <img src="{{ asset('images/movies/' . $movie->background) }}"
-                                    alt="Background {{ $movie->judul }}" class="img-resposive rounded-3 cover-background">
-                            </p>
+                                    alt="Background {{ $movie->judul }}" class="img-resposive rounded-3 cover-background"
+                                    data-bs-target="#MovieCarousel" data-bs-slide-to="1">
+                            </a>
                         </div>
                     </div>
                     <div class="row g-3">
@@ -146,18 +148,65 @@
                         <div class="d-flex justify-content-start align-items-center flex-wrap m-0 pt-2">
                             @foreach ($movie->casting as $item)
                                 <a href="../casting/{{ $item->id }}"
-                                    class="p-3 rounded-2 shadow-sm border border-dark mx-1 mb-2 cast-hover">
+                                    class="p-3 rounded-2 shadow-sm border border-dark mx-1 mb-2 cast-hover" target="_blank">
                                     <label for="" class="text-body">{{ $item->nama }}</label>
                                 </a>
                             @endforeach
                         </div>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mt-4">
-                        <a href="{{ route('movie.index') }}" class="btn btn-primary px-3 m-2">Kembali</a>
+                        <a href="{{ route('movie.index') }}" class="btn btn-primary px-3">
+                            Kembali
+                            <i class="bi bi-chevron-right ms-1"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-@endsection
+
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-lg-down modal-dialog-scrollable"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        {{ $movie->judul }}
+                    </h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="MovieCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#MovieCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#MovieCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100 mx-auto" src="{{ asset('images/movies/' . $movie->cover) }}"
+                                    alt="Cover {{ $movie->judul }}">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{ asset('images/movies/' . $movie->background) }}">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#MovieCarousel" role="button" type="button"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#MovieCarousel" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    @endsection

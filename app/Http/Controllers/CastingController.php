@@ -41,7 +41,7 @@ class CastingController extends Controller
 
         $validation = Validator::make($request->all(), $rules, $messages);
         if ($validation->fails()) {
-            Alert::error('Data yang anda input ada kesalahan', 'Oops!')->persistent("Ok");
+            Alert::error('Oops!', 'Data yang anda input ada kesalahan!');
             return back()->withErrors($validation)->withInput();
         }
 
@@ -117,10 +117,10 @@ class CastingController extends Controller
 
     public function destroy($id)
     {
-        $casting = Casting::findOrFail($id);
-        $casting->deleteImage();
-        $casting->delete();
-        return redirect()->route('casting.index');
-
+        if (!Casting::destroy($id)) {
+            return redirect()->back();
+        } else {
+            return redirect()->route('casting.index');
+        }
     }
 }

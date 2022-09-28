@@ -46,13 +46,14 @@
                         </div>
                         <div class="form-group">
                             <label for="">Jenis Kelamin</label>
-                            <br>
-                            <input type="radio" name="jenis_kelamin" value="Laki-laki"
-                                class="me-2 @error('jenis_kelamin') is-invalid @enderror"
-                                {{ $casting->jenis_kelamin == 'Laki-laki' ? 'checked' : '' }}>Laki-laki
-                            <input type="radio" name="jenis_kelamin" value="Perempuan"
-                                class="mx-2 @error('jenis_kelamin') is-invalid @enderror"
-                                {{ $casting->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>Perempuan
+                            <select name="jenis_kelamin" id=""
+                                class="form-control @error('jenis_kelamin') is-invalid @enderror">
+                                <option value="">Pilih</option>
+                                <option value="Laki-laki" {{ $casting->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>
+                                    Laki-laki</option>
+                                <option value="Perempuan" {{ $casting->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
+                                    Perempuan</option>
+                            </select>
                             @error('jenis_kelamin')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

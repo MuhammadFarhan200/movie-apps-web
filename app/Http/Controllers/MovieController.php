@@ -58,7 +58,7 @@ class MovieController extends Controller
 
         $validation = Validator::make($request->all(), $rules, $messages);
         if ($validation->fails()) {
-            Alert::error('Oops!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            Alert::error('Oops!', 'Data yang anda input ada kesalahan!')->autoClose(false);
             return back()->withErrors($validation)->withInput();
         }
 
@@ -82,7 +82,7 @@ class MovieController extends Controller
         }
         $movies->save();
         $movies->casting()->attach($request->casting);
-        Alert::success('Done', 'Data berhasil dibuat')->autoClose(3000);
+        Alert::success('Done', 'Data berhasil dibuat')->autoClose();
         return redirect()->route('movie.index');
     }
 
@@ -131,7 +131,7 @@ class MovieController extends Controller
 
         $validation = Validator::make($request->all(), $rules, $messages);
         if ($validation->fails()) {
-            Alert::error('Oops!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            Alert::error('Oops!', 'Data yang anda input ada kesalahan!')->autoClose(false);
             return back()->withErrors($validation)->withInput();
         }
 
@@ -157,7 +157,7 @@ class MovieController extends Controller
         }
         $movies->save();
         $movies->casting()->sync($request->casting);
-        Alert::success('Done', 'Data berhasil diedit')->autoClose(3000);
+        Alert::success('Done', 'Data berhasil diedit')->autoClose();
         return redirect()->route('movie.index');
 
     }
@@ -170,7 +170,7 @@ class MovieController extends Controller
         $movies->delete();
         $movies->casting()->detach();
 
-        Alert::success('Done', 'Data berhasil dihapus')->autoClose(3000);
+        Alert::success('Done', 'Data berhasil dihapus')->autoClose();
         return redirect()->route('movie.index');
     }
 }

@@ -44,7 +44,7 @@
                                 @if (isset($movie) && $movie->cover)
                                     <img src="{{ asset('images/movies/' . $movie->cover) }}"
                                         class="img-rounded rounded-3 img-responsive mb-2" alt=""
-                                        style="width: 175px">
+                                        style="width: 200px">
                                 @endif
                                 <input type="file" name="cover"
                                     class="form-control @error('cover') is-invalid @enderror" id="">

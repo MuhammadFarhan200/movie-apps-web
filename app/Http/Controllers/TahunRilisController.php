@@ -62,14 +62,14 @@ class TahunRilisController extends Controller
         $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
-            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!');
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->autoClose(false);
             return back()->withErrors($validation)->withInput();
         }
 
         $tahun_rilis = new TahunRilis();
         $tahun_rilis->tahun = $request->tahun;
         $tahun_rilis->save();
-        Alert::success('Done', 'Data Berhasil Di Buat')->autoClose(3000);
+        Alert::success('Done', 'Data Berhasil Di Buat')->autoClose();
         return redirect()->route('tahun-rilis.index');
 
     }
@@ -122,14 +122,15 @@ class TahunRilisController extends Controller
         $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
-            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->persistent("Ok");
+            Alert::error('OOPS!', 'Data yang anda input ada kesalahan!')->autoClose(false);
             return back()->withErrors($validation)->withInput();
         }
 
         $tahun_rilis = TahunRilis::findOrFail($id);
         $tahun_rilis->tahun = $request->tahun;
         $tahun_rilis->save();
-        Alert::success('Done', 'Data Berhasil Di Edit');
+        // Alert::success('Done', 'Data Berhasil Di Edit');
+        alert()->success('Done', 'Data Berhasil Di Edit.')->autoClose();
         return redirect()->route('tahun-rilis.index');
     }
 
@@ -141,14 +142,9 @@ class TahunRilisController extends Controller
      */
     public function destroy($id)
     {
-        // if (Movie::where('id_tahun_rilis', $id)->count() > 0) {
-        //     Alert::error('Fail!', 'Gagal Menghapus Tahun Rilis, Masih ada movie dengan Tahun Rilis ini!');
-        //     return redirect()->route('tahun-rilis.index');
-        // }
-
-        $tahun_rilis = TahunRilis::findOrFail($id);
-        $tahun_rilis->delete();
+        if (!TahunRilis::destroy($id)) {
+            return redirect()->back();
+        }
         return redirect()->route('tahun-rilis.index');
-
     }
 }

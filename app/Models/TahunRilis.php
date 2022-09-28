@@ -26,10 +26,10 @@ class TahunRilis extends Model
         self::deleting(function ($tahun) {
             // Mengecek Apakah Tahun Rilis Memiliki Movie
             if ($tahun->movie->count() > 0) {
-                Alert::html('Gagal Mengapus!', 'Tidak dapat menghapus tahun rilis <b>' . $tahun->tahun . '</b>, masih ada movie dengan tahun rilis ini.', 'error');
+                Alert::html('Gagal Mengapus!', 'Tidak dapat menghapus tahun rilis <b>' . $tahun->tahun . '</b>, masih ada movie dengan tahun rilis ini.', 'error')->autoClose(false);
                 return false;
             }
-            Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose(3000);
+            Alert::success('Done', 'Data Berhasil Dihapus!')->autoClose();
 
         });
     }

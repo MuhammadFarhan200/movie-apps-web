@@ -94,8 +94,9 @@
                                         <div class="border border-dark rounded-2 shadow-sm p-3 mx-1 mb-2">
                                             <input type="checkbox" name="casting[]"
                                                 class="form-check-input @error('casting') is-invalid @enderror"
-                                                value="{{ $data->id }}">
-                                            <label for="" class="form-check-label me-3">{{ $data->nama }}</label>
+                                                value="{{ $data->id }}" id="casting-{{ $data->id }}">
+                                            <label for="casting-{{ $data->id }}"
+                                                class="form-check-label me-3">{{ $data->nama }}</label>
                                         </div>
                                     @endforeach
                                 </div>

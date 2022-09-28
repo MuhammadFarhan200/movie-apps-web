@@ -52,15 +52,16 @@
                                                 data-bs-toggle="modal" data-bs-target="#showTahunRilis-{{ $tahun->id }}">
                                                 <i class="bi bi-eye-fill"></i>
                                             </button>
-                                            <form id="delete-form" action="{{ route('tahun-rilis.destroy', $tahun->id) }}"
-                                                method="post" class="d-inline">
+                                            <form id="data-{{ $tahun->id }}"
+                                                action="{{ route('tahun-rilis.destroy', $tahun->id) }}" method="post"
+                                                class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn btn-danger btn-sm mx-1" type="submit"
-                                                    onclick="return confirm('Apakah anda yakin?')">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                </button>
                                             </form>
+                                            <button class="btn btn-danger btn-sm mx-1" type="submit"
+                                                onclick="event.preventDefault(); confirmDelete({{ $tahun->id }})">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                     @include('admin.pages.tahun_rilis.edit')
@@ -73,4 +74,32 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('myScript')
+    <script>
+        function confirmDelete(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Anda Yakin Akan Menghapus Data Ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                allowOutsideClick: false,
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal',
+                reverseButtons: true
+            }).then((wilDelete) => {
+                if (wilDelete.isConfirmed) {
+                    $('#data-' + id).submit();
+                }
+            })
+        }
+    </script>
 @endsection
