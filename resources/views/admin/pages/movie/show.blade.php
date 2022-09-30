@@ -11,7 +11,7 @@
         <div class="col-md-12 mx-auto">
             <div class="card shadow">
                 <div class="card-header">
-                    <a href="{{ route('movie.index') }}" class="fs-4">
+                    <a href="{{ route('movie.index') }}" class="fs-4 text-body">
                         <i class="bi bi-chevron-left"></i>
                     </a>
                     <h3 class="mt-4">
@@ -105,12 +105,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col mb-3">
-                            <label for="" class="fw-bold">Sinopsis</label>
-                            <textarea name="" id="" cols="30" rows="6" class="form-control" readonly>{{ $movie->sinopsis }}</textarea>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="fw-bold">Genre Film</label>
@@ -123,6 +117,12 @@
                                 <label for="" class="fw-bold">Tahun Rilis</label>
                                 <input type="number" class="form-control" value="{{ $movie->tahunRilis->tahun }}" readonly>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="" class="fw-bold">Sinopsis</label>
+                            <textarea name="" id="" cols="30" rows="6" class="form-control" readonly>{{ $movie->sinopsis }}</textarea>
                         </div>
                     </div>
                     <div class="row g-3 gallery mb-3" data-bs-toggle="modal" data-bs-target="#imageModal">
@@ -147,9 +147,11 @@
                         <label for="" class="fw-bold">Cast Film</label>
                         <div class="d-flex justify-content-start align-items-center flex-wrap m-0 pt-2">
                             @foreach ($movie->casting as $item)
-                                <a href="../casting/{{ $item->id }}"
+                                <a href="{{ route('casting.show', $item->id) }}"
                                     class="p-3 rounded-2 shadow-sm border border-dark mx-1 mb-2 cast-hover" target="_blank">
                                     <label for="" class="text-body">{{ $item->nama }}</label>
+                                    <img src="{{ asset('images/casting' . $item->foto) }}" alt=""
+                                        style="width: 75px">
                                 </a>
                             @endforeach
                         </div>

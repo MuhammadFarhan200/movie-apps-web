@@ -20,7 +20,7 @@
                                 <label for="">Judul</label>
                                 <input type="text" name="judul"
                                     class="form-control @error('judul') is-invalid @enderror" id=""
-                                    placeholder="Masukkan Judul Film">
+                                    placeholder="Masukkan Judul Film" value="{{ old('judul') }}">
                                 @error('judul')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="">Sinopsis</label>
                                 <textarea type="text" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" id=""
-                                    placeholder="Tuliskan Sinopsis Film" rows="5"></textarea>
+                                    placeholder="Tuliskan Sinopsis Film" rows="5">{{ old('sinposis') }}</textarea>
                                 @error('sinopsis')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -59,9 +59,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Genre</label>
-                                <select name="id_genre" class="form-control @error('id_genre') is-invalid @enderror"
-                                    id="">
-                                    <option>-- Pilih Genre --</option>
+                                <select name="id_genre" class="form-select @error('id_genre') is-invalid @enderror">
+                                    <option value="">-- Pilih Genre --</option>
                                     @foreach ($genre as $data)
                                         <option value="{{ $data->id }}">{{ $data->kategori }}</option>
                                     @endforeach
@@ -75,8 +74,8 @@
                             <div class="form-group">
                                 <label for="">Tahun Rilis</label>
                                 <select name="id_tahun_rilis"
-                                    class="form-control @error('id_tahun_rilis') is-invalid @enderror" id="">
-                                    <option>-- Pilih Tahun Rilis --</option>
+                                    class="form-select @error('id_tahun_rilis') is-invalid @enderror">
+                                    <option value="">-- Pilih Tahun Rilis --</option>
                                     @foreach ($tahun as $data)
                                         <option value="{{ $data->id }}">{{ $data->tahun }}</option>
                                     @endforeach
@@ -97,11 +96,14 @@
                                                 value="{{ $data->id }}" id="casting-{{ $data->id }}">
                                             <label for="casting-{{ $data->id }}"
                                                 class="form-check-label me-3">{{ $data->nama }}</label>
+                                            @error('casting')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     @endforeach
                                 </div>
-
-
                                 {{-- <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
                                     id="" multiple>
                                     <option>-- Pilih Casting --</option>
@@ -109,11 +111,6 @@
                                         <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                     @endforeach
                                 </select> --}}
-                                @error('casting')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Durasi Film</label>

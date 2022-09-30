@@ -46,7 +46,8 @@
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input id="password" type="password"
                                 class="form-control form-control-xl @error('password') is-invalid @enderror"
-                                name="password" required autocomplete="current-password" placeholder="Password">
+                                name="password" value="{{ old('password') }}" required autocomplete="current-password"
+                                placeholder="Password">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>

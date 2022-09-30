@@ -11,7 +11,7 @@ class CastingController extends Controller
 {
     public function index()
     {
-        $data_title = 'Casting Film';
+        $data_title = 'Cast Film';
         $castings = Casting::orderBy('id', 'desc')->get();
         return view('admin.pages.casting.index', compact('castings', 'data_title'));
     }

@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
 
-@section('title-page', 'Edit Casting')
+@section('title-page', 'Edit Cast')
 @section('page-heading')
-    <h2>Casting Film</h2>
-    <p>Edit data <b>casting film</b> dengan mengubah data pada forum dibawah</p>
+    <h2>Cast Film</h2>
+    <p>Edit data <b>cast film</b> dengan mengubah data pada forum dibawah</p>
 @endsection
 
 @section('page-content')
@@ -47,8 +47,8 @@
                         <div class="form-group">
                             <label for="">Jenis Kelamin</label>
                             <select name="jenis_kelamin" id=""
-                                class="form-control @error('jenis_kelamin') is-invalid @enderror">
-                                <option value="">Pilih</option>
+                                class="form-select @error('jenis_kelamin') is-invalid @enderror">
+                                <option value="">-- Pilih Jenis Kelamin --</option>
                                 <option value="Laki-laki" {{ $casting->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>
                                     Laki-laki</option>
                                 <option value="Perempuan" {{ $casting->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>

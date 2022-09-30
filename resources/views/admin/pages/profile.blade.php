@@ -8,14 +8,19 @@
 
 @section('page-content')
     <h3 class="text-center">Selamat Datang Di Halaman Profile!</h3>
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <div class="card shadow mt-4">
-                <div class="card-body">
-                    <h4 class="mt-3">Tentang Anda:</h4>
-                    <p class="fs-5 mt-4">Username: {{ Auth::user()->name }}</p>
-                    <p class="fs-5 ">Email: {{ Auth::user()->email }}</p>
-                    <p>Bergabung Pada {{ Auth::user()->created_at }}</p>
+    <div class="col-md-10 mx-auto">
+        <div class="card shadow mt-4">
+            <div class="row align-items-center">
+                <div class="col-md-5 col-lg-4">
+                    <img src="{{ asset('assets/images/faces/2.jpg') }}" alt="" class="card-img img-fluid shadow-sm">
+                </div>
+                <div class="col-md-7 col-lg-8 mx-auto">
+                    <div class="card-body">
+                        <h4>Tentang Anda:</h4>
+                        <p class="fs-5 mt-4">Username: {{ Auth::user()->name }}</p>
+                        <p class="fs-5 ">Email: {{ Auth::user()->email }}</p>
+                        <p>Bergabung Pada {{ \Carbon\Carbon::parse(Auth::user()->created_at)->format('d M, Y') }}</p>
+                    </div>
                 </div>
             </div>
         </div>

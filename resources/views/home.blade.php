@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h5 class="text-muted font-semibold">Casting</h5>
+                                    <h5 class="text-muted font-semibold">Cast</h5>
                                     <h6 class="font-extrabold mb-0">{{ $jumlahCasting }} Data</h6>
                                 </div>
                             </div>

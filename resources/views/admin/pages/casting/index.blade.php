@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
-@section('title-page', 'Data Casting Film')
 
+@section('title-page', 'Data Cast Film')
 @section('page-heading')
-    <h2>Casting Film</h2>
+    <h2>Cast Film</h2>
     <p>Lihat data <b>{{ $data_title }}</b> pada table dibawah</p>
 @endsection
 
@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="font-bold text-center m-0">Data Casting Film</h3>
+                    <h3 class="font-bold text-center m-0">Data Cast Film</h3>
                     <a href="{{ route('casting.create') }}" class="btn btn-primary">
                         <i class="bi bi-plus-circle me-1"></i>
                         Tambah

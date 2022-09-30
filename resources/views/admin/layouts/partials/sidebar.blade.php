@@ -63,16 +63,14 @@
 
                     <li class="sidebar-title">Table</li>
 
-                    <li
-                        class="sidebar-item {{ request()->is('admin/tahun-rilis') || request()->is('admin/tahun-rilis/*') ? 'active' : '' }}">
+                    <li class="sidebar-item {{ request()->is('admin/tahun-rilis') ? 'active' : '' }}">
                         <a href="{{ route('tahun-rilis.index') }}" class='sidebar-link'>
                             <i class="bi bi-calendar-check-fill"></i>
                             <span>Tahun Rilis</span>
                         </a>
                     </li>
 
-                    <li
-                        class="sidebar-item {{ request()->is('admin/genre-film') || request()->is('admin/genre-film/*') ? 'active' : '' }}">
+                    <li class="sidebar-item {{ request()->is('admin/genre-film') ? 'active' : '' }}">
                         <a href="{{ route('genre-film.index') }}" class='sidebar-link'>
                             <i class="bi bi-camera-video-fill"></i>
                             <span>Genre</span>
@@ -83,7 +81,7 @@
                         class="sidebar-item {{ request()->is('admin/casting') || request()->is('admin/casting/*') ? 'active' : '' }}">
                         <a href="{{ route('casting.index') }}" class='sidebar-link'>
                             <i class="bi bi-person-video2"></i>
-                            <span>Casters</span>
+                            <span>Cast Film</span>
                         </a>
                     </li>
 
@@ -108,34 +106,34 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-
-                    <script>
-                        function logout() {
-                            const swalWithBootstrapButtons = Swal.mixin({
-                                customClass: {
-                                    confirmButton: 'btn btn-success',
-                                    cancelButton: 'btn btn-danger'
-                                },
-                                buttonsStyling: true
-                            })
-
-                            swalWithBootstrapButtons.fire({
-                                title: 'Anda Yakin Akan Logout?',
-                                icon: 'warning',
-                                showCancelButton: true,
-                                // allowOutsideClick: false,
-                                confirmButtonText: 'Logout',
-                                cancelButtonText: 'Batal',
-                                reverseButtons: true
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    document.getElementById('logout-form').submit();
-                                }
-                            })
-                        }
-                    </script>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+    function logout() {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: true
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Anda Yakin Akan Logout?',
+            icon: 'warning',
+            showCancelButton: true,
+            // allowOutsideClick: false,
+            confirmButtonText: 'Logout',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logout-form').submit();
+            }
+        })
+    }
+</script>

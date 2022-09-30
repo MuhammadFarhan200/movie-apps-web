@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
 
-@section('title-page', 'Create Casting')
+@section('title-page', 'Create Cast')
 @section('page-heading')
-    <h2>Casting Film</h2>
-    <p>Buat data <b>casting film</b> baru dengan mengisi forum di bawah</p>
+    <h2>Cast Film</h2>
+    <p>Buat data <b>cast film</b> baru dengan mengisi forum di bawah</p>
 @endsection
 
 @section('page-content')
@@ -49,8 +49,8 @@
                                 <label class="form-check-label" for="perempuan">Perempuan</label>
                             </div> --}}
                             <select name="jenis_kelamin" id=""
-                                class="form-control @error('jenis_kelamin') is-invalid @enderror">
-                                <option value="">Pilih</option>
+                                class="form-select @error('jenis_kelamin') is-invalid @enderror">
+                                <option value="">-- Pilih Jenis Kelamin --</option>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
