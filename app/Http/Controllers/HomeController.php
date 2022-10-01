@@ -31,11 +31,11 @@ class HomeController extends Controller
         $jumlahGenreFilm = GenreFilm::all()->count();
         $jumlahCasting = Casting::all()->count();
         $jumlahMovie = Movie::all()->count();
-        toast('Selamat Datang Kembali!', 'success')->autoClose()->width('380px');
 
         if (Auth::user()->role == 'admin') {
+            toast('Selamat Datang Kembali!', 'success')->autoClose()->width('380px');
             return view('admin.index', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting', 'jumlahMovie'));
         }
-        return view('home', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting', 'jumlahMovie'));
+        return view('pages.front.index');
     }
 }
