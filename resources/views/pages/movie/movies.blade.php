@@ -13,14 +13,16 @@
                 </div>
             </div>
         </div>
-    </section><!-- breadcrumb area end -->
+    </section>
+    <!-- breadcrumb area end -->
+
     <!-- portfolio section start -->
-    <section class="portfolio-area pt-60">
+    <section class="portfolio-area pt-60 pb-5">
         <div class="container">
             <div class="row flexbox-center">
-                <div class="col-lg-6 text-center text-lg-left">
+                <div class="col-lg-6 text-lg-left">
                     <div class="section-title">
-                        <h1><i class="icofont icofont-movie"></i> Spotlight This Month</h1>
+                        <h1><i class="icofont icofont-movie"></i> Pilih Film Kesukaanmu</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -36,7 +38,10 @@
             </div>
             <hr />
             <div class="row portfolio-item">
-                <div class="col-lg-3 col-md-4 col-sm-6 soon released">
+                <div class="col">
+                    <h3 class="text-center mt-5">Data Belum Ada :()</h3>
+                </div>
+                {{-- <div class="col-lg-3 col-md-4 col-sm-6 soon released">
                     <div class="single-portfolio">
                         <div class="single-portfolio-img">
                             <img src="{{ asset('front/assets/img/portfolio/portfolio1.png') }}" alt="portfolio" />
@@ -219,12 +224,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
-    </section><!-- portfolio section end -->
+    </section>
+    <!-- portfolio section end -->
+
     <!-- video section start -->
-    <section class="video ptb-90">
+    {{-- <section class="video ptb-90">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -289,5 +296,6 @@
                 </div>
             </div>
         </div>
-    </section><!-- video section end -->
+    </section> --}}
+    <!-- video section end -->
 @endsection

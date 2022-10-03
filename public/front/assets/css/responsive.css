@@ -83,6 +83,10 @@
         font-size: 18px;
     }
 
+    .transformers-area>.container {
+        margin-top: -150px !important;
+    }
+
     .details-comment p {
         flex: 4;
     }
@@ -256,6 +260,10 @@
         font-size: 14px;
     }
 
+    .transformers-area>.container {
+        margin-top: -100px !important;
+    }
+
     .transformers-box .transformers-content img {
         margin: auto;
     }
@@ -305,6 +313,10 @@
 
     .menu-area {
         grid-column: span 7;
+    }
+
+    .transformers-area>.container {
+        margin-top: -80px !important;
     }
 
     .hero-area-content.pr-50 {
@@ -414,6 +426,15 @@
         padding-top: 5px;
     }
 
+    .transformers-area>.container {
+        margin-top: 3rem !important;
+    }
+
+    .transformers-content {
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+
     .transformers-bottom {
         display: block;
     }
@@ -497,11 +518,6 @@
     .buy-ticket-box ul li {
         margin-bottom: 20px;
     }
-
-
-
-
-
 }
 
 @media only screen and (max-width: 420px) {
@@ -543,6 +559,10 @@
 
     .hero-area-content.pr-50 {
         padding: 5px;
+    }
+
+    .transformers-area>.container {
+        margin-top: 3rem !important;
     }
 
     .slide-trailor h3 {

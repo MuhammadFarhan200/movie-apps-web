@@ -31,7 +31,7 @@ class MovieController extends Controller
     {
         $rules = [
             'judul' => 'required|unique:movies',
-            'background' => 'required|image|max:2048',
+            'background' => 'required|image',
             'cover' => 'required|image|max:2048',
             'sinopsis' => 'required',
             'durasi' => 'required',
@@ -48,7 +48,6 @@ class MovieController extends Controller
             'cover.max' => 'Cover harus dibawah kapasitas 2048kb!',
             'background.required' => 'Background harus di isi!',
             'background.image' => 'Background harus berjenis jpg & png!',
-            'background.max' => 'Background harus dibawah kapasitas 2048kb!',
             'sinopsis.required' => 'Sinopsis harus di isi!',
             'durasi.required' => 'Durasi harus di isi!',
             'id_genre.required' => 'Genre harus di isi!',

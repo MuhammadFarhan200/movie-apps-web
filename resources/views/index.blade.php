@@ -2,227 +2,129 @@
 
 @section('page-title', 'Home')
 @section('page-content')
-    <!-- hero area start -->
-    <section class="hero-area" id="home">
+
+    {{-- ==== Sementara ==== --}}
+    <!-- breadcrumb area start -->
+    {{-- <section class="breadcrumb-area">
         <div class="container">
-            <div class="hero-area-slider">
-                @foreach ($movies as $movie)
-                    <div class="row hero-area-slide">
-                        <div class="col-lg-6 col-md-5">
-                            <div class="hero-area-content">
-                                <img src="{{ $movie->image() }}" alt="about" class="slide-img" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-7">
-                            <div class="hero-area-content pr-50">
-                                <h2 class="mt-4 judul">{{ $movie->judul }}</h2>
-                                <p class="mt-3">{{ Str::substr($movie->sinopsis, 0, 200) }}......</p>
-                                <h4 class="mt-4">{{ $movie->tahunRilis->tahun . ' | ' . $movie->genreFilm->kategori }}
-                                </h4>
-                                <div class="slide-trailor">
-                                    <a class="theme-btn" href="{{ route('detail') }}">
-                                        Detail
-                                        <i class="bi bi-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                {{-- <div class="row hero-area-slide">
-                    <div class="col-lg-6 col-md-5">
-                        <div class="hero-area-content">
-                            <img src="{{ asset('front/assets/img/slide2.png') }}" alt="about" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-7">
-                        <div class="hero-area-content pr-50">
-                            <h2>The Devil Princess</h2>
-                            <p>She is a devil princess from the demon world. She grew up sheltered by her parents and
-                                doesn't really know how to be evil or any of the common actions, She is unable to cry
-                                due to Keita's accidental first wish, despite needed for him to wish...</p>
-                            <h3>Cast:</h3>
-                            <div class="slide-cast">
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast1.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast3.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast4.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast5.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast6.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast7.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast text-center">
-                                    5+
-                                </div>
-                            </div>
-                            <div class="slide-trailor">
-                                <a class="theme-btn" href="{{ route('detail') }}">
-                                    Detail
-                                    <i class="bi bi-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row hero-area-slide">
-                    <div class="col-lg-6 col-md-5">
-                        <div class="hero-area-content">
-                            <img src="{{ asset('front/assets/img/slide1.png') }}" alt="about" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-7">
-                        <div class="hero-area-content pr-50">
-                            <h2>Last Avatar</h2>
-                            <p>She is a devil princess from the demon world. She grew up sheltered by her parents and
-                                doesn't really know how to be evil or any of the common actions, She is unable to cry
-                                due to Keita's accidental first wish, despite needed for him to wish...</p>
-                            <h3>Cast:</h3>
-                            <div class="slide-cast">
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast1.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast3.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast4.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast5.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast6.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast7.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast text-center">
-                                    5+
-                                </div>
-                            </div>
-                            <div class="slide-trailor">
-                                <a class="theme-btn" href="#">
-                                    Detail
-                                    <i class="bi bi-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row hero-area-slide">
-                    <div class="col-lg-6 col-md-5">
-                        <div class="hero-area-content">
-                            <img src="{{ asset('front/assets/img/slide3.png') }}" alt="about" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-7">
-                        <div class="hero-area-content pr-50">
-                            <h2>The Deer God</h2>
-                            <p>She is a devil princess from the demon world. She grew up sheltered by her parents and
-                                doesn't really know how to be evil or any of the common actions, She is unable to cry
-                                due to Keita's accidental first wish, despite needed for him to wish...</p>
-                            <h3>Cast:</h3>
-                            <div class="slide-cast">
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast1.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast3.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast4.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast5.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast6.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast">
-                                    <img src="{{ asset('front/assets/img/cast/cast7.png') }}" alt="about" />
-                                </div>
-                                <div class="single-slide-cast text-center">
-                                    5+
-                                </div>
-                            </div>
-                            <div class="slide-trailor">
-                                <a class="theme-btn" href="#">
-                                    Detail
-                                    <i class="bi bi-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-            </div>
-            <div class="hero-area-thumb">
-                <div class="thumb-prev">
-                    <div class="row hero-area-slide">
-                        <div class="col-lg-6 col-md-5">
-                            <div class="hero-area-content">
-                                <img src="{{ $movies[3]->image() }}" alt="about" class="slide-img" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-7">
-                            <div class="hero-area-content pr-50">
-                                <h2 class="mt-4 judul">{{ $movies[3]->judul }}</h2>
-                                <p class="mt-3">{{ Str::substr($movies[3]->sinopsis, 0, 200) }}......</p>
-                                <h4 class="mt-4">
-                                    {{ $movies[3]->tahunRilis->tahun . ' | ' . $movies[3]->genreFilm->kategori }}
-                                </h4>
-                                <div class="slide-trailor">
-                                    <a class="theme-btn" href="{{ route('detail') }}">
-                                        Detail
-                                        <i class="bi bi-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="thumb-next">
-                    <div class="row hero-area-slide">
-                        <div class="col-lg-6 col-md-5">
-                            <div class="hero-area-content">
-                                <img src="{{ $movies[1]->image() }}" alt="about" class="slide-img" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-7">
-                            <div class="hero-area-content pr-50">
-                                <h2 class="mt-4 judul">{{ $movies[1]->judul }}</h2>
-                                <p class="mt-3">{{ Str::substr($movies[1]->sinopsis, 0, 200) }}......</p>
-                                <h4 class="mt-4">
-                                    {{ $movies[1]->tahunRilis->tahun . ' | ' . $movies[1]->genreFilm->kategori }}
-                                </h4>
-                                <div class="slide-trailor">
-                                    <a class="theme-btn" href="{{ route('detail') }}">
-                                        Detail
-                                        <i class="bi bi-arrow-right ml-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-area-content">
+                        <h1>Home Page</h1>
                     </div>
                 </div>
             </div>
         </div>
-    </section><!-- hero area end -->
+    </section> --}}
+    <!-- breadcrumb area end -->
+    {{-- ==== End Sementara ==== --}}
+
+    <!-- hero area start -->
+    @if ($movies->count() > 0)
+        <section class="hero-area" id="home">
+            <div class="container">
+
+                <div class="hero-area-slider">
+
+                    @foreach ($filtered as $fltr_movie)
+                        <div class="row hero-area-slide">
+                            <div class="col-lg-6 col-md-5">
+                                <div class="hero-area-content">
+                                    <img src="{{ $fltr_movie->image() }}" alt="about" class="slide-img" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-7">
+                                <div class="hero-area-content pr-50 pr-4">
+                                    <h2 class="mt-4 judul">{{ $fltr_movie->judul }}</h2>
+                                    <p class="mt-3">{{ Str::substr($fltr_movie->sinopsis, 0, 180) }}......</p>
+                                    <h4 class="mt-4">
+                                        <a href="#" class="link">{{ $fltr_movie->tahunRilis->tahun }}</a> |
+                                        <a href="#" class="link">{{ $fltr_movie->genreFilm->kategori }}</a>
+                                    </h4>
+                                    <div class="slide-trailor">
+                                        <a class="theme-btn" href="movie/{{ $fltr_movie->id }}">
+                                            Detail
+                                            <i class="icofont icofont-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+                <div class="hero-area-thumb">
+                    <div class="thumb-prev">
+                        <div class="row hero-area-slide">
+                            <div class="col-lg-6 col-md-5">
+                                <div class="hero-area-content">
+                                    <img src="{{ $filtered[2]->image() }}" alt="about" class="slide-img" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-7">
+                                <div class="hero-area-content pr-50">
+                                    <h2 class="mt-4 judul">{{ $filtered[2]->judul }}</h2>
+                                    <p class="mt-3">{{ Str::substr($filtered[2]->sinopsis, 0, 200) }}......</p>
+                                    <h4 class="mt-4">
+                                        {{ $filtered[2]->tahunRilis->tahun . ' | ' . $filtered[2]->genreFilm->kategori }}
+                                    </h4>
+                                    <div class="slide-trailor">
+                                        <a class="theme-btn" href="movie/{{ $filtered[2]->id }}">
+                                            Detail
+                                            <i class="bi bi-arrow-right ml-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumb-next">
+                        <div class="row hero-area-slide">
+                            <div class="col-lg-6 col-md-5">
+                                <div class="hero-area-content">
+                                    <img src="{{ $filtered[1]->image() }}" alt="about" class="slide-img" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-7">
+                                <div class="hero-area-content pr-50">
+                                    <h2 class="mt-4 judul">{{ $filtered[1]->judul }}</h2>
+                                    <p class="mt-3">{{ Str::substr($filtered[1]->sinopsis, 0, 200) }}......</p>
+                                    <h4 class="mt-4">
+                                        {{ $filtered[1]->tahunRilis->tahun . ' | ' . $filtered[1]->genreFilm->kategori }}
+                                    </h4>
+                                    <div class="slide-trailor">
+                                        <a class="theme-btn" href="movie/{{ $filtered[1]->id }}">
+                                            Detail
+                                            <i class="bi bi-arrow-right ml-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @else
+        <section class="breadcrumb-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-area-content">
+                            <h1>Home Page</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    <!-- hero area end -->
 
     <!-- portfolio section start -->
     <section class="portfolio-area pt-60 pb-90">
         <div class="container">
             <div class="row flexbox-center">
-                <div class="col text-center text-lg-left">
+                <div class="col text-lg-left">
                     <div class="section-title">
                         <h1 class="mb-3"><i class="icofont icofont-movie"></i> Rekomendasi Untukmu</h1>
                     </div>
@@ -241,27 +143,39 @@
             <hr />
 
             <div class="row align-items-stretch justify-content-start">
-                @foreach ($movies as $movie)
-                    <div class="col-lg-3 col-md-4 col-sm-6 d-sm-flex align-items-sm-stretch">
-                        <a href="#" class="d-flex align-items-stretch">
-                            <div class="single-portfolio">
-                                <div class="single-portfolio-img">
-                                    <img src="{{ $movie->image() }}" alt="portfolio" class="w-100" />
-                                    <h5 class="detail-movie">
-                                        Detail
-                                    </h5>
-                                </div>
-                                <h3 class="portfolio-title">{{ $movie->judul }}</h3>
-                                <div class="portfolio-content mt-auto">
-                                    <hr class="mt-2 opacity-50" />
-                                    <div class="d-flex flex-row justify-content-between align-items-center mt-2">
-                                        <h4>{{ $movie->tahunRilis->tahun . ' | ' . $movie->genreFilm->kategori }}</h4>
+
+                {{-- Loop Data --}}
+                @if ($movies->count() > 0)
+                    @foreach ($movies as $movie)
+                        <div class="col-lg-3 col-md-4 col-sm-6 d-sm-flex align-items-sm-stretch">
+                            <a href="movie/{{ $movie->id }}" class="d-flex flex-column align-items-stretch">
+                                <div class="single-portfolio">
+                                    <div class="single-portfolio-img">
+                                        <img src="{{ $movie->image() }}" alt="portfolio" class="w-100" />
+                                        <h5 class="detail-movie">
+                                            Detail
+                                        </h5>
+                                    </div>
+                                    <h3 class="portfolio-title">{{ $movie->judul }}</h3>
+                                    <div class="portfolio-content mt-auto">
+                                        <hr class="mt-2 opacity-50" />
+                                        <div class="mt-2">
+                                            <h4><a href="#" class="link">{{ $movie->tahunRilis->tahun }}</a> |
+                                                <a href="#" class="link">{{ $movie->genreFilm->kategori }}</a>
+                                            </h4>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
+                            </a>
+                        </div>
+                    @endforeach
+                @else
+                    <h3 class="text-center mt-5">Data Belum Ada :()</h3>
+                @endif
+                {{-- End Loop Data --}}
+
+                {{-- Sementara --}}
+                {{-- <h3 class="mt-5 mx-auto">Data Belum Ada :(</h3> --}}
 
                 {{-- <div class="row">
                     <div class="col-lg-12">

@@ -36,6 +36,9 @@ class HomeController extends Controller
             toast('Selamat Datang Kembali!', 'success')->autoClose()->width('380px');
             return view('admin.index', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting', 'jumlahMovie'));
         }
-        return view('pages.front.index');
+
+        $movies = Movie::limit(8)->get()->load('tahunRilis', 'genreFilm');
+        $filtered = $movies->take(3);
+        return view('index', compact('movies', 'filtered'));
     }
 }

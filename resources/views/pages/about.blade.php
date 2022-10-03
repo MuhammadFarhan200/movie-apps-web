@@ -13,5 +13,6 @@
                 </div>
             </div>
         </div>
-    </section><!-- breadcrumb area end -->
+    </section>
+    <!-- breadcrumb area end -->
 @endsection

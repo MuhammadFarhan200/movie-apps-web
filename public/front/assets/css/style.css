@@ -42,6 +42,7 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /*----------------------------
@@ -327,6 +328,7 @@ input::-webkit-input-placeholder {
 -------- HEADER AREA CSS START --------
 ---------------------------------------*/
 .header {
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 18px 0;
     position: absolute;
     top: 0;
@@ -344,6 +346,7 @@ input::-webkit-input-placeholder {
 }
 
 .logo {
+    width: 170px;
     grid-column: span 2;
     grid-row: span 2;
     padding-right: 15px;
@@ -967,14 +970,17 @@ hr {
 }
 
 .transformers-box {
+    background-color: #13151f;
     padding: 35px;
     box-shadow: 0 0 20px #000000;
     position: relative;
+    border-radius: .3rem;
 }
 
 .transformers-box .transformers-content img {
     display: block;
     position: relative;
+    border-radius: .3rem;
 }
 
 .transformers-content>p {
@@ -1513,7 +1519,7 @@ hr {
     margin-left: auto !important;
     margin-right: auto !important;
     border-radius: .3rem !important;
-    width: 350px !important;
+    width: 380px !important;
     max-height: 550px !important;
     object-fit: cover !important;
     object-position: center !important;
@@ -1524,6 +1530,42 @@ hr {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.background-movie {
+    position: relative;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+}
+
+.movie-bg-shadow {
+    margin-top: -50px;
+    box-shadow: 0 50px 50px 50px rgba(19, 21, 31, 0.9);
+}
+
+.link {
+    transition: all .3s !important;
+}
+
+.link:hover {
+    color: #eb315a !important;
+}
+
+.ms-auto {
+    margin-left: auto !important;
+}
+
+.text-body {
+    color: #b6b7b9 !important;
+}
+
+/* .text-center {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+} */
 
 /*--------------------------------------
 --------- My Style END ---------

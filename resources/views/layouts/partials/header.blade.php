@@ -1,8 +1,9 @@
 <header class="header">
     <div class="container">
-        <div class="header-area d-flex justify-content-between align-items-center mt-3">
+        <div class="header-area d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="index-2.html"><img src="{{ asset('front/assets/img/logo.png') }}" alt="logo" /></a>
+                <a href="{{ route('guest_home') }}"><img src="{{ asset('front/assets/img/logo.png') }}"
+                        alt="logo" /></a>
             </div>
             {{-- <div class="header-right">
                     <form action="#">
@@ -20,17 +21,21 @@
                 <div class="mainmenu">
                     <ul id="primary-menu">
                         <li>
-                            <a class="{{ request()->is('/') ? 'active' : '' }}"
+                            <a class="{{ request()->is('/') || request()->is('home') ? 'active' : '' }}"
                                 href="{{ route('guest_home') }}">Home</a>
                         </li>
                         <li>
-                            <a class="{{ request()->is('movies') ? 'active' : '' }}"
+                            <a class="{{ request()->is('movies') || request()->is('movie/*') ? 'active' : '' }}"
                                 href="{{ route('movies') }}">Movies</a>
                         </li>
                         <li>
+                            <a class="{{ request()->is('cast') ? 'active' : '' }}"
+                                href="{{ url('/cast') }}">Celebrities</a>
+                        </li>
+                        {{-- <li>
                             <a class="{{ request()->is('about') ? 'active' : '' }}"
                                 href="{{ route('about') }}">About</a>
-                        </li>
+                        </li> --}}
                         @if (Route::has('login'))
                             @auth
                                 <li>

@@ -1,17 +1,18 @@
 <!DOCTYPE HTML>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Movie Apps | @yield('page-title')</title>
+    <title>Movies App | @yield('page-title')</title>
     @include('layouts.partials.topScript')
 </head>
 
 <body>
     <!-- Page loader -->
     <div id="preloader"></div>
+
     <!-- header section start -->
     @include('layouts.partials.header')
     <!-- header section end -->
@@ -22,7 +23,7 @@
 
     <!-- footer section start -->
     <footer class="footer">
-        <div class="container">
+        <div class="container px-4">
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget">

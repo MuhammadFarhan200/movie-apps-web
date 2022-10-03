@@ -40,7 +40,9 @@ Route::get('/errors', function () {
     return view('errors.403');
 });
 
+// Route Front
 Route::get('/', [FrontController::class, 'index'])->name('guest_home');
 Route::get('/movies', [FrontController::class, 'movie'])->name('movies');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
-Route::get('/movie/detail', [FrontController::class, 'show'])->name('detail');
+Route::get('/movie/{movie}', [FrontController::class, 'detailMovie']);
+Route::get('cast', [FrontController::class, 'cast']);

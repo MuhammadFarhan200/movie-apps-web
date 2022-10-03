@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('page-title', 'Detail Movie')
+@section('page-title', 'Celebrities Page')
 @section('page-content')
     <!-- breadcrumb area start -->
     <section class="breadcrumb-area">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-area-content">
-                        <h1>Movie Detalied Page</h1>
+                        <h1>Celebrities Page</h1>
                     </div>
                 </div>
             </div>
@@ -21,52 +21,53 @@
                 <div class="row flexbox-center">
                     <div class="col-lg-5 text-lg-left text-center">
                         <div class="transformers-content">
-                            <img src="{{ asset('front/assets/img/slide2.png') }}" alt="about" />
+                            <img src="{{ asset('front/assets/img/slide4.jpg') }}" alt="about" />
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <div class="transformers-content">
-                            <h2>The Transformers</h2>
-                            <p>3D | Animation | Action | Sci-Fi</p>
+                        <div class="transformers-content mtr-30">
+                            <h2>Alex Px.</h2>
+                            <a href="#" class="theme-btn">Biography</a>
+                            <a href="#">Filmography</a>
                             <ul>
                                 <li>
                                     <div class="transformers-left">
-                                        Movie:
+                                        Height:
                                     </div>
                                     <div class="transformers-right">
-                                        <a href="#">Sci-Fic</a>
+                                        5.7”
                                     </div>
                                 </li>
                                 <li>
                                     <div class="transformers-left">
-                                        Writer:
+                                        Weight:
                                     </div>
                                     <div class="transformers-right">
-                                        Stephen McFeely, Christopher Markus
+                                        1136LB
                                     </div>
                                 </li>
                                 <li>
                                     <div class="transformers-left">
-                                        Director:
+                                        Eye Color:
                                     </div>
                                     <div class="transformers-right">
-                                        Joe Johnston
+                                        Black
                                     </div>
                                 </li>
                                 <li>
                                     <div class="transformers-left">
-                                        Time:
+                                        Hair Color:
                                     </div>
                                     <div class="transformers-right">
-                                        190m
+                                        Black
                                     </div>
                                 </li>
                                 <li>
                                     <div class="transformers-left">
-                                        Release:
+                                        Birthday:
                                     </div>
                                     <div class="transformers-right">
-                                        2018-07-22
+                                        1985.Jun.20
                                     </div>
                                 </li>
                                 <li>
@@ -79,22 +80,15 @@
                                 </li>
                                 <li>
                                     <div class="transformers-left">
-                                        Cinema:
+                                        Hobby:
                                     </div>
                                     <div class="transformers-right">
-                                        HB Movies | HW Town <a href="#" class="theme-btn">Movies House</a>Grand Seats
-                                        | HB Max
-                                        <div class="transformers-bottom">
-                                            <p>May 19, 2018 <span>15h47</span></p>
-                                            <p>May 19, 2018 <span>15h47</span></p>
-                                            <p>May 19, 2018 <span>15h47</span></p>
-                                        </div>
-
+                                        Base Ball, Gaming, Exploring, Baook Reading
                                     </div>
                                 </li>
                                 <li>
                                     <div class="transformers-left">
-                                        Share:
+                                        Follow:
                                     </div>
                                     <div class="transformers-right">
                                         <a href="#"><i class="icofont icofont-social-facebook"></i></a>
@@ -107,7 +101,6 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="theme-btn"><i class="icofont icofont-ticket"></i> BUY TICKET</a>
             </div>
         </div>
     </section><!-- transformers area end -->
