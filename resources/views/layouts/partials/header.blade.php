@@ -25,7 +25,7 @@
                                 href="{{ route('guest_home') }}">Home</a>
                         </li>
                         <li>
-                            <a class="{{ request()->is('movies') || request()->is('movie/*') ? 'active' : '' }}"
+                            <a class="{{ request()->is('movies') || request()->is('movies/*') ? 'active' : '' }}"
                                 href="{{ route('movies') }}">Movies</a>
                         </li>
                         <li>

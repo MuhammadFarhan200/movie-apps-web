@@ -37,8 +37,9 @@ class HomeController extends Controller
             return view('admin.index', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting', 'jumlahMovie'));
         }
 
-        $movies = Movie::limit(8)->get()->load('tahunRilis', 'genreFilm');
+        $movies = Movie::limit(8)->get();
         $filtered = $movies->take(3);
-        return view('index', compact('movies', 'filtered'));
+        $genres = GenreFilm::limit(4)->orderBy('kategori', 'asc')->get();
+        return view('index', compact('movies', 'filtered', 'genres'));
     }
 }

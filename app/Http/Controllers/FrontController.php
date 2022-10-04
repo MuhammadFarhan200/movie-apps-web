@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GenreFilm;
 use App\Models\Movie;
 
 class FrontController extends Controller
@@ -13,14 +14,17 @@ class FrontController extends Controller
 
     public function index()
     {
-        $movies = Movie::limit(8)->get()->load('tahunRilis', 'genreFilm');
+        $movies = Movie::latest()->limit(8)->get()->load('tahunRilis', 'genreFilm');
         $filtered = $movies->take(3);
-        return view('index', compact('movies', 'filtered'));
+        $genres = GenreFilm::limit(4)->orderBy('kategori', 'asc')->get();
+        return view('index', compact('movies', 'filtered', 'genres'));
     }
 
     public function movie()
     {
-        return view('pages.movie.movies');
+        $movies = Movie::latest()->get();
+        $genres = GenreFilm::limit(4)->orderBy('kategori', 'asc')->get();
+        return view('pages.movie.movies', compact('movies', 'genres'));
     }
 
     public function about()

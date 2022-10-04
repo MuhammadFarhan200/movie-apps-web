@@ -33,16 +33,28 @@
                                     <img src="{{ $fltr_movie->image() }}" alt="about" class="slide-img" />
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-7">
+                            <div class="col-lg-6 col-md-7 pb-4">
                                 <div class="hero-area-content pr-50 pr-4">
-                                    <h2 class="mt-4 judul">{{ $fltr_movie->judul }}</h2>
+                                    <h2 class="mt-4 judul">
+                                        <a href="movies/{{ $fltr_movie->id }}" class="link">{{ $fltr_movie->judul }}</a>
+                                    </h2>
                                     <p class="mt-3">{{ Str::substr($fltr_movie->sinopsis, 0, 180) }}......</p>
-                                    <h4 class="mt-4">
-                                        <a href="#" class="link">{{ $fltr_movie->tahunRilis->tahun }}</a> |
-                                        <a href="#" class="link">{{ $fltr_movie->genreFilm->kategori }}</a>
-                                    </h4>
-                                    <div class="slide-trailor">
-                                        <a class="theme-btn" href="movie/{{ $fltr_movie->id }}">
+                                    <h3 class="">Cast:</h3>
+                                    <div class="slide-cast">
+                                        @foreach ($fltr_movie->casting as $cast)
+                                            <div class="single-slide-cast">
+                                                {{-- <a href="#"> --}}
+                                                <img src="{{ $cast->image() }}" alt="about" />
+                                                {{-- </a> --}}
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <div class="slide-trailor text-end d-flex justify-content-between align-items-center">
+                                        <h4 class="">
+                                            <a href="#" class="link">{{ $fltr_movie->tahunRilis->tahun }}</a> |
+                                            <a href="#" class="link">{{ $fltr_movie->genreFilm->kategori }}</a>
+                                        </h4>
+                                        <a class="theme-btn" href="movies/{{ $fltr_movie->id }}">
                                             Detail
                                             <i class="icofont icofont-arrow-right"></i>
                                         </a>
@@ -69,7 +81,7 @@
                                         {{ $filtered[2]->tahunRilis->tahun . ' | ' . $filtered[2]->genreFilm->kategori }}
                                     </h4>
                                     <div class="slide-trailor">
-                                        <a class="theme-btn" href="movie/{{ $filtered[2]->id }}">
+                                        <a class="theme-btn" href="movies/{{ $filtered[2]->id }}">
                                             Detail
                                             <i class="bi bi-arrow-right ml-2"></i>
                                         </a>
@@ -93,7 +105,7 @@
                                         {{ $filtered[1]->tahunRilis->tahun . ' | ' . $filtered[1]->genreFilm->kategori }}
                                     </h4>
                                     <div class="slide-trailor">
-                                        <a class="theme-btn" href="movie/{{ $filtered[1]->id }}">
+                                        <a class="theme-btn" href="movies/{{ $filtered[1]->id }}">
                                             Detail
                                             <i class="bi bi-arrow-right ml-2"></i>
                                         </a>
@@ -129,26 +141,26 @@
                         <h1 class="mb-3"><i class="icofont icofont-movie"></i> Rekomendasi Untukmu</h1>
                     </div>
                 </div>
-                {{-- <div class="col-lg-6 text-center text-lg-right">
+                <div class="col-lg-6 text-center text-lg-right">
                     <div class="portfolio-menu">
                         <ul>
-                            <li data-filter="*" class="active">Latest</li>
-                            <li data-filter=".soon">Comming Soon</li>
-                            <li data-filter=".top">Top Rated</li>
-                            <li data-filter=".released">Recently Released</li>
+                            <li data-filter="*" class="active">Baru Ditambahkan</li>
+                            @foreach ($genres as $genre)
+                                <li data-filter=".{{ $genre->kategori }}">{{ $genre->kategori }}</li>
+                            @endforeach
                         </ul>
                     </div>
-                </div> --}}
+                </div>
             </div>
             <hr />
 
-            <div class="row align-items-stretch justify-content-start">
+            @if ($movies->count() > 0)
+                <div class="row portfolio-item">
 
-                {{-- Loop Data --}}
-                @if ($movies->count() > 0)
+                    {{-- Loop Data --}}
                     @foreach ($movies as $movie)
-                        <div class="col-lg-3 col-md-4 col-sm-6 d-sm-flex align-items-sm-stretch">
-                            <a href="movie/{{ $movie->id }}" class="d-flex flex-column align-items-stretch">
+                        <div class="col-lg-3 col-md-4 col-sm-6 {{ $movie->genreFilm->kategori }}">
+                            <a href="movies/{{ $movie->id }}" class="d-flex flex-column align-items-stretch">
                                 <div class="single-portfolio">
                                     <div class="single-portfolio-img">
                                         <img src="{{ $movie->image() }}" alt="portfolio" class="w-100" />
@@ -156,7 +168,10 @@
                                             Detail
                                         </h5>
                                     </div>
-                                    <h3 class="portfolio-title">{{ $movie->judul }}</h3>
+                                    <h3 class="portfolio-title text-nowrap"
+                                        style="overflow: hidden; text-overflow: ellipsis;">
+                                        <a href="movies/{{ $movie->id }}" class="link">{{ $movie->judul }}</a>
+                                    </h3>
                                     <div class="portfolio-content mt-auto">
                                         <hr class="mt-2 opacity-50" />
                                         <div class="mt-2">
@@ -169,10 +184,20 @@
                             </a>
                         </div>
                     @endforeach
-                @else
-                    <h3 class="text-center mt-5">Data Belum Ada :()</h3>
-                @endif
-                {{-- End Loop Data --}}
+                    {{-- End Loop Data --}}
+
+                </div>
+
+                <div class="row mt-5 text-center">
+                    <div class="col">
+                        <a href="{{ route('movies') }}" class="link-2" style="font-size: 24px;">
+                            Lihat Lebih Banyak
+                            <i class="bi bi-arrow-right mb-0"></i>
+                        </a>
+                    </div>
+                </div>
+            @else
+                <h3 class="text-center mt-5">Data Belum Ada :(</h3>
 
                 {{-- Sementara --}}
                 {{-- <h3 class="mt-5 mx-auto">Data Belum Ada :(</h3> --}}
@@ -321,7 +346,7 @@
                         </div>
                     </div>
                 </div> --}}
-            </div>
+            @endif
         </div>
     </section><!-- portfolio section end -->
     <!-- video section start -->

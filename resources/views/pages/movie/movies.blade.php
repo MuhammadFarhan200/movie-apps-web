@@ -29,18 +29,52 @@
                     <div class="portfolio-menu">
                         <ul>
                             <li data-filter="*" class="active">Latest</li>
-                            <li data-filter=".soon">Comming Soon</li>
+                            @foreach ($genres as $genre)
+                                <li data-filter=".{{ $genre->kategori }}">{{ $genre->kategori }}</li>
+                            @endforeach
+
+                            {{-- <li data-filter=".soon">Comming Soon</li>
                             <li data-filter=".top">Top Rated</li>
-                            <li data-filter=".released">Recently Released</li>
+                            <li data-filter=".released">Recently Released</li> --}}
                         </ul>
                     </div>
                 </div>
             </div>
             <hr />
-            <div class="row portfolio-item">
-                <div class="col">
-                    <h3 class="text-center mt-5">Data Belum Ada :()</h3>
-                </div>
+            <div class="row portfolio-item justify-content-start">
+
+                @if ($movies->count() > 0)
+                    @foreach ($movies as $movie)
+                        <div class="col-lg-3 col-md-4 col-sm-6 {{ $movie->genreFilm->kategori }}">
+                            <a href="movies/{{ $movie->id }}">
+                                <div class="single-portfolio">
+                                    <div class="single-portfolio-img">
+                                        <img src="{{ $movie->image() }}" alt="portfolio" class="w-100" />
+                                        <h5 class="detail-movie">
+                                            Detail
+                                        </h5>
+                                    </div>
+                                    <h3 class="portfolio-title text-nowrap"
+                                        style="overflow: hidden; text-overflow: ellipsis;">
+                                        {{ $movie->judul }}</h3>
+                                    <div class="portfolio-content mt-auto">
+                                        <hr class="mt-2 opacity-50" />
+                                        <div class="mt-2">
+                                            <h4><a href="#" class="link">{{ $movie->tahunRilis->tahun }}</a> |
+                                                <a href="#" class="link">{{ $movie->genreFilm->kategori }}</a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col">
+                        <h3 class="text-center mt-5">Data Belum Ada :(</h3>
+                    </div>
+                @endif
+
                 {{-- <div class="col-lg-3 col-md-4 col-sm-6 soon released">
                     <div class="single-portfolio">
                         <div class="single-portfolio-img">

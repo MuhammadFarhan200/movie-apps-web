@@ -22,4 +22,4 @@
   <![endif]-->
 
 {{-- My CSS --}}
-<link rel="stylesheet" href="{{ asset('assets/css/myCss/style.css') }}">
+<link rel="stylesheet" href="{{ asset('front/assets/myCss/style.css') }}">

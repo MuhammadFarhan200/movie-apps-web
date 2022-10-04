@@ -23,12 +23,18 @@
 <script>
     function logout() {
         const swalWithBootstrapButtons = Swal.mixin({
-            buttonsStyling: true
+            customClass: {
+                confirmButton: 'btn btn-danger',
+                cancelButton: 'btn btn-secondary',
+            },
+            buttonsStyling: false
         })
 
         swalWithBootstrapButtons.fire({
             title: 'Anda Yakin Akan Logout?',
             icon: 'warning',
+            color: '#fff',
+            background: '#13151f',
             showCancelButton: true,
             // allowOutsideClick: false,
             confirmButtonText: 'Logout',

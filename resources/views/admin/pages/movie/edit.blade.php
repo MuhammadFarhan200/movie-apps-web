@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Genre</label>
-                                <select name="id_genre" class="form-control @error('background') is-invalid @enderror"
+                                <select name="id_genre" class="form-control @error('id_genre') is-invalid @enderror"
                                     id="">
                                     <option>-- Pilih Genre --</option>
                                     @foreach ($genre as $data)

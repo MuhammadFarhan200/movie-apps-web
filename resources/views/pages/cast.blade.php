@@ -108,7 +108,7 @@
     <section class="details-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col">
                     <div class="details-content">
                         <div class="details-overview">
                             <h2>Overview</h2>
@@ -178,13 +178,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 text-center text-lg-left">
+                {{-- <div class="col-lg-3 text-center text-lg-left">
                     <div class="portfolio-sidebar">
                         <img src="{{ asset('front/assets/img/sidebar/sidebar1.png') }}" alt="sidebar" />
                         <img src="{{ asset('front/assets/img/sidebar/sidebar2.png') }}" alt="sidebar" />
                         <img src="{{ asset('front/assets/img/sidebar/sidebar4.png') }}" alt="sidebar" />
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section><!-- details area end -->

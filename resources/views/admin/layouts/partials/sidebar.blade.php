@@ -3,7 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="{{ route('home') }}">
+                    <a href="{{ route('admin') }}">
                         <img src="{{ asset('assets/images/logo/logo.svg') }}" alt="Logo" srcset="">
                         {{-- Hanztt --}}
                     </a>

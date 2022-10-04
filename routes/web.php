@@ -44,5 +44,5 @@ Route::get('/errors', function () {
 Route::get('/', [FrontController::class, 'index'])->name('guest_home');
 Route::get('/movies', [FrontController::class, 'movie'])->name('movies');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
-Route::get('/movie/{movie}', [FrontController::class, 'detailMovie']);
+Route::get('/movies/{movie}', [FrontController::class, 'detailMovie']);
 Route::get('cast', [FrontController::class, 'cast']);
