@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Models\Casting;
 use App\Models\GenreFilm;
 use App\Models\Movie;
 use App\Models\Reviewer;
@@ -57,6 +58,7 @@ class FrontController extends Controller
 
     public function cast()
     {
-        return view('pages.cast');
+        $casters = Casting::all()->load('movie');
+        return view('pages.cast', compact('casters'));
     }
 }

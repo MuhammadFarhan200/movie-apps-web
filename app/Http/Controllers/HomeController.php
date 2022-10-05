@@ -6,6 +6,7 @@ use App\Models\Casting;
 use App\Models\GenreFilm;
 use App\Models\Movie;
 use App\Models\TahunRilis;
+use App\Models\Reviewer;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -31,10 +32,11 @@ class HomeController extends Controller
         $jumlahGenreFilm = GenreFilm::all()->count();
         $jumlahCasting = Casting::all()->count();
         $jumlahMovie = Movie::all()->count();
+        $jumlahReview = Reviewer::all()->count();
 
         if (Auth::user()->role == 'admin') {
             toast('Selamat Datang Kembali!', 'success')->autoClose()->width('380px');
-            return view('admin.index', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting', 'jumlahMovie'));
+            return view('admin.index', compact('jumlahTahunRilis', 'jumlahGenreFilm', 'jumlahCasting', 'jumlahMovie', 'jumlahReview'));
         }
 
         $movies = Movie::limit(8)->get();

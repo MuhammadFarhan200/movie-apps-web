@@ -26,16 +26,12 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
-                    <div class="portfolio-menu">
+                    <div class="portfolio-menu" style="white-space: nowrap;">
                         <ul>
                             <li data-filter="*" class="active">Baru Ditambahkan</li>
                             @foreach ($genres as $genre)
                                 <li data-filter=".{{ $genre->kategori }}">{{ $genre->kategori }}</li>
                             @endforeach
-
-                            {{-- <li data-filter=".soon">Comming Soon</li>
-                            <li data-filter=".top">Top Rated</li>
-                            <li data-filter=".released">Recently Released</li> --}}
                         </ul>
                     </div>
                 </div>

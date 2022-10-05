@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
-@section('title-page', 'Data Reviewer')
+@section('title-page', 'Data Review')
 
 @section('page-heading')
-    <h2>Reviewer Movie</h2>
+    <h2>Review Movie</h2>
     <p>Lihat data <b>{{ $data_title }}</b> pada table dibawah</p>
 @endsection
 

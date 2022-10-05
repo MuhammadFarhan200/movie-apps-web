@@ -1021,6 +1021,10 @@ hr {
     font-weight: 300;
 }
 
+.transformers-right {
+    text-align: left !important;
+}
+
 .transformers-right .theme-btn {
     margin: 0 8px;
     padding: 2px 15px;
@@ -1599,6 +1603,30 @@ hr {
     border: 1px solid #eb315a !important;
     background: transparent !important;
     color: #eb315a !important;
+}
+
+.transformers-area .container.cast {
+    margin-top: 0 !important;
+}
+
+.custom-transformers-list ul li {
+    display: flex;
+    font-weight: 300;
+}
+
+.custom-transformers-list .transformers-left {
+    width: 40% !important;
+}
+
+.custom-transformers-list .transformers-right {
+    width: 60% !important;
+}
+
+.transformers-content .cast-img {
+    width: 400px !important;
+    height: 400px !important;
+    object-fit: cover !important;
+    object-position: center top !important;
 }
 
 /* .text-center {

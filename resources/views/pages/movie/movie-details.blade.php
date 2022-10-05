@@ -44,7 +44,7 @@
                                         Genre:
                                     </div>
                                     <div class="transformers-right">
-                                        <a href="#" class="link">{{ $movie->genreFilm->kategori }}</a>
+                                        {{ $movie->genreFilm->kategori }}
                                     </div>
                                 </li>
                                 <li>
@@ -52,7 +52,7 @@
                                         Tahun Rilis:
                                     </div>
                                     <div class="transformers-right">
-                                        <a href="#" class="link">{{ $movie->tahunRilis->tahun }}</a>
+                                        {{ $movie->tahunRilis->tahun }}
                                     </div>
                                 </li>
                                 <li>
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="transformers-right">
                                         @foreach ($movie->casting as $casting)
-                                            <a href="#" class="link">{{ $casting->nama }}</a>
+                                            <a href="/cast#{{ $casting->id }}" class="link">{{ $casting->nama }}</a>
                                             @if (!$loop->last)
                                                 ,&nbsp;
                                             @endif
@@ -92,11 +92,11 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-5 mt-lg-0">
-                    <a href="{{ route('guest_home') }}" class="theme-btn py-2 mr-3">
+                    <a href="{{ route('guest_home') }}" class="theme-btn mr-3">
                         <i class="icofont icofont-arrow-left"></i>
                         Home
                     </a>
-                    <a href="{{ route('movies') }}" class="theme-btn py-2">
+                    <a href="{{ route('movies') }}" class="theme-btn">
                         Movies Page
                         <i class="icofont icofont-arrow-right"></i>
                     </a>
@@ -194,12 +194,11 @@
 
                         <h3 class="my-4">Komentar dan Review <span class="text-muted">({{ $review->count() }})</span>
                         </h3>
-                        {{-- <hr class="w-75 mx-auto my-4" /> --}}
 
                         @if ($review->count() > 0)
                             @foreach ($review as $rev)
-                                <div class="d-flex justify-content-start my-4">
-                                    <img src="{{ asset('assets/images/no_image.png') }}" alt=""
+                                <div class="d-flex justify-content-start my-4 align-items-start">
+                                    <img src="{{ asset('assets/images/no_image.png') }}" alt="profile-image"
                                         class="rounded-circle"
                                         style="width:72px; heighr:72px; object-fit:cover; object-position:center;">
                                     <div class="text-start ml-4">

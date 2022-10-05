@@ -51,8 +51,7 @@
                                     </div>
                                     <div class="slide-trailor text-end d-flex justify-content-between align-items-center">
                                         <h4 class="">
-                                            <a href="#" class="link">{{ $fltr_movie->tahunRilis->tahun }}</a> |
-                                            <a href="#" class="link">{{ $fltr_movie->genreFilm->kategori }}</a>
+                                            {{ $fltr_movie->tahunRilis->tahun . ' | ' . $fltr_movie->genreFilm->kategori }}
                                         </h4>
                                         <a class="theme-btn" href="movies/{{ $fltr_movie->id }}">
                                             Detail
@@ -175,8 +174,8 @@
                                     <div class="portfolio-content mt-auto">
                                         <hr class="mt-2 opacity-50" />
                                         <div class="mt-2">
-                                            <h4><a href="#" class="link">{{ $movie->tahunRilis->tahun }}</a> |
-                                                <a href="#" class="link">{{ $movie->genreFilm->kategori }}</a>
+                                            <h4>
+                                                {{ $movie->tahunRilis->tahun . ' | ' . $movie->genreFilm->kategori }}
                                             </h4>
                                         </div>
                                     </div>

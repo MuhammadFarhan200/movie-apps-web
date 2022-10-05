@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('page-title', 'Celebrities Page')
+@section('page-title', 'Cast Page')
 @section('page-content')
     <!-- breadcrumb area start -->
     <section class="breadcrumb-area">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-area-content">
-                        <h1>Celebrities Page</h1>
+                        <h1>Cast Page</h1>
                     </div>
                 </div>
             </div>
@@ -16,96 +16,74 @@
     </section><!-- breadcrumb area end -->
     <!-- transformers area start -->
     <section class="transformers-area">
-        <div class="container">
-            <div class="transformers-box">
-                <div class="row flexbox-center">
-                    <div class="col-lg-5 text-lg-left text-center">
-                        <div class="transformers-content">
-                            <img src="{{ asset('front/assets/img/slide4.jpg') }}" alt="about" />
+        <div class="container cast">
+            @foreach ($casters as $cast)
+                <div class="transformers-box mb-5" id="{{ $cast->id }}">
+                    <div class="row flexbox-center">
+                        <div class="col-lg-5 text-lg-left text-center">
+                            <div class="transformers-content">
+                                <img src="{{ $cast->image() }}" alt="about" class="cast-img" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="transformers-content mtr-30">
-                            <h2>Alex Px.</h2>
-                            <a href="#" class="theme-btn">Biography</a>
-                            <a href="#">Filmography</a>
-                            <ul>
-                                <li>
-                                    <div class="transformers-left">
-                                        Height:
-                                    </div>
-                                    <div class="transformers-right">
-                                        5.7”
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="transformers-left">
-                                        Weight:
-                                    </div>
-                                    <div class="transformers-right">
-                                        1136LB
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="transformers-left">
-                                        Eye Color:
-                                    </div>
-                                    <div class="transformers-right">
-                                        Black
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="transformers-left">
-                                        Hair Color:
-                                    </div>
-                                    <div class="transformers-right">
-                                        Black
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="transformers-left">
-                                        Birthday:
-                                    </div>
-                                    <div class="transformers-right">
-                                        1985.Jun.20
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="transformers-left">
-                                        Language:
-                                    </div>
-                                    <div class="transformers-right">
-                                        English, Russian
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="transformers-left">
-                                        Hobby:
-                                    </div>
-                                    <div class="transformers-right">
-                                        Base Ball, Gaming, Exploring, Baook Reading
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="transformers-left">
-                                        Follow:
-                                    </div>
-                                    <div class="transformers-right">
-                                        <a href="#"><i class="icofont icofont-social-facebook"></i></a>
-                                        <a href="#"><i class="icofont icofont-social-twitter"></i></a>
-                                        <a href="#"><i class="icofont icofont-social-google-plus"></i></a>
-                                        <a href="#"><i class="icofont icofont-youtube-play"></i></a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="col-lg-7">
+                            <div class="transformers-content">
+                                <h2 class=" mt-4 mt-lg-0">{{ $cast->nama }}</h2>
+                                <ul class="custom-transformers-list">
+                                    <li>
+                                        <div class="transformers-left">
+                                            Jenis Kelamin:
+                                        </div>
+                                        <div class="transformers-right">
+                                            {{ $cast->jenis_kelamin }}
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="transformers-left">
+                                            Tanggal Lahir:
+                                        </div>
+                                        <div class="transformers-right">
+                                            {{ \Carbon\Carbon::parse($cast->tanggal_lahir)->format('d M, Y') }}
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="transformers-left">
+                                            Film dengan Cast "{{ $cast->nama }}":
+                                        </div>
+                                        <div class="transformers-right">
+                                            @if ($cast->movie->count() > 0)
+                                                @foreach ($cast->movie as $movie)
+                                                    <a href="movies/{{ $movie->id }}"
+                                                        class="link">{{ $movie->judul }}</a>
+                                                    @if (!$loop->last)
+                                                        ,&nbsp;
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                Belum ada film
+                                            @endif
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="transformers-left">
+                                            Follow:
+                                        </div>
+                                        <div class="transformers-right">
+                                            <a href="#"><i class="icofont icofont-social-facebook"></i></a>
+                                            <a href="#"><i class="icofont icofont-social-twitter"></i></a>
+                                            <a href="#"><i class="icofont icofont-social-google-plus"></i></a>
+                                            <a href="#"><i class="icofont icofont-youtube-play"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </section><!-- transformers area end -->
     <!-- details area start -->
-    <section class="details-area">
+    {{-- <section class="details-area">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -178,14 +156,8 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-lg-3 text-center text-lg-left">
-                    <div class="portfolio-sidebar">
-                        <img src="{{ asset('front/assets/img/sidebar/sidebar1.png') }}" alt="sidebar" />
-                        <img src="{{ asset('front/assets/img/sidebar/sidebar2.png') }}" alt="sidebar" />
-                        <img src="{{ asset('front/assets/img/sidebar/sidebar4.png') }}" alt="sidebar" />
-                    </div>
-                </div> --}}
             </div>
         </div>
-    </section><!-- details area end -->
+    </section> --}}
+    <!-- details area end -->
 @endsection
