@@ -669,7 +669,7 @@ hr {
 .single-portfolio-img {
     overflow: hidden;
     position: relative;
-    border-radius: .5rem;
+    border-radius: .3rem;
 }
 
 .single-portfolio-img:hover .popup-youtube i {
@@ -686,7 +686,7 @@ hr {
     height: 400px;
     object-position: center;
     object-fit: cover;
-    transition: 0.5s;
+    transition: 0.7s;
 }
 
 .video-area:hover img,
@@ -1106,7 +1106,8 @@ hr {
     align-items: center;
 }
 
-.details-comment a {
+.details-comment a,
+.details-comment button {
     flex: 1;
     text-align: center;
 }
@@ -1578,6 +1579,26 @@ hr {
 
 .text-decoration-underline {
     text-decoration: underline;
+}
+
+.comment-btn {
+    background: #eb315a !important;
+    border: 1px solid #eb315a !important;
+    color: #fff !important;
+    border-radius: 35px !important;
+    padding: 5px 25px !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    font-weight: 500 !important;
+    transition: all .3s;
+    padding-block: 8px !important;
+}
+
+.comment-btn:hover {
+    border: 1px solid #eb315a !important;
+    background: transparent !important;
+    color: #eb315a !important;
 }
 
 /* .text-center {

@@ -3,7 +3,9 @@
 use App\Http\Controllers\CastingController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GenreFilmController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TahunRilisController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +25,10 @@ use Illuminate\Support\Facades\Route;
 // })->name('welcome');
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+    Route::get('/', [HomeController::class, 'index'])->name('admin');
     Route::get('profile', function () {
         return view('admin.pages.profile');
     });
@@ -34,6 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
     Route::resource('genre-film', GenreFilmController::class);
     Route::resource('casting', CastingController::class);
     Route::resource('movie', MovieController::class);
+    Route::resource('reviewer', ReviewController::class);
 });
 
 Route::get('/errors', function () {
@@ -44,5 +47,6 @@ Route::get('/errors', function () {
 Route::get('/', [FrontController::class, 'index'])->name('guest_home');
 Route::get('/movies', [FrontController::class, 'movie'])->name('movies');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
-Route::get('/movies/{movie}', [FrontController::class, 'detailMovie']);
+Route::get('/movies/{id}', [FrontController::class, 'detailMovie']);
+Route::post('/sendReview', [FrontController::class, 'sendReview'])->name('kirimReview');
 Route::get('cast', [FrontController::class, 'cast']);

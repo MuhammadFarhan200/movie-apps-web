@@ -92,6 +92,14 @@
                             <span>Movies</span>
                         </a>
                     </li>
+
+                    <li
+                        class="sidebar-item {{ request()->is('admin/reviewer') || request()->is('admin/review/*') ? 'active' : '' }}">
+                        <a href="{{ route('reviewer.index') }}" class='sidebar-link'>
+                            <i class="bi bi-film"></i>
+                            <span>Reviewer</span>
+                        </a>
+                    </li>
                 @else
                 @endif
 

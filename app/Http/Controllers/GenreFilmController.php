@@ -4,16 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\GenreFilm;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Validator;
 
 class GenreFilmController extends Controller
 {
-    private function isAdmin()
-    {
-        return (Auth::user() && (Auth::user()->role === 'admin'));
-    }
     /**
      * Display a listing of the resource.
      *

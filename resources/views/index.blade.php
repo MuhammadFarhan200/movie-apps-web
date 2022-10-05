@@ -30,7 +30,7 @@
                         <div class="row hero-area-slide">
                             <div class="col-lg-6 col-md-5">
                                 <div class="hero-area-content">
-                                    <img src="{{ $fltr_movie->image() }}" alt="about" class="slide-img" />
+                                    <img src="{{ $fltr_movie->image() }}" alt="{{ $fltr_movie->judul }}" class="slide-img" />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-7 pb-4">
@@ -44,7 +44,7 @@
                                         @foreach ($fltr_movie->casting as $cast)
                                             <div class="single-slide-cast">
                                                 {{-- <a href="#"> --}}
-                                                <img src="{{ $cast->image() }}" alt="about" />
+                                                <img src="{{ $cast->image() }}" alt="{{ $cast->nama }}" />
                                                 {{-- </a> --}}
                                             </div>
                                         @endforeach
@@ -70,7 +70,7 @@
                         <div class="row hero-area-slide">
                             <div class="col-lg-6 col-md-5">
                                 <div class="hero-area-content">
-                                    <img src="{{ $filtered[2]->image() }}" alt="about" class="slide-img" />
+                                    <img src="{{ $filtered[2]->image() }}" alt="" class="slide-img" />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-7">
@@ -163,7 +163,7 @@
                             <a href="movies/{{ $movie->id }}" class="d-flex flex-column align-items-stretch">
                                 <div class="single-portfolio">
                                     <div class="single-portfolio-img">
-                                        <img src="{{ $movie->image() }}" alt="portfolio" class="w-100" />
+                                        <img src="{{ $movie->image() }}" alt="{{ $movie->judul }}" class="w-100" />
                                         <h5 class="detail-movie">
                                             Detail
                                         </h5>

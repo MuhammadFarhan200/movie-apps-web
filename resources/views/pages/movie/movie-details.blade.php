@@ -26,7 +26,7 @@
 
     <!-- transformers area start -->
     <section class="transformers-area">
-        <div class="container" style="margin-top: -170px; z-index: 2 !important;">
+        <div class="container" style="z-index: 2 !important;">
             <div class="transformers-box">
                 <div class="row flexbox-center">
                     <div class="col-lg-5 text-lg-left text-center">
@@ -68,13 +68,12 @@
                                         Main Cast:
                                     </div>
                                     <div class="transformers-right">
-                                        <ul>
-                                            @foreach ($movie->casting as $casting)
-                                                <li class="m-0">
-                                                    <a href="#" class="link">- {{ $casting->nama }}</a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                        @foreach ($movie->casting as $casting)
+                                            <a href="#" class="link">{{ $casting->nama }}</a>
+                                            @if (!$loop->last)
+                                                ,&nbsp;
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </li>
                                 <li>
@@ -92,9 +91,16 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('guest_home') }}" class="theme-btn py-2" style="border-bottom-right-radius: .3rem">Movies
-                    Page
-                    <i class="icofont icofont-arrow-right"></i></a>
+                <div class="d-flex justify-content-end mt-5 mt-lg-0">
+                    <a href="{{ route('guest_home') }}" class="theme-btn py-2 mr-3">
+                        <i class="icofont icofont-arrow-left"></i>
+                        Home
+                    </a>
+                    <a href="{{ route('movies') }}" class="theme-btn py-2">
+                        Movies Page
+                        <i class="icofont icofont-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -124,47 +130,92 @@
             <div class="row">
                 <div class="col">
                     <div class="details-content">
-                        <div class="details-overview mb-4">
+                        <div class="details-overview mb-5">
                             <h2>Sinopsis</h2>
                             <p>{{ $movie->sinopsis }}</p>
                         </div>
-                        <div class="details-reply">
-                            <h2>Leave a Reply</h2>
-                            <form action="#">
+                        <form action="{{ route('kirimReview') }}" method="POST">
+                            <div class="details-reply">
+                                <h2>Tinggalkan Pesan</h2>
+                                <p class="mb-4">Berikan komentar dan reviewmu terkait film <b>{{ $movie->judul }}</b>
+                                    dengan mengisi
+                                    forum dibawah!</p>
+                                @csrf
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="select-container">
-                                            <input type="text" placeholder="Name" />
+                                            <input type="text" name="nama" placeholder="Nama" required />
                                             <i class="icofont icofont-ui-user"></i>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <input type="hidden" name="id_movie" value="{{ $movie->id }}">
+                                    <div class="col-lg-6">
                                         <div class="select-container">
-                                            <input type="text" placeholder="Email" />
+                                            <input type="text" name="email" placeholder="Email" required />
                                             <i class="icofont icofont-envelope"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="select-container">
-                                            <input type="text" placeholder="Phone" />
-                                            <i class="icofont icofont-phone"></i>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="textarea-container">
-                                            <textarea placeholder="Type Here Message"></textarea>
-                                            <button><i class="icofont icofont-send-mail"></i></button>
+                                            <textarea name="komentar" placeholder="Ketikkan Sesuatu Disini..." required></textarea>
+                                            <button type="submit"><i class="icofont icofont-send-mail"></i></button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="d-flex justify-content-end mt-4">
+                                <button class="comment-btn" type="submit">
+                                    Kirim
+                                    <i class="bi bi-send-fill ml-2"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="table-responsive">
+                            {{-- <table class="table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Komentar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($review as $rev)
+                                        <tr>
+                                            <th>{{ $rev->nama }}</th>
+                                            <th>{{ $rev->email }}</th>
+                                            <th>{{ $rev->komentar }}</th>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table> --}}
                         </div>
-                        <div class="details-comment">
-                            <a class="theme-btn theme-btn2" href="#">Post Comment</a>
-                            <p>You may use these HTML tags and attributes: You may use these HTML tags and attributes: You
-                                may use these HTML tags and attributes: </p>
-                        </div>
-                        <div class="details-thumb">
+
+                        <h3 class="my-4">Komentar dan Review <span class="text-muted">({{ $review->count() }})</span>
+                        </h3>
+                        {{-- <hr class="w-75 mx-auto my-4" /> --}}
+
+                        @if ($review->count() > 0)
+                            @foreach ($review as $rev)
+                                <div class="d-flex justify-content-start my-4">
+                                    <img src="{{ asset('assets/images/no_image.png') }}" alt=""
+                                        class="rounded-circle"
+                                        style="width:72px; heighr:72px; object-fit:cover; object-position:center;">
+                                    <div class="text-start ml-4">
+                                        <h4>{{ $rev->nama }}</h4>
+                                        <p>{{ $rev->komentar }}</p>
+                                    </div>
+                                </div>
+                                @if (!$loop->last)
+                                    <hr />
+                                @endif
+                            @endforeach
+                        @else
+                            <h3 class="text-center">Belum Ada Komentar :(</h3>
+                        @endif
+
+                        {{-- <div class="details-thumb">
                             <div class="details-thumb-prev">
                                 <div class="thumb-icon">
                                     <i class="icofont icofont-simple-left"></i>
@@ -183,7 +234,7 @@
                                     <i class="icofont icofont-simple-right"></i>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 {{-- <div class="col-lg-3 text-center text-lg-left">

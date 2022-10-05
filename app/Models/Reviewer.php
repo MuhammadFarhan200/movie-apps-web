@@ -12,7 +12,6 @@ class Reviewer extends Model
     public $fillable = [
         'nama',
         'email',
-        'foto',
         'komentar',
         'id_movie',
     ];

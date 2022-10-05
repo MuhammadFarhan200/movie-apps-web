@@ -28,7 +28,7 @@
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="portfolio-menu">
                         <ul>
-                            <li data-filter="*" class="active">Latest</li>
+                            <li data-filter="*" class="active">Baru Ditambahkan</li>
                             @foreach ($genres as $genre)
                                 <li data-filter=".{{ $genre->kategori }}">{{ $genre->kategori }}</li>
                             @endforeach

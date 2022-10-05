@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\GenreFilm;
 use App\Models\Movie;
+use App\Models\Reviewer;
+use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
@@ -32,9 +35,24 @@ class FrontController extends Controller
         return view('pages.about');
     }
 
-    public function detailMovie(Movie $movie)
+    public function detailMovie($id)
     {
-        return view('pages.movie.movie-details', compact('movie'));
+        $movie = Movie::findOrFail($id);
+        $review = Reviewer::select('reviewers.nama', 'reviewers.email', 'reviewers.komentar')
+            ->join('movies', 'movies.id', '=', 'reviewers.id_movie')->where('reviewers.id_movie', $id)->get();
+        return view('pages.movie.movie-details', compact('movie', 'review'));
+    }
+
+    public function sendReview(Request $request)
+    {
+        $review = new Reviewer();
+        $review->nama = $request->nama;
+        $review->email = $request->email;
+        $review->komentar = $request->komentar;
+        $review->id_movie = $request->id_movie;
+        $review->save();
+        Alert::html('<div style="color: white;">Terima Kasih</div>', '<div style="color: white;">Tanggapan anda sudah kami terima</div>', 'success')->background('#13151f')->autoClose(3000);
+        return redirect()->back();
     }
 
     public function cast()

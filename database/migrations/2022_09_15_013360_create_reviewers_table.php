@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->text('komentar');
             $table->unsignedBigInteger('id_movie');
             $table->timestamps();
