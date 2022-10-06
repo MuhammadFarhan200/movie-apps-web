@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
-@section('title-page', 'Data Review')
+@section('title-page', 'Data Reviewer')
 
 @section('page-heading')
-    <h2>Review Movie</h2>
+    <h2>Reviewer Movie</h2>
     <p>Lihat data <b>{{ $data_title }}</b> pada table dibawah</p>
 @endsection
 
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card shadow">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h3 class="font-bold text-center m-0">Data Review Movie</h3>
+                        <h3 class="font-bold text-center m-0">Data Reviewer Movie</h3>
                     </div>
 
                     <div class="card-body m-0">

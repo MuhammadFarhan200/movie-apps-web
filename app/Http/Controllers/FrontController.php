@@ -8,6 +8,7 @@ use App\Models\GenreFilm;
 use App\Models\Movie;
 use App\Models\Reviewer;
 use Illuminate\Http\Request;
+use Validator;
 
 class FrontController extends Controller
 {
@@ -46,6 +47,25 @@ class FrontController extends Controller
 
     public function sendReview(Request $request)
     {
+        $rules = [
+            'nama' => 'required',
+            'email' => 'required',
+            'komentar' => 'required',
+        ];
+
+        $messages = [
+            'nama.required' => 'Nama harus di isi!',
+            'email.required' => 'Email harus di isi!',
+            'komentar.required' => 'Komentar harus di isi!',
+        ];
+
+        $validation = Validator::make($request->all(), $rules, $messages);
+
+        if ($validation->fails()) {
+            Alert::html('<div style="color: white;">OOPS!</div>', '<div style="color: white;">Data yang anda input ada kesalahan. Mohon isi dengan benar!</div>', 'error')->background('#13151f')->autoClose(false);
+            return back()->withErrors($validation)->withInput();
+        }
+
         $review = new Reviewer();
         $review->nama = $request->nama;
         $review->email = $request->email;

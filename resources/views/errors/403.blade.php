@@ -20,7 +20,7 @@
                     <img class="img-error" src="{{ asset('assets/images/samples/error-403.svg') }}" alt="Not Found">
                     <h1 class="error-title">Forbidden</h1>
                     <p class="fs-5 text-gray-600">Kamu Tidak Punya Akses Ke Halaman Tersebut!!</p>
-                    <a href="{{ url('/') }}" class="btn btn-lg btn-outline-primary mt-3">Kembali</a>
+                    <a href="{{ url('/') }}" class="btn btn-lg btn-outline-primary mt-3">Ke Beranda</a>
                 </div>
             </div>
         </div>

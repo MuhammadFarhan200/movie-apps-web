@@ -1518,11 +1518,16 @@ hr {
 --------- Pre Loader Style END ---------
 ---------------------------------------*/
 
+
 /*--------------------------------------
 --------- My Style START ---------
 ---------------------------------------*/
 .opacity-50 {
     opacity: 50% !important;
+}
+
+.opacity-70 {
+    opacity: 70% !important;
 }
 
 .hero-area-content .slide-img {

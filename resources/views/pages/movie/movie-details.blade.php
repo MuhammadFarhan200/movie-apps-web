@@ -136,28 +136,28 @@
                         </div>
                         <form action="{{ route('kirimReview') }}" method="POST">
                             <div class="details-reply">
-                                <h2>Tinggalkan Pesan</h2>
-                                <p class="mb-4">Berikan komentar dan reviewmu terkait film <b>{{ $movie->judul }}</b>
-                                    dengan mengisi
-                                    forum dibawah!</p>
+                                <h2>Berikan Tanggapanmu</h2>
+                                <p class="mb-4">Berikan tanggapanmu terkait film <b>{{ $movie->judul }}</b> baik dalam
+                                    bentuk komentar umum ataupun
+                                    review dengan mengisi forum dibawah!</p>
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="select-container">
-                                            <input type="text" name="nama" placeholder="Nama" required />
+                                            <input type="text" name="nama" placeholder="Nama" />
                                             <i class="icofont icofont-ui-user"></i>
                                         </div>
                                     </div>
                                     <input type="hidden" name="id_movie" value="{{ $movie->id }}">
                                     <div class="col-lg-6">
                                         <div class="select-container">
-                                            <input type="text" name="email" placeholder="Email" required />
+                                            <input type="text" name="email" placeholder="Email" />
                                             <i class="icofont icofont-envelope"></i>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="textarea-container">
-                                            <textarea name="komentar" placeholder="Ketikkan Sesuatu Disini..." required></textarea>
+                                            <textarea name="komentar" placeholder="Ketikkan Sesuatu Disini..."></textarea>
                                             <button type="submit"><i class="icofont icofont-send-mail"></i></button>
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@
                             </table> --}}
                         </div>
 
-                        <h3 class="my-4">Komentar dan Review <span class="text-muted">({{ $review->count() }})</span>
+                        <h3 class="my-4">Komentar dan Review <small class="text-muted">({{ $review->count() }})</small>
                         </h3>
 
                         @if ($review->count() > 0)
@@ -200,18 +200,18 @@
                                 <div class="d-flex justify-content-start my-4 align-items-start">
                                     <img src="{{ asset('assets/images/no_image.png') }}" alt="profile-image"
                                         class="rounded-circle"
-                                        style="width:72px; heighr:72px; object-fit:cover; object-position:center;">
+                                        style="width:64px; heighr:64px; object-fit:cover; object-position:center;">
                                     <div class="text-start ml-4">
                                         <h4>{{ $rev->nama }}</h4>
                                         <p>{{ $rev->komentar }}</p>
                                     </div>
                                 </div>
                                 @if (!$loop->last)
-                                    <hr />
+                                    <hr class="opacity-50" />
                                 @endif
                             @endforeach
                         @else
-                            <h3 class="text-center">Belum Ada Komentar :(</h3>
+                            <h4 class="text-center opacity-70">Belum Ada Komentar :(</h4>
                         @endif
 
                         {{-- <div class="details-thumb">

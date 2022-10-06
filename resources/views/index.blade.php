@@ -43,9 +43,9 @@
                                     <div class="slide-cast">
                                         @foreach ($fltr_movie->casting as $cast)
                                             <div class="single-slide-cast">
-                                                {{-- <a href="#"> --}}
-                                                <img src="{{ $cast->image() }}" alt="{{ $cast->nama }}" />
-                                                {{-- </a> --}}
+                                                <a href="/cast#{{ $cast->id }}">
+                                                    <img src="{{ $cast->image() }}" alt="{{ $cast->nama }}" />
+                                                </a>
                                             </div>
                                         @endforeach
                                     </div>
