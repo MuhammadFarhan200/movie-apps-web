@@ -388,6 +388,11 @@
         height: 500px;
     }
 
+    .movie-bg-shadow {
+        margin-top: -20px;
+        box-shadow: 0 20px 20px 20px rgba(19, 21, 31, 0.9);
+    }
+
     header.header {
         padding-left: 15px;
         padding-right: 15px;
@@ -530,6 +535,10 @@
 }
 
 @media only screen and (max-width: 420px) {
+    .movie-bg-shadow {
+        margin-top: 10px;
+        box-shadow: none;
+    }
 
     .news-bg-1,
     .news-bg-2,
