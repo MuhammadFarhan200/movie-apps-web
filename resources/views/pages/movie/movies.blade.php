@@ -16,6 +16,25 @@
     </section>
     <!-- breadcrumb area end -->
 
+    {{-- Search --}}
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-6">
+            <form action="/movies" method="GET">
+                @if (request('genre'))
+                    <input type="hidden" name="genre" value="{{ request('genre') }}">
+                @endif
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Ketikkan judul film yang kamu cari disini"
+                        name="search" value="{{ request('search') }}">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{-- End Search --}}
+
     <!-- portfolio section start -->
     <section class="portfolio-area pt-60 pb-5">
         <div class="container">
@@ -42,7 +61,7 @@
                 @if ($movies->count() > 0)
                     @foreach ($movies as $movie)
                         <div class="col-lg-3 col-md-4 col-sm-6 {{ $movie->genreFilm->kategori }}">
-                            <a href="movies/{{ $movie->id }}">
+                            <a href="/movies/{{ $movie->id }}">
                                 <div class="single-portfolio">
                                     <div class="single-portfolio-img">
                                         <img src="{{ $movie->image() }}" alt="portfolio" class="w-100" />

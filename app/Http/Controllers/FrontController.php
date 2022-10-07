@@ -27,7 +27,7 @@ class FrontController extends Controller
 
     public function movie()
     {
-        $movies = Movie::latest()->get();
+        $movies = Movie::latest()->filter(request(['search']))->get();
         $genres = GenreFilm::limit(4)->orderBy('kategori', 'asc')->get();
         return view('pages.movie.movies', compact('movies', 'genres'));
     }

@@ -9,7 +9,7 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        $data_title = 'Review';
+        $data_title = 'Reviewer';
         $review = Reviewer::latest()->get();
         return view('admin.review.index', compact('review', 'data_title'));
     }

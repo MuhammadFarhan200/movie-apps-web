@@ -3,7 +3,7 @@
 
 @section('page-heading')
     <h2>Reviewer Movie</h2>
-    <p>Lihat salah satu data <b>Review</b> pada table dibawah</p>
+    <p>Lihat salah satu data <b>Reviewer</b> pada table dibawah</p>
 @endsection
 
 @section('page-content')
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="card shadow">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h3 class="font-bold text-center m-0">Data Review Movie</h3>
+                        <h3 class="font-bold text-center m-0">Data Reviewer Movie</h3>
                     </div>
 
                     <div class="card-body m-0">

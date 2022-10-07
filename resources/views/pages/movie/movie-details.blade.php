@@ -137,7 +137,7 @@
                         <form action="{{ route('kirimReview') }}" method="POST">
                             <div class="details-reply">
                                 <h2>Berikan Tanggapanmu</h2>
-                                <p class="mb-4">Berikan tanggapanmu terkait film <b>{{ $movie->judul }}</b> baik dalam
+                                <p class="mt-3 mb-4">Berikan tanggapanmu terkait film <b>{{ $movie->judul }}</b> baik dalam
                                     bentuk komentar umum ataupun
                                     review dengan mengisi forum dibawah!</p>
                                 @csrf
