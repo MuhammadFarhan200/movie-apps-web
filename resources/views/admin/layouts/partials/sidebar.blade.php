@@ -46,14 +46,14 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item {{ request()->is('admin') || request()->is('home') ? 'active' : '' }}">
-                    <a href="{{ route('admin') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-
                 @if (Auth::user()->role === 'admin')
+                    <li class="sidebar-item {{ request()->is('admin') || request()->is('home') ? 'active' : '' }}">
+                        <a href="{{ route('admin') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
                     <li class="sidebar-item {{ request()->is('admin/profile') ? 'active' : '' }}">
                         <a href="{{ url('admin/profile') }}" class='sidebar-link'>
                             <i class="bi bi-person-fill"></i>
@@ -102,6 +102,15 @@
                     </li>
                 @else
                 @endif
+
+                <li class="sidebar-title">Front</li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('guest_home') }}" class='sidebar-link'>
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Front Page</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-title">Logout</li>
 

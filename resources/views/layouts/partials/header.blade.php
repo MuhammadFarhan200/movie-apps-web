@@ -41,6 +41,14 @@
                                     <a href="#">{{ Auth::user()->name }} <i
                                             class="icofont icofont-simple-down"></i></a>
                                     <ul class="me-auto">
+                                        @if (Auth::user()->role == 'admin')
+                                            <li>
+                                                <a href="{{ route('admin') }}">
+                                                    <span>Admin</span>
+                                                    <i class="bi bi-pie-chart-fill ml-1"></i>
+                                                </a>
+                                            </li>
+                                        @endif
                                         <li>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault();logout()">
                                                 <span>Logout</span>

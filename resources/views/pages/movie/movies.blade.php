@@ -23,7 +23,7 @@
                 @if (request('genre'))
                     <input type="hidden" name="genre" value="{{ request('genre') }}">
                 @endif
-                <div class="input-group mb-3">
+                <div class="input-group mx-4">
                     <input type="text" class="form-control" placeholder="Ketikkan judul film yang kamu cari disini"
                         name="search" value="{{ request('search') }}">
                     <button class="btn btn-outline-secondary" type="submit">

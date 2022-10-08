@@ -80,15 +80,23 @@ class Movie extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        // if (isset($filters['search']) ? $filters['search'] : false) {
-        //     return $query->where('title', 'like', '%' . $filters['search'] . '%')
-        //         ->orWhere('body', 'like', '%' . $filters['search'] . '%');
-        // }
+        if (isset($filters['search']) ? $filters['search'] : false) {
+            return $query->where('judul', 'like', '%' . $filters['search'] . '%');
+        } else if (isset($filters['genre']) ? $filters['genre'] : false) {
+            return $query->whereHas('genreFilm', function ($query) {
+                $query->where('kategori', 'like', '%' . request('search') . '%');
+            });
+        }
 
-        $query->when($filters['search'] ?? false, function ($query, $search) {
-            return $query->where('judul', 'like', '%' . $search . '%')
-                ->orWhere('sinopsis', 'like', '%' . $search . '%');
-        });
+        // $query->when($filters['search'] ?? false, function ($query, $search) {
+        //     return $query->where('judul', 'like', '%' . $search . '%');
+        // });
+
+        // $query->when($filters['genre'] ?? false, function ($query, $genre) {
+        //     return $query->whereHas('kategori', function ($query) use ($genre) {
+        //         $query->where('kategori', $genre);
+        //     });
+        // });
 
     }
 
