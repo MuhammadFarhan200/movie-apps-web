@@ -64,56 +64,58 @@
                     @endforeach
 
                 </div>
-                <div class="hero-area-thumb">
-                    <div class="thumb-prev">
-                        <div class="row hero-area-slide">
-                            <div class="col-lg-6 col-md-5">
-                                <div class="hero-area-content">
-                                    <img src="{{ $filtered[2]->image() }}" alt="" class="slide-img" />
+                @if ($movies->count() >= 3)
+                    <div class="hero-area-thumb">
+                        <div class="thumb-prev">
+                            <div class="row hero-area-slide">
+                                <div class="col-lg-6 col-md-5">
+                                    <div class="hero-area-content">
+                                        <img src="{{ $filtered[2]->image() }}" alt="" class="slide-img" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-7">
+                                    <div class="hero-area-content pr-50">
+                                        <h2 class="mt-4 judul">{{ $filtered[2]->judul }}</h2>
+                                        <p class="mt-3">{{ Str::substr($filtered[2]->sinopsis, 0, 200) }}......</p>
+                                        <h4 class="mt-4">
+                                            {{ $filtered[2]->tahunRilis->tahun . ' | ' . $filtered[2]->genreFilm->kategori }}
+                                        </h4>
+                                        <div class="slide-trailor">
+                                            <a class="theme-btn" href="movies/{{ $filtered[2]->id }}">
+                                                Detail
+                                                <i class="bi bi-arrow-right ml-2"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-7">
-                                <div class="hero-area-content pr-50">
-                                    <h2 class="mt-4 judul">{{ $filtered[2]->judul }}</h2>
-                                    <p class="mt-3">{{ Str::substr($filtered[2]->sinopsis, 0, 200) }}......</p>
-                                    <h4 class="mt-4">
-                                        {{ $filtered[2]->tahunRilis->tahun . ' | ' . $filtered[2]->genreFilm->kategori }}
-                                    </h4>
-                                    <div class="slide-trailor">
-                                        <a class="theme-btn" href="movies/{{ $filtered[2]->id }}">
-                                            Detail
-                                            <i class="bi bi-arrow-right ml-2"></i>
-                                        </a>
+                        </div>
+                        <div class="thumb-next">
+                            <div class="row hero-area-slide">
+                                <div class="col-lg-6 col-md-5">
+                                    <div class="hero-area-content">
+                                        <img src="{{ $filtered[1]->image() }}" alt="about" class="slide-img" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-7">
+                                    <div class="hero-area-content pr-50">
+                                        <h2 class="mt-4 judul">{{ $filtered[1]->judul }}</h2>
+                                        <p class="mt-3">{{ Str::substr($filtered[1]->sinopsis, 0, 200) }}......</p>
+                                        <h4 class="mt-4">
+                                            {{ $filtered[1]->tahunRilis->tahun . ' | ' . $filtered[1]->genreFilm->kategori }}
+                                        </h4>
+                                        <div class="slide-trailor">
+                                            <a class="theme-btn" href="movies/{{ $filtered[1]->id }}">
+                                                Detail
+                                                <i class="bi bi-arrow-right ml-2"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="thumb-next">
-                        <div class="row hero-area-slide">
-                            <div class="col-lg-6 col-md-5">
-                                <div class="hero-area-content">
-                                    <img src="{{ $filtered[1]->image() }}" alt="about" class="slide-img" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-7">
-                                <div class="hero-area-content pr-50">
-                                    <h2 class="mt-4 judul">{{ $filtered[1]->judul }}</h2>
-                                    <p class="mt-3">{{ Str::substr($filtered[1]->sinopsis, 0, 200) }}......</p>
-                                    <h4 class="mt-4">
-                                        {{ $filtered[1]->tahunRilis->tahun . ' | ' . $filtered[1]->genreFilm->kategori }}
-                                    </h4>
-                                    <div class="slide-trailor">
-                                        <a class="theme-btn" href="movies/{{ $filtered[1]->id }}">
-                                            Detail
-                                            <i class="bi bi-arrow-right ml-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
         </section>
     @else

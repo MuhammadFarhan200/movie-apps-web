@@ -1634,6 +1634,14 @@ hr {
     object-position: center top !important;
 }
 
+.genre-list {
+    transition: all .3s;
+}
+
+.genre-list:hover {
+    transform: translate(0, -5px) !important;
+}
+
 /* .text-center {
     text-align: center !important;
     margin-left: auto !important;

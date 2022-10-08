@@ -27,9 +27,32 @@ class FrontController extends Controller
 
     public function movie()
     {
-        $movies = Movie::latest()->filter(request(['search', 'genre']))->get();
+        if (request('genre') && request('search')) {
+            $genres = GenreFilm::firstWhere('kategori', request('genre'));
+            $movies = Movie::whereHas('genreFilm', function ($query) {
+                $query->where('kategori', request('search'));
+            })->orWhere('judul', 'like', '%' . request('search') . '%')->get();
+            $text = 'Hasil Pencarian Untuk ' . request('search') . ' Pada Genre ' . $genres->kategori . ':';
+        } elseif (request('genre')) {
+            $genres = GenreFilm::firstWhere('kategori', request('genre'));
+            $movies = $genres->movie;
+            $text = 'Daftar Movie Dengan Genre ' . $genres->kategori . ':';
+        } elseif (request('search')) {
+            $movies = Movie::where('judul', 'like', '%' . request('search') . '%')->get();
+            $text = 'Hasil Pencarian Untuk ' . request('search') . ':';
+        } else {
+            $text = '';
+            $movies = Movie::orderBy('judul', 'asc')->get();
+        }
         $genres = GenreFilm::limit(4)->orderBy('kategori', 'asc')->get();
-        return view('pages.movie.movies', compact('movies', 'genres'));
+        $allGenre = GenreFilm::all();
+        return view('pages.movie.movies', compact('movies', 'genres', 'allGenre', 'text'));
+    }
+
+    public function genre()
+    {
+        $genres = GenreFilm::all();
+        return view('pages.movie.genre', compact('genres'));
     }
 
     public function about()

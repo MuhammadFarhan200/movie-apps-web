@@ -29,6 +29,10 @@
                                 href="{{ route('movies') }}">Movies</a>
                         </li>
                         <li>
+                            <a class="{{ request()->is('genre') || request()->is('genre/*') ? 'active' : '' }}"
+                                href="{{ route('genre') }}">Genre</a>
+                        </li>
+                        <li>
                             <a class="{{ request()->is('cast') ? 'active' : '' }}" href="{{ url('/cast') }}">Cast</a>
                         </li>
                         {{-- <li>

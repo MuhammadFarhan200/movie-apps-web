@@ -17,20 +17,28 @@
     <!-- breadcrumb area end -->
 
     {{-- Search --}}
-    <div class="row justify-content-center mb-3">
-        <div class="col-md-6">
-            <form action="/movies" method="GET">
-                @if (request('genre'))
-                    <input type="hidden" name="genre" value="{{ request('genre') }}">
+    <div class="container">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-6">
+                <form action="" method="GET">
+                    @if (request('genre'))
+                        <input type="hidden" name="genre" value="{{ request('genre') }}">
+                    @endif
+                    <div class="input-group mx-4">
+                        <input type="search" class="form-control" placeholder="Ketikkan judul film yang kamu cari disini"
+                            name="search" value="{{ request('search') ? request('search') : '' }}">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+                @if (!request('genre'))
+                    <a href="/genre" class="link mx-4">
+                        Atau cari berdasarkan genre
+                        <i class="icofont icofont-arrow-right"></i>
+                    </a>
                 @endif
-                <div class="input-group mx-4">
-                    <input type="text" class="form-control" placeholder="Ketikkan judul film yang kamu cari disini"
-                        name="search" value="{{ request('search') }}">
-                    <button class="btn btn-outline-secondary" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
     {{-- End Search --}}
@@ -47,7 +55,7 @@
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="portfolio-menu">
                         <ul>
-                            <li data-filter="*" class="active">Baru Ditambahkan</li>
+                            <li data-filter="*" class="active">Semua</li>
                             @foreach ($genres as $genre)
                                 <li data-filter=".{{ $genre->kategori }}">{{ $genre->kategori }}</li>
                             @endforeach
@@ -55,10 +63,27 @@
                     </div>
                 </div>
             </div>
+
             <hr />
+
             <div class="row portfolio-item justify-content-start">
 
-                @if ($movies->count() > 0)
+                @if ($movies->count() < 1 && request('gerne'))
+                    <div class="col">
+                        <h3 class="opacity-70 text-center mt-5">Movie dengan genre <b>{{ request('genre') }}</b> masih
+                            kosong :(</h3>
+                    </div>
+                @elseif ($movies->count() < 1 && request('search'))
+                    <div class="col">
+                        <h3 class="opacity-70 text-center mt-5">
+                            Movie dengan kata kunci <b>{{ request('search') }}</b> tidak ditemukan :(
+                        </h3>
+                    </div>
+                @elseif ($movies->count() < 1)
+                    <div class="col">
+                        <h3 class="opacity-70 text-center mt-5">Movie Masih Kosong :(</h3>
+                    </div>
+                @else
                     @foreach ($movies as $movie)
                         <div class="col-lg-3 col-md-4 col-sm-6 {{ $movie->genreFilm->kategori }}">
                             <a href="/movies/{{ $movie->id }}">
@@ -84,10 +109,6 @@
                             </a>
                         </div>
                     @endforeach
-                @else
-                    <div class="col">
-                        <h3 class="text-center mt-5">Data Belum Ada :(</h3>
-                    </div>
                 @endif
 
                 {{-- <div class="col-lg-3 col-md-4 col-sm-6 soon released">
