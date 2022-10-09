@@ -46,7 +46,7 @@ Route::get('/errors', function () {
 // Route Front
 Route::get('/', [FrontController::class, 'index'])->name('guest_home');
 Route::get('/movies', [FrontController::class, 'movie'])->name('movies');
-Route::get('/genre', [FrontController::class, 'genre'])->name('genre');
+// Route::get('/genre', [FrontController::class, 'genre'])->name('genre');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/movies/{id}', [FrontController::class, 'detailMovie']);
 Route::post('/sendReview', [FrontController::class, 'sendReview'])->name('kirimReview');

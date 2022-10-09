@@ -7,6 +7,7 @@ use App\Models\Casting;
 use App\Models\GenreFilm;
 use App\Models\Movie;
 use App\Models\Reviewer;
+use App\Models\TahunRilis;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -32,28 +33,29 @@ class FrontController extends Controller
             $movies = Movie::whereHas('genreFilm', function ($query) {
                 $query->where('kategori', request('search'));
             })->orWhere('judul', 'like', '%' . request('search') . '%')->get();
-            $text = 'Hasil Pencarian Untuk ' . request('search') . ' Pada Genre ' . $genres->kategori . ':';
         } elseif (request('genre')) {
             $genres = GenreFilm::firstWhere('kategori', request('genre'));
             $movies = $genres->movie;
-            $text = 'Daftar Movie Dengan Genre ' . $genres->kategori . ':';
+        } elseif (request('tahun')) {
+            $tahun = TahunRilis::firstWhere('tahun', request('tahun'));
+            $movies = $tahun->movie;
         } elseif (request('search')) {
-            $movies = Movie::where('judul', 'like', '%' . request('search') . '%')->get();
-            $text = 'Hasil Pencarian Untuk ' . request('search') . ':';
+            $movies = Movie::where('judul', 'like', '%' . request('search') . '%')->orWhereHas('genreFilm', function ($query) {
+                $query->where('kategori', request('search'));
+            })->get();
         } else {
-            $text = '';
             $movies = Movie::orderBy('judul', 'asc')->get();
         }
-        $genres = GenreFilm::limit(4)->orderBy('kategori', 'asc')->get();
-        $allGenre = GenreFilm::all();
-        return view('pages.movie.movies', compact('movies', 'genres', 'allGenre', 'text'));
+        // $genres = GenreFilm::limit(4)->orderBy('kategori', 'asc')->get();
+        $allGenre = GenreFilm::orderBy('kategori', 'asc')->get();
+        return view('pages.movie.movies', compact('movies', 'allGenre'));
     }
 
-    public function genre()
-    {
-        $genres = GenreFilm::all();
-        return view('pages.movie.genre', compact('genres'));
-    }
+    // public function genre()
+    // {
+    //     $genres = GenreFilm::orderBy('kategori', 'asc')->get();
+    //     return view('pages.movie.genre', compact('genres'));
+    // }
 
     public function about()
     {

@@ -89,4 +89,9 @@ class Movie extends Model
     //     }
     // }
 
+    // public function scopeSearch($query, $genres)
+    // {
+    //     return $query->where('judul', 'LIKE', "%{$genres}%");
+    // }
+
 }

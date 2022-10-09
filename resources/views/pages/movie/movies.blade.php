@@ -18,26 +18,38 @@
 
     {{-- Search --}}
     <div class="container">
-        <div class="row justify-content-center mb-3">
-            <div class="col-md-6">
+        <div class="row mb-3">
+            <div class="col-md-12 col-lg-10 mx-auto">
                 <form action="" method="GET">
-                    @if (request('genre'))
-                        <input type="hidden" name="genre" value="{{ request('genre') }}">
-                    @endif
-                    <div class="input-group mx-4">
-                        <input type="search" class="form-control" placeholder="Ketikkan judul film yang kamu cari disini"
-                            name="search" value="{{ request('search') ? request('search') : '' }}">
-                        <button class="btn btn-outline-secondary" type="submit">
-                            <i class="bi bi-search"></i>
-                        </button>
+                    <div class="row">
+                        <div class="col-md-4 px-3 mb-3">
+                            <select name="genre" id="" class="form-control filter-genre">
+                                <option value="" selected>Pilih Genre</option>
+                                @foreach ($allGenre as $genre)
+                                    <option value="{{ $genre->kategori }}"
+                                        {{ request('genre') === $genre->kategori ? 'selected' : null }}>
+                                        {{ $genre->kategori }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 px-3 mb-3">
+                            <input type="text" class="form-control"
+                                placeholder="Ketikkan judul film yang kamu cari disini" name="search"
+                                value="{{ request('search') ? request('search') : '' }}">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-outline-secondary w-100 py-2" type="submit">
+                                Search
+                                <i class="bi bi-search ml-1"></i>
+                            </button>
+                        </div>
                     </div>
                 </form>
-                @if (!request('genre'))
-                    <a href="/genre" class="link mx-4">
-                        Atau cari berdasarkan genre
-                        <i class="icofont icofont-arrow-right"></i>
-                    </a>
-                @endif
+                {{-- <a href="/genre" class="link mx-4">
+                    Atau cari berdasarkan genre
+                    <i class="icofont icofont-arrow-right"></i>
+                </a> --}}
             </div>
         </div>
     </div>
@@ -49,17 +61,33 @@
             <div class="row flexbox-center">
                 <div class="col-lg-6 text-lg-left">
                     <div class="section-title">
-                        <h1><i class="icofont icofont-movie"></i> Pilih Film Kesukaanmu</h1>
+                        <h1 class="mb-3"><i class="icofont icofont-movie"></i> Pilih Film Kesukaanmu</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="portfolio-menu">
-                        <ul>
+                        {{-- <ul>
                             <li data-filter="*" class="active">Semua</li>
-                            @foreach ($genres as $genre)
+                            @foreach ($allGenre as $genre)
                                 <li data-filter=".{{ $genre->kategori }}">{{ $genre->kategori }}</li>
                             @endforeach
-                        </ul>
+                        </ul> --}}
+                        {{-- <form action="" method="GET">
+                            <div class="input-group mt-3 mt-md-0 mt-lg-0 mb-3 px-3 px-lg-0">
+                                <select name="genre" id="" class="form-control filter-genre">
+                                    <option value="" selected>Pilih Genre</option>
+                                    @foreach ($allGenre as $genre)
+                                        <option value="{{ $genre->kategori }}"
+                                            {{ request('genre') === $genre->kategori ? 'selected' : null }}>
+                                            {{ $genre->kategori }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <button class="btn btn-outline-secondary" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </form> --}}
                     </div>
                 </div>
             </div>
@@ -100,8 +128,13 @@
                                     <div class="portfolio-content mt-auto">
                                         <hr class="mt-2 opacity-50" />
                                         <div class="mt-2">
-                                            <h4><a href="#" class="link">{{ $movie->tahunRilis->tahun }}</a> |
-                                                <a href="#" class="link">{{ $movie->genreFilm->kategori }}</a>
+                                            <h4>
+                                                <a href="/movies?tahun={{ $movie->tahunRilis->tahun }}" class="link">
+                                                    {{ $movie->tahunRilis->tahun }}
+                                                </a>
+                                                |
+                                                <a href="/movies?genre={{ $movie->genreFilm->kategori }}"
+                                                    class="link">{{ $movie->genreFilm->kategori }}</a>
                                             </h4>
                                         </div>
                                     </div>

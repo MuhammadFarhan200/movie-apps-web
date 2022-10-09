@@ -155,6 +155,7 @@ input[type="search"],
 input[type="password"],
 input[type="number"],
 textarea {
+    color: #fff;
     background: #24262d;
     width: 100%;
     padding: 8px 15px;
@@ -164,8 +165,13 @@ textarea {
 input[type="submit"],
 button[type="submit"] {
     width: auto;
-    color: #666;
+    color: #fff;
     padding: 4px 15px;
+}
+
+input[type="text"]:focus {
+    color: #fff !important;
+    background: #24262d !important;
 }
 
 textarea:focus {
@@ -1640,6 +1646,17 @@ hr {
 
 .genre-list:hover {
     transform: translate(0, -5px) !important;
+}
+
+.form-control.filter-genre {
+    color: #fff;
+    background: #24262d;
+    outline: none;
+    border: none;
+}
+
+.form-control.filter-genre option {
+    color: #fff;
 }
 
 /* .text-center {

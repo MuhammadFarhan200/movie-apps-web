@@ -28,10 +28,10 @@
                             <a class="{{ request()->is('movies') || request()->is('movies/*') ? 'active' : '' }}"
                                 href="{{ route('movies') }}">Movies</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a class="{{ request()->is('genre') || request()->is('genre/*') ? 'active' : '' }}"
                                 href="{{ route('genre') }}">Genre</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a class="{{ request()->is('cast') ? 'active' : '' }}" href="{{ url('/cast') }}">Cast</a>
                         </li>
