@@ -106,7 +106,6 @@
                                 </div> --}}
                                 <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
                                     id="input-tags" multiple>
-                                    <option>-- Pilih Casting --</option>
                                     @foreach ($casting as $data)
                                         <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                     @endforeach

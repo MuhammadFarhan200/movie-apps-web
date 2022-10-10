@@ -38,7 +38,7 @@
                                     <h2 class="mt-4 judul">
                                         <a href="movies/{{ $fltr_movie->id }}" class="link">{{ $fltr_movie->judul }}</a>
                                     </h2>
-                                    <p class="mt-3">{{ Str::substr($fltr_movie->sinopsis, 0, 180) }}......</p>
+                                    <p class="mt-3">{!! Str::substr($fltr_movie->sinopsis, 0, 180) !!}......</p>
                                     <h3 class="">Cast:</h3>
                                     <div class="slide-cast">
                                         @foreach ($fltr_movie->casting as $cast)
