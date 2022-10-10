@@ -2,8 +2,8 @@
 <script src="{{ asset('assets/js/app.js') }}"></script>
 
 {{-- Form Editor --}}
-{{-- <script src="{{ asset('assets/extensions/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/tinymce.js') }}"></script> --}}
+<script src="{{ asset('assets/extensions/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/tinymce.js') }}"></script>
 
 <!-- Need: Apexcharts -->
 <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
@@ -28,3 +28,18 @@
 </script>
 
 @include('sweetalert::alert')
+
+{{-- Selectize --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.14.0/js/selectize.min.js"></script>
+<script>
+    $("#input-tags").selectize({
+        delimiter: ",",
+        persist: false,
+        create: function(input) {
+            return {
+                value: input,
+                text: input,
+            };
+        },
+    });
+</script>

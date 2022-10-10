@@ -76,7 +76,7 @@ class FrontController extends Controller
     {
         $rules = [
             'nama' => 'required',
-            'email' => 'required',
+            'email' => 'required|email:dns',
             'komentar' => 'required',
         ];
 

@@ -31,8 +31,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Sinopsis</label>
-                                <textarea type="text" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" id=""
-                                    placeholder="Tuliskan Sinopsis Film" rows="5">{{ $movie->sinopsis }}</textarea>
+                                <textarea type="text" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" id="default"
+                                    placeholder="Tuliskan Sinopsis Film" rows="10">{{ $movie->sinopsis }}</textarea>
                                 @error('sinopsis')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -41,11 +41,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="d-block">Cover</label>
-                                @if (isset($movie) && $movie->cover)
-                                    <img src="{{ asset('images/movies/' . $movie->cover) }}"
-                                        class="img-rounded rounded-3 img-responsive mb-2" alt=""
-                                        style="width: 200px">
-                                @endif
+                                <div class="col-sm-6 col-md-6 col-lg-4">
+                                    @if (isset($movie) && $movie->cover)
+                                        <img src="{{ asset('images/movies/' . $movie->cover) }}"
+                                            class="img-rounded rounded-3 img-responsive mb-2 w-100" alt="">
+                                    @endif
+                                </div>
                                 <input type="file" name="cover"
                                     class="form-control @error('cover') is-invalid @enderror" id="">
                                 @error('cover')
@@ -56,11 +57,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="d-block">Background</label>
-                                @if (isset($movie) && $movie->background)
-                                    <img src="{{ asset('images/movies/' . $movie->background) }}"
-                                        class="img-rounded rounded-3 img-responsive mb-2" alt=""
-                                        style="width: 350px">
-                                @endif
+                                <div class="col-md-10 col-lg-8">
+                                    @if (isset($movie) && $movie->background)
+                                        <img src="{{ asset('images/movies/' . $movie->background) }}"
+                                            class="img-rounded rounded-3 img-responsive mb-2 w-100" alt="">
+                                    @endif
+                                </div>
                                 <input type="file" name="background"
                                     class="form-control @error('background') is-invalid @enderror" id="">
                                 @error('background')
@@ -114,11 +116,14 @@
                                 @endforeach --}}
 
                                 <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
-                                    id="" multiple="multiple">
+                                    id="input-tags" multiple="multiple">
                                     <option>Pilih</option>
                                     @foreach ($casting as $casting)
+                                        {{-- <option value="{{ $casting->id }}"
+                                            {{ in_array($casting->id, array_values($selectCast)) == $casting->id ? 'selected' : '' }}>
+                                            {{ $casting->nama }}</option> --}}
                                         <option value="{{ $casting->id }}"
-                                            {{ in_array($casting->id, $selectCast) ? 'selected' : '' }}>
+                                            @foreach ($movie->casting as $cast) @if ($casting->id == $cast->id) selected @endif @endforeach>
                                             {{ $casting->nama }}</option>
                                     @endforeach
                                 </select>

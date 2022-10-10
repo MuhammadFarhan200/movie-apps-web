@@ -122,11 +122,11 @@
                     <div class="row">
                         <div class="col mb-3">
                             <label for="" class="fw-bold">Sinopsis</label>
-                            <textarea name="" id="" cols="30" rows="6" class="form-control" readonly>{{ $movie->sinopsis }}</textarea>
+                            <div class="border rounded py-2 px-3">{!! $movie->sinopsis !!}</div>
                         </div>
                     </div>
                     <div class="row g-3 gallery mb-3" data-bs-toggle="modal" data-bs-target="#imageModal">
-                        <div class="col-md-4">
+                        <div class="col-sm-8 col-md-4">
                             <label for="" class="fw-bold">Cover</label>
                             <a href="#" class="image-modal d-block">
                                 <img src="{{ asset('images/movies/' . $movie->cover) }}" alt="Cover {{ $movie->judul }}"

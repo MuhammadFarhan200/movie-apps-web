@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Sinopsis</label>
-                                <textarea type="text" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" id=""
+                                <textarea type="text" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" id="default"
                                     placeholder="Tuliskan Sinopsis Film" rows="5">{{ old('sinposis') }}</textarea>
                                 @error('sinopsis')
                                     <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="d-block">Casting</label>
-                                <div class="d-flex flex-wrap justify-content-start align-items-center">
+                                {{-- <div class="d-flex flex-wrap justify-content-start align-items-center">
                                     @foreach ($casting as $data)
                                         <div class="border border-dark rounded-2 shadow-sm p-3 mx-1 mb-2">
                                             <input type="checkbox" name="casting[]"
@@ -103,14 +103,14 @@
                                             @enderror
                                         </div>
                                     @endforeach
-                                </div>
-                                {{-- <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
-                                    id="" multiple>
+                                </div> --}}
+                                <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
+                                    id="input-tags" multiple>
                                     <option>-- Pilih Casting --</option>
                                     @foreach ($casting as $data)
                                         <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                     @endforeach
-                                </select> --}}
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Durasi Film</label>

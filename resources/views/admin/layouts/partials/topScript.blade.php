@@ -10,3 +10,7 @@
 {{-- DataTable --}}
 <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
 {{-- <link rel="stylesheet" href="{{ asset('assets/css/pages/datatables.css') }}"> --}}
+
+{{-- Selectize --}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.14.0/css/selectize.bootstrap5.min.css">

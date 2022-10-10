@@ -54,13 +54,17 @@
                             <tr>
                                 <td colspan="3">
                                     <div class="d-flex justify-content-start align-items-center flex-wrap m-0">
-                                        @foreach ($casting->movie as $movie)
-                                            <a href="{{ route('movie.show', $movie->id) }}"
-                                                class="p-3 rounded-2 shadow-sm border border-dark mx-1 mb-2 cast-hover text-body"
-                                                target="_blank">
-                                                {{ $movie->judul }}
-                                            </a>
-                                        @endforeach
+                                        @if ($casting->movie->count() < 1)
+                                            Belum ditambahakan
+                                        @else
+                                            @foreach ($casting->movie as $movie)
+                                                <a href="{{ route('movie.show', $movie->id) }}"
+                                                    class="p-3 rounded-2 shadow-sm border border-dark mx-1 mb-2 cast-hover text-body"
+                                                    target="_blank">
+                                                    {{ $movie->judul }}
+                                                </a>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

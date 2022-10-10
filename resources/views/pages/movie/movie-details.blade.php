@@ -132,7 +132,7 @@
                     <div class="details-content">
                         <div class="details-overview mb-5">
                             <h2>Sinopsis</h2>
-                            <p>{{ $movie->sinopsis }}</p>
+                            <p>{!! $movie->sinopsis !!}</p>
                         </div>
                         <form action="{{ route('kirimReview') }}" method="POST">
                             <div class="details-reply">
@@ -144,20 +144,20 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="select-container">
-                                            <input type="text" name="nama" placeholder="Nama" />
+                                            <input type="text" name="nama" placeholder="Nama" required />
                                             <i class="icofont icofont-ui-user"></i>
                                         </div>
                                     </div>
                                     <input type="hidden" name="id_movie" value="{{ $movie->id }}">
                                     <div class="col-lg-6">
                                         <div class="select-container">
-                                            <input type="text" name="email" placeholder="Email" />
+                                            <input type="email" name="email" placeholder="Email" required />
                                             <i class="icofont icofont-envelope"></i>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="textarea-container">
-                                            <textarea name="komentar" placeholder="Ketikkan Sesuatu Disini..."></textarea>
+                                            <textarea name="komentar" placeholder="Ketikkan Sesuatu Disini..." required></textarea>
                                             <button type="submit"><i class="icofont icofont-send-mail"></i></button>
                                         </div>
                                     </div>
@@ -202,7 +202,7 @@
                                         class="rounded-circle"
                                         style="width:64px; heighr:64px; object-fit:cover; object-position:center;">
                                     <div class="text-start ml-4">
-                                        <h4>{{ $rev->nama }}</h4>
+                                        <h4 class="mb-1">{{ $rev->nama }}</h4>
                                         <p>{{ $rev->komentar }}</p>
                                     </div>
                                 </div>

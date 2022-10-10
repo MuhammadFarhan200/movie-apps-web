@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-md-4 px-3 mb-3">
                             <select name="genre" id="" class="form-control filter-genre">
-                                <option value="" selected>Pilih Genre</option>
+                                <option value="" selected>All Genre</option>
                                 @foreach ($allGenre as $genre)
                                     <option value="{{ $genre->kategori }}"
                                         {{ request('genre') === $genre->kategori ? 'selected' : null }}>
@@ -36,7 +36,7 @@
                         <div class="col-md-6 px-3 mb-3">
                             <input type="text" class="form-control"
                                 placeholder="Ketikkan judul film yang kamu cari disini" name="search"
-                                value="{{ request('search') ? request('search') : '' }}">
+                                value="{{ request('search') ? request('search') : null }}">
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-outline-secondary w-100 py-2" type="submit">
