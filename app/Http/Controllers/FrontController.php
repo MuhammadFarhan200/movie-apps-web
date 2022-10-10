@@ -31,8 +31,8 @@ class FrontController extends Controller
         if (request('genre') && request('search')) {
             $genres = GenreFilm::firstWhere('kategori', request('genre'));
             $movies = Movie::whereHas('genreFilm', function ($query) {
-                $query->where('kategori', request('search'));
-            })->orWhere('judul', 'like', '%' . request('search') . '%')->get();
+                $query->where('kategori', request('genre'));
+            })->where('judul', 'like', '%' . request('search') . '%')->get();
         } elseif (request('genre')) {
             $genres = GenreFilm::firstWhere('kategori', request('genre'));
             $movies = $genres->movie;
@@ -42,6 +42,8 @@ class FrontController extends Controller
         } elseif (request('search')) {
             $movies = Movie::where('judul', 'like', '%' . request('search') . '%')->orWhereHas('genreFilm', function ($query) {
                 $query->where('kategori', request('search'));
+            })->orWhereHas('casting', function ($query) {
+                $query->where('nama', 'like', '%' . request('search') . '%');
             })->get();
         } else {
             $movies = Movie::orderBy('judul', 'asc')->get();
