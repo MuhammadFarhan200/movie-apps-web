@@ -146,12 +146,14 @@
                     <div class="row g-3">
                         <label for="" class="fw-bold">Cast Film</label>
                         <div class="d-flex justify-content-start align-items-center flex-wrap m-0 pt-2">
-                            @foreach ($movie->casting as $item)
-                                <a href="{{ route('casting.show', $item->id) }}"
-                                    class="p-3 rounded-2 shadow-sm border border-dark mx-1 mb-2 cast-hover" target="_blank">
-                                    <label for="" class="text-body">{{ $item->nama }}</label>
-                                    <img src="{{ asset('images/casting' . $item->foto) }}" alt=""
-                                        style="width: 75px">
+                            @foreach ($movie->casting->sortBy('nama') as $casting)
+                                <a href="{{ route('casting.show', $casting->id) }}"
+                                    class="px-3 py-2 rounded-2 shadow-sm border border-dark mx-1 mb-2 cast-hover"
+                                    target="_blank">
+                                    <img src="{{ asset('images/casting/' . $casting->foto) }}" alt="{{ $casting->nama }}"
+                                        class="img-rounded rounded-3"
+                                        style="width: 50px; height: 50px; object-fit: cover; object-position: center top">
+                                    <label for="" class="text-body ms-1">{{ $casting->nama }}</label>
                                 </a>
                             @endforeach
                         </div>
