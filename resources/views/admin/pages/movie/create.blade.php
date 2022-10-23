@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="">Sinopsis</label>
                                 <textarea type="text" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" id="default"
-                                    placeholder="Tuliskan Sinopsis Film" rows="5">{{ old('sinposis') }}</textarea>
+                                    placeholder="Tuliskan Sinopsis Film" rows="10"></textarea>
                                 @error('sinopsis')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -110,13 +110,18 @@
                                         <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                     @endforeach
                                 </select>
+                                @error('casting')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Durasi Film</label>
                                 <div class="input-group mb-3">
                                     <input type="number" min="0" name="durasi"
                                         class="form-control @error('durasi') is-invalid @enderror" id=""
-                                        placeholder="Masukkan Durasi Film">
+                                        value="{{ old('durasi') }}" placeholder="Masukkan Durasi Film">
                                     <span class="input-group-text">Menit</span>
                                     @error('durasi')
                                         <span class="invalid-feedback" role="alert">

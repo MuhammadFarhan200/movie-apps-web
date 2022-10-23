@@ -44,7 +44,8 @@
                                         Genre:
                                     </div>
                                     <div class="transformers-right">
-                                        {{ $movie->genreFilm->kategori }}
+                                        <a href="/movies?genre={{ $movie->genreFilm->kategori }}"
+                                            class="link">{{ $movie->genreFilm->kategori }}</a>
                                     </div>
                                 </li>
                                 <li>
@@ -52,7 +53,8 @@
                                         Tahun Rilis:
                                     </div>
                                     <div class="transformers-right">
-                                        {{ $movie->tahunRilis->tahun }}
+                                        <a href="/movies?tahun={{ $movie->tahunRilis->tahun }}"
+                                            class="link">{{ $movie->tahunRilis->tahun }}</a>
                                     </div>
                                 </li>
                                 <li>
