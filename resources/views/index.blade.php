@@ -3,22 +3,6 @@
 @section('page-title', 'Home')
 @section('page-content')
 
-    {{-- ==== Sementara ==== --}}
-    <!-- breadcrumb area start -->
-    {{-- <section class="breadcrumb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-area-content">
-                        <h1>Home Page</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- breadcrumb area end -->
-    {{-- ==== End Sementara ==== --}}
-
     <!-- hero area start -->
     @if ($movies->count() > 0)
         <section class="hero-area" id="home">
