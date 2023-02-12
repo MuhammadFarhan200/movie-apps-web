@@ -2,9 +2,8 @@
     .hero-area-content>img {
         height: 550px;
     }
-
     .transformers-area>.container {
-        margin-top: -100px !important;
+        margin-top: -200px !important;
     }
 }
 
@@ -12,16 +11,15 @@
     .news-slider .single-news {
         max-width: 880px;
     }
-
     .transformers-area>.container {
-        margin-top: -70px !important;
+        margin-top: -200px !important;
     }
 }
 
 @media only screen and (max-width: 1285px) {
 
     .transformers-area>.container {
-        margin-top: -70px !important;
+        margin-top: -200px !important;
     }
 
     .news-prev,

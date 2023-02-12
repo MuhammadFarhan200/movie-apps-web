@@ -51,7 +51,7 @@ class CastingController extends Controller
         $casting->tanggal_lahir = $request->tanggal_lahir;
         if ($request->hasFile('foto')) {
             $image = $request->file('foto');
-            $name = rand(1000, 9999) . $image->getClientOriginalName();
+        $name = rand(1000, 9999) . $image->getClientOriginalName();
             $image->move('images/casting/', $name);
             $casting->foto = $name;
         }
