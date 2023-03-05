@@ -32,14 +32,17 @@
 {{-- Selectize --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.14.0/js/selectize.min.js"></script>
 <script>
-    $("#input-tags").selectize({
-        delimiter: ",",
-        persist: false,
-        create: function(input) {
-            return {
-                value: input,
-                text: input,
-            };
-        },
+    $(document).ready(function() {
+        $('#input-tags').selectize({
+            plugins: ['remove_button'],
+            delimiter: ',',
+            persist: false,
+            create: function(input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+        });
     });
 </script>

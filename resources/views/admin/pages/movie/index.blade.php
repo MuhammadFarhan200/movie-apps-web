@@ -35,7 +35,11 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $movie->judul }}</td>
-                                            <td>{{ $movie->genreFilm->kategori }}</td>
+                                            <td>
+                                                @foreach ($movie->genreFilm as $genre)
+                                                    <span class="badge bg-primary">{{ $genre->kategori }}</span>
+                                                @endforeach
+                                            </td>
                                             <td>{{ $movie->tahunRilis->tahun }}</td>
                                             <td class="text-nowrap">
                                                 <a href="{{ route('movie.edit', $movie->id) }}"

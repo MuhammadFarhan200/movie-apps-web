@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Alert;
+use App\Models\Movie;
 use App\Models\Casting;
 use App\Models\GenreFilm;
-use App\Models\Movie;
 use App\Models\TahunRilis;
 use Illuminate\Http\Request;
-use Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
@@ -35,7 +35,7 @@ class MovieController extends Controller
             'cover' => 'required|image|max:2048',
             'sinopsis' => 'required',
             'durasi' => 'required',
-            'id_genre' => 'required',
+            'genre' => 'required',
             'id_tahun_rilis' => 'required',
             'casting' => 'required',
         ];
@@ -50,7 +50,7 @@ class MovieController extends Controller
             'background.image' => 'Background harus berjenis jpg & png!',
             'sinopsis.required' => 'Sinopsis harus di isi!',
             'durasi.required' => 'Durasi harus di isi!',
-            'id_genre.required' => 'Genre harus di isi!',
+            'genre.required' => 'Genre harus di isi!',
             'id_tahun_rilis.required' => 'Tahun Rilis harus di isi!',
             'casting.required' => 'Casting harus di pilih!',
         ];
@@ -65,7 +65,6 @@ class MovieController extends Controller
         $movies->judul = $request->judul;
         $movies->durasi = $request->durasi;
         $movies->sinopsis = $request->sinopsis;
-        $movies->id_genre = $request->id_genre;
         $movies->id_tahun_rilis = $request->id_tahun_rilis;
         if ($request->hasFile('cover')) {
             $image = $request->file('cover');
@@ -80,6 +79,7 @@ class MovieController extends Controller
             $movies->background = $name;
         }
         $movies->save();
+        $movies->genreFilm()->attach($request->genre);
         $movies->casting()->attach($request->casting);
         Alert::success('Done', 'Data berhasil dibuat')->autoClose();
         return redirect()->route('movie.index');
@@ -111,7 +111,7 @@ class MovieController extends Controller
             'background' => 'nullable|image',
             'cover' => 'nullable|image|max:4096',
             'sinopsis' => 'required',
-            'id_genre' => 'required',
+            'genre' => 'required',
             'id_tahun_rilis' => 'required',
             'casting' => 'required',
         ];
@@ -122,7 +122,7 @@ class MovieController extends Controller
             'cover.max' => 'cover harus dibawah kapasitas 4096kb!',
             'background.image' => 'background harus berjenis jpg & png!',
             'sinopsis.required' => 'sinopsis harus di isi!',
-            'id_genre.required' => 'Genre harus di isi!',
+            'genre.required' => 'Genre harus di isi!',
             'id_tahun_rilis.required' => 'Tahun Rilis harus di isi!',
             'casting.required' => 'Casting harus di isi!',
         ];
@@ -136,7 +136,6 @@ class MovieController extends Controller
         $movies = Movie::findOrFail($id);
         $movies->judul = $request->judul;
         $movies->sinopsis = $request->sinopsis;
-        $movies->id_genre = $request->id_genre;
         $movies->durasi = $request->durasi;
         $movies->id_tahun_rilis = $request->id_tahun_rilis;
         if ($request->hasFile('cover')) {
@@ -154,6 +153,7 @@ class MovieController extends Controller
             $movies->background = $name;
         }
         $movies->save();
+        $movies->genreFilm()->sync($request->genre);
         $movies->casting()->sync($request->casting);
         Alert::success('Done', 'Data berhasil diedit')->autoClose();
         return redirect()->route('movie.index');
@@ -166,6 +166,7 @@ class MovieController extends Controller
         $movies->deleteImage();
         $movies->deleteBackground();
         $movies->delete();
+        $movies->genreFilm()->detach();
         $movies->casting()->detach();
 
         Alert::success('Done', 'Data berhasil dihapus')->autoClose();

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Alert;
 use Illuminate\Database\Eloquent\Model;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GenreFilm extends Model
 {
@@ -17,7 +17,7 @@ class GenreFilm extends Model
     {
         // model GemreFilm memiliki banyak data
         // dari model Movie melalui fk id_genre
-        return $this->hasMany(Movie::class, 'id_genre');
+        return $this->belongsToMany(Movie::class, 'genre_movies', 'id_genre', 'id_movie');
     }
 
     public static function boot()

@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Alert;
-use App\Models\Casting;
-use App\Models\GenreFilm;
 use App\Models\Movie;
+use App\Models\Casting;
 use App\Models\Reviewer;
+use App\Models\GenreFilm;
 use App\Models\TahunRilis;
 use Illuminate\Http\Request;
-use Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class FrontController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     public function index()
     {
         $movies = Movie::latest()->limit(8)->get()->load('tahunRilis', 'genreFilm');

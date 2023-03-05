@@ -59,13 +59,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Genre</label>
-                                <select name="id_genre" class="form-select @error('id_genre') is-invalid @enderror">
-                                    <option value="">-- Pilih Genre --</option>
+                                <select name="genre[]" class="@error('genre') is-invalid @enderror" id="input-tags" multiple>
                                     @foreach ($genre as $data)
                                         <option value="{{ $data->id }}">{{ $data->kategori }}</option>
                                     @endforeach
                                 </select>
-                                @error('id_genre')
+                                @error('genre')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -88,22 +87,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="d-block">Casting</label>
-                                {{-- <div class="d-flex flex-wrap justify-content-start align-items-center">
-                                    @foreach ($casting as $data)
-                                        <div class="border border-dark rounded-2 shadow-sm p-3 mx-1 mb-2">
-                                            <input type="checkbox" name="casting[]"
-                                                class="form-check-input @error('casting') is-invalid @enderror"
-                                                value="{{ $data->id }}" id="casting-{{ $data->id }}">
-                                            <label for="casting-{{ $data->id }}"
-                                                class="form-check-label me-3">{{ $data->nama }}</label>
-                                            @error('casting')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    @endforeach
-                                </div> --}}
                                 <select name="casting[]" class="form-control @error('casting') is-invalid @enderror"
                                     id="input-tags" multiple>
                                     @foreach ($casting as $data)

@@ -21,11 +21,9 @@ return new class extends Migration
             $table->string('cover');
             $table->integer('durasi');
             $table->unsignedBigInteger('id_tahun_rilis');
-            $table->unsignedBigInteger('id_genre');
             $table->timestamps();
 
             $table->foreign('id_tahun_rilis')->references('id')->on('tahun_rilis')->onDelete('cascade');
-            $table->foreign('id_genre')->references('id')->on('genre_films')->onDelete('cascade');
         });
 
         Schema::create('casting_movies', function (Blueprint $table) {
@@ -36,6 +34,16 @@ return new class extends Migration
 
             $table->foreign('id_movie')->references('id')->on('movies')->onDelete('cascade');
             $table->foreign('id_casting')->references('id')->on('castings')->onDelete('cascade');
+        });
+
+        Schema::create('genre_movies', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_movie');
+            $table->unsignedBigInteger('id_genre');
+            $table->timestamps();
+
+            $table->foreign('id_movie')->references('id')->on('movies')->onDelete('cascade');
+            $table->foreign('id_genre')->references('id')->on('genre_films')->onDelete('cascade');
         });
 
     }

@@ -73,13 +73,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Genre</label>
-                                <select name="id_genre" class="form-control @error('id_genre') is-invalid @enderror"
-                                    id="">
-                                    <option>-- Pilih Genre --</option>
+                                <select name="genre[]" class="@error('genre') is-invalid @enderror" id="input-tags" multiple>
                                     @foreach ($genre as $data)
-                                        <option value="{{ $data->id }}"
-                                            {{ $data->id == $movie->id_genre ? 'selected' : '' }}>{{ $data->kategori }}
-                                        </option>
+                                        <option value="{{ $data->id }}">{{ $data->kategori }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_genre')

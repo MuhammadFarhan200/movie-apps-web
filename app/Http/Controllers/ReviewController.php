@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Alert;
 use App\Models\Reviewer;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ReviewController extends Controller
 {
